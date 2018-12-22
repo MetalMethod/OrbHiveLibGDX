@@ -1,35 +1,37 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.metalmethodd.orbhive.scenes.SplashScreen;
 
-public class OrbHiveGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("orbhive_title.png");
-	}
+public class OrbHiveGame extends Game {
+    public SpriteBatch batch;
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
+    SplashScreen splash;
 
-			batch.draw(img, 0, 0,455*2,256*2);
+    @Override
+    public void create() {
+        batch = new SpriteBatch();
+        splash = new SplashScreen(this);
+        this.setScreen(splash);
+    }
 
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-	}
+    @Override
+    public void render() {
+        super.render();
+    }
+
+    @Override
+    public void dispose() {
+        batch.dispose();
+    }
+
+    public SplashScreen getSplash() {
+        return splash;
+    }
 }
