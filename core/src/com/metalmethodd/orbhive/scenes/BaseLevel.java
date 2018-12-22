@@ -6,7 +6,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.metalmethodd.orbhive.InputHandler;
 import com.metalmethodd.orbhive.OrbHiveGame;
+import com.metalmethodd.orbhive.TextureHandler;
 
 import static com.metalmethodd.orbhive.Constants.SCREEN_HEIGHT;
 import static com.metalmethodd.orbhive.Constants.SCREEN_WIDTH;
@@ -18,12 +21,22 @@ public class BaseLevel implements Screen {
     protected OrbHiveGame game;
     protected OrthographicCamera camera;
 
+    protected InputHandler inputHandler;
+    protected TextureHandler textureHandler;
+
+    protected int midPointY;
+
     public BaseLevel(OrbHiveGame game){
         this.game = game;
         this.batch = game.batch;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        inputHandler = new InputHandler();
+
+        //midPointY =
+        //textureHandler = new TextureHandler(gameHeight, midPointY);
     }
 
 
@@ -38,6 +51,18 @@ public class BaseLevel implements Screen {
      * drawBackgroundColor();
      */
     public void render(float delta) {
+
+        batch.begin();
+
+        // Disable transparency - this is good for performance when drawing images that do not require transparency.
+        batch.disableBlending();
+
+        textureHandler.drawBgTexture();
+        //drawHalfDownBgTexture();
+
+        // Draw elements that require transparency
+        batch.enableBlending();
+        //drawPlayer(runTime, playerState());
 
 
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
@@ -96,13 +121,9 @@ public class BaseLevel implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-    protected  void drawBackground(){
 
-    }
 
     protected void drawPlayer() {
-
-
 
     }
 }

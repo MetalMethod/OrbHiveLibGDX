@@ -1,12 +1,14 @@
 package com.metalmethodd.orbhive;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 public class InputHandler implements InputProcessor {
 
-
-
+    public InputHandler(){
+            Gdx.input.setInputProcessor(this);
+    }
 
     @Override
     public boolean keyDown(int keycode) {
@@ -14,31 +16,31 @@ public class InputHandler implements InputProcessor {
         switch (keycode) {
             case Input.Keys.W:
             case Input.Keys.UP: {
-
+                System.out.println("UP");
                 break;
             }
 
             case Input.Keys.D:
             case Input.Keys.RIGHT: {
-
+                System.out.println("RIGHT");
                 break;
             }
 
             case Input.Keys.S:
             case Input.Keys.DOWN: {
-
+                System.out.println("DOWN");
                 break;
             }
 
             case Input.Keys.A:
             case Input.Keys.LEFT: {
-
+                System.out.println("LEFT");
                 break;
             }
 
             case Input.Keys.SPACE:
             case Input.Keys.M: {
-
+                System.out.println("SHOOT");
             }
         }
         return true;

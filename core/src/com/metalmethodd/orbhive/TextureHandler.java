@@ -306,7 +306,7 @@ public class TextureHandler {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-    private void drawBgTexture() {
+    public void drawBgTexture() {
         int width = 32;
         int windowWidth = 455;
         int x = 0;
