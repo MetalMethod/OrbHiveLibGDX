@@ -16,7 +16,6 @@ public class SplashScreen implements Screen {
 
     private SpriteBatch batch;
     private OrbHiveGame game;
-
     private Texture backgroundImage;
     private OrthographicCamera camera;
 
