@@ -19,7 +19,7 @@ public class SplashScreen implements Screen {
     private Texture backgroundImage;
     private OrthographicCamera camera;
 
-    public SplashScreen(OrbHiveGame game){
+    public SplashScreen(OrbHiveGame game) {
         this.game = game;
         this.batch = game.batch;
 
@@ -38,15 +38,15 @@ public class SplashScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        batch.draw(backgroundImage, 0, 0,SCREEN_WIDTH*2
-                ,SCREEN_HEIGHT*2);
+        batch.draw(backgroundImage, 0, 0, SCREEN_WIDTH
+                , SCREEN_HEIGHT);
         batch.end();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             game.setScreen(new LevelOne(game));
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
     }
