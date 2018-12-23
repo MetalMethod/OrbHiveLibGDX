@@ -15,5 +15,6 @@ public class DesktopLauncher {
 		config.title = "OrbHive";
 		config.width = SCREEN_WIDTH *2;
 		config.height = SCREEN_HEIGHT *2;
+
 	}
 }
