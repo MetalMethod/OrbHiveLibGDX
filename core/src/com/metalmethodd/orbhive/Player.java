@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.Constants;
 
+import static com.metalmethodd.orbhive.Constants.*;
+
 public class Player {
 
     private Vector2 position;
@@ -77,6 +79,8 @@ public class Player {
 
         updateLifes();
 
+        detectWalls();
+
     }
 
     private void updateLifes() {
@@ -135,9 +139,6 @@ public class Player {
     }
 
 
-
-
-
     public void takeHit(int hitAmount) {
         velocity.set(getVelocity().add(-hitAmount, 0));
 
@@ -164,6 +165,29 @@ public class Player {
         }
         return currentState;
     }
+
+    public void detectWalls() {
+        //left
+        if (getPosition().x < screenPaddingLeft) {
+            setPosition(getPosition().set(screenPaddingLeft, getPosition().y));
+        }
+        //right
+        if (getPosition().x > screenWidth - screenPaddingRight) {
+            setPosition(getPosition().set(screenWidth - screenPaddingRight, getPosition().y));
+        }
+        //top
+        if (getPosition().y < screenPaddingTop) {
+            setPosition(getPosition().set(getPosition().x, screenPaddingTop));
+        }
+        //down
+        if (getPosition().y > screenHeight - screenPaddingBottom) {
+            setPosition(getPosition().set(getPosition().x, screenHeight - screenPaddingBottom));
+        }
+    }
+
+
+
+
 
     public void shoot() {
         System.out.println("shoot");
