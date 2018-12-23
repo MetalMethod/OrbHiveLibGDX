@@ -13,19 +13,10 @@ public class LevelOne extends BaseLevel {
         checkExitGame();
         drawBackgroundColor();
 
-
-        // Disable transparency - this is good for performance when drawing images that do not require transparency.
-
-
-        textureHandler.drawBgTexture();
+        textureHandler.drawBgLevelOne();
         //drawHalfDownBgTexture();
 
-        // Draw elements that require transparency
-
         //drawPlayer(runTime, playerState());
-
-
-
 
 
         /*

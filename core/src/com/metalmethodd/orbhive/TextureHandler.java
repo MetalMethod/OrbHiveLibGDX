@@ -76,9 +76,6 @@ public class TextureHandler {
 
         midPointY = (int) (gameHeight / 2);
 
-
-
-
         camera = new OrthographicCamera();
         camera.setToOrtho(true, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
@@ -245,7 +242,6 @@ public class TextureHandler {
     /*
     private TextureRegion playerState() {
 
-
         if (controller.playerState(player) == EntityState.FULL) {
             return playerFull;
         }
@@ -279,6 +275,20 @@ public class TextureHandler {
         batch.end();
         batch.enableBlending();
 
+    }
+
+    public void drawBgLevelOne() {
+        batch.disableBlending();
+        batch.begin();
+        int width = 32;
+        int windowWidth = 455;
+        int x = 0;
+        while (windowWidth > x) {
+            batch.draw(bg, x, 0, width, 256);
+            x += width;
+        }
+        batch.end();
+        batch.enableBlending();
     }
 
     private void drawHalfDownBgTexture() {
