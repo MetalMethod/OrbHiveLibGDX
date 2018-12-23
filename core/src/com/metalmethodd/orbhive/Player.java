@@ -10,6 +10,7 @@ public class Player {
 
     private Vector2 position;
     private Vector2 velocity;
+    private Vector2 acceleration;
 
     private int height;
     private int width;
@@ -34,6 +35,8 @@ public class Player {
 
             this.position = position;
             velocity = new Vector2(0, 0);
+
+            acceleration = new Vector2(Constants.wind, Constants.gravity);
 
             boundingRectangle = new Rectangle(position.x, position.y, width, height);
 
@@ -73,6 +76,7 @@ public class Player {
 
 
     public void update(float delta) {
+        velocity.add(acceleration.cpy().scl(delta));
         position.add(velocity.cpy().scl(delta));
 
         boundingRectangle.set(getPosition().x, getPosition().y, width, height);
