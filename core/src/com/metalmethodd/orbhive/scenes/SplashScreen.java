@@ -38,8 +38,8 @@ public class SplashScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        batch.draw(backgroundImage, 0, 0, SCREEN_WIDTH
-                , SCREEN_HEIGHT);
+        batch.draw(backgroundImage, 0, 0, Gdx.graphics.getWidth()
+                , Gdx.graphics.getHeight());
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {

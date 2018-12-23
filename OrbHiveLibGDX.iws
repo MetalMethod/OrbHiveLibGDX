@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fc87448-0858-428b-b70d-4ad8d82539cc" name="Default Changelist" comment="" />
+    <list default="true" id="3fc87448-0858-428b-b70d-4ad8d82539cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -116,14 +118,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="1" />
-          <entry key="java" value="1949" />
+          <entry key="java" value="1966" />
           <entry key="md" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="1949" />
+          <entry key="JAVA" value="1966" />
           <entry key="Markdown" value="6" />
         </counts>
       </usages-collector>
@@ -184,23 +186,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="10">
-                  <caret line="41" column="31" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="31" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/README.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="120">
-                    <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-                  </first_editor>
-                  <second_editor />
+                <state relative-caret-position="220">
+                  <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -1557,8 +1547,8 @@
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Player.java" />
         <option value="$PROJECT_DIR$/desktop/src/com/metalmethodd/orbhive/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/html/src/com/metalmethodd/orbhive/client/HtmlLauncher.java" />
-        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" />
       </list>
     </option>
   </component>
@@ -1659,7 +1649,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545540224613" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545540558183" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/core/assets" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -1781,7 +1771,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21006711" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21006711" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -2013,13 +2003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -2027,6 +2010,13 @@
             <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
         </state>
       </provider>
     </entry>
