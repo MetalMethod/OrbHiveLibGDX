@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fc87448-0858-428b-b70d-4ad8d82539cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/src/com/metalmethodd/orbhive/desktop/DesktopLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/com/metalmethodd/orbhive/desktop/DesktopLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/src/com/metalmethodd/orbhive/client/HtmlLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/html/src/com/metalmethodd/orbhive/client/HtmlLauncher.java" afterDir="false" />
-    </list>
+    <list default="true" id="3fc87448-0858-428b-b70d-4ad8d82539cc" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -107,24 +103,28 @@
         <counts>
           <entry key="gradle" value="2" />
           <entry key="java" value="23" />
+          <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="2" />
           <entry key="JAVA" value="23" />
+          <entry key="Markdown" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="1" />
           <entry key="java" value="1949" />
+          <entry key="md" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="1" />
           <entry key="JAVA" value="1949" />
+          <entry key="Markdown" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -184,11 +184,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="250">
+                <state relative-caret-position="10">
                   <caret line="41" column="31" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="120">
+                    <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -197,7 +209,7 @@
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Constants.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="171">
-                  <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+                  <caret line="29" selection-start-line="29" selection-end-line="29" />
                 </state>
               </provider>
             </entry>
@@ -218,7 +230,7 @@
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Player.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="180">
-                  <caret line="83" column="22" lean-forward="true" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+                  <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#859#860#0" expanded="true" />
@@ -269,7 +281,7 @@
             <entry file="file://$PROJECT_DIR$/desktop/src/com/metalmethodd/orbhive/desktop/DesktopLauncher.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="300">
-                  <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+                  <caret line="20" selection-start-line="20" selection-end-line="20" />
                 </state>
               </provider>
             </entry>
@@ -294,7 +306,7 @@
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="10">
-                  <caret line="310" column="4" lean-forward="true" selection-start-line="310" selection-start-column="4" selection-end-line="310" selection-end-column="4" />
+                  <caret line="310" column="4" selection-start-line="310" selection-start-column="4" selection-end-line="310" selection-end-column="4" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#3056#10179#0" />
@@ -1546,6 +1558,7 @@
         <option value="$PROJECT_DIR$/desktop/src/com/metalmethodd/orbhive/desktop/DesktopLauncher.java" />
         <option value="$PROJECT_DIR$/html/src/com/metalmethodd/orbhive/client/HtmlLauncher.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1586,27 +1599,6 @@
               <item name="OrbHiveLibGDX" type="b2602c69:ProjectViewProjectNode" />
               <item name="OrbHiveLibGDX" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="OrbHiveLibGDX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OrbHiveLibGDX" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="OrbHiveLibGDX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OrbHiveLibGDX" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="orbhive" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OrbHiveLibGDX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OrbHiveLibGDX" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="orbhive" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OrbHiveLibGDX" type="b2602c69:ProjectViewProjectNode" />
@@ -1667,7 +1659,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545539820740" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545540224613" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/core/assets" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -1921,7 +1913,7 @@
     <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -1958,7 +1950,7 @@
     <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="83" column="22" lean-forward="true" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
+          <caret line="83" column="22" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#859#860#0" expanded="true" />
@@ -1986,7 +1978,7 @@
     <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10">
-          <caret line="310" column="4" lean-forward="true" selection-start-line="310" selection-start-column="4" selection-end-line="310" selection-end-column="4" />
+          <caret line="310" column="4" selection-start-line="310" selection-start-column="4" selection-end-line="310" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3056#10179#0" />
@@ -2000,7 +1992,7 @@
     <entry file="file://$PROJECT_DIR$/desktop/src/com/metalmethodd/orbhive/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -2023,8 +2015,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="10">
           <caret line="41" column="31" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
