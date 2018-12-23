@@ -8,7 +8,7 @@ public class GameInputHandler implements InputProcessor {
 
     private final Player player;
 
-    public GameInputHandler(Player player){
+    public GameInputHandler(Player player) {
 
         Gdx.input.setInputProcessor(this);
         this.player = player;
@@ -28,18 +28,21 @@ public class GameInputHandler implements InputProcessor {
             case Input.Keys.D:
             case Input.Keys.RIGHT: {
                 System.out.println("RIGHT");
+                player.moveForward();
                 break;
             }
 
             case Input.Keys.S:
             case Input.Keys.DOWN: {
                 System.out.println("DOWN");
+                player.moveDown();
                 break;
             }
 
             case Input.Keys.A:
             case Input.Keys.LEFT: {
                 System.out.println("LEFT");
+                player.moveBack();
                 break;
             }
 
@@ -57,23 +60,23 @@ public class GameInputHandler implements InputProcessor {
         switch (keycode) {
             case Input.Keys.W:
             case Input.Keys.UP: {
-
+                player.stopMovePlayerY();
                 break;
             }
 
             case Input.Keys.D:
             case Input.Keys.RIGHT: {
-
+                player.stopMovePlayerX();
                 break;
             }
             case Input.Keys.S:
             case Input.Keys.DOWN: {
-
+                player.stopMovePlayerY();
                 break;
             }
             case Input.Keys.A:
             case Input.Keys.LEFT: {
-
+                player.stopMovePlayerX();
                 break;
             }
         }
