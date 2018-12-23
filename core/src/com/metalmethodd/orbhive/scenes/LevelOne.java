@@ -13,12 +13,18 @@ public class LevelOne extends BaseLevel {
         checkExitGame();
         drawBackgroundColor();
 
-        // draw images
-        batch.begin();
-//        batch.draw(backgroundImage, 0, 0,455*2,256*2);
+
+        // Disable transparency - this is good for performance when drawing images that do not require transparency.
 
 
-        batch.end();
+        textureHandler.drawBgTexture();
+        //drawHalfDownBgTexture();
+
+        // Draw elements that require transparency
+
+        //drawPlayer(runTime, playerState());
+
+
 
 
 

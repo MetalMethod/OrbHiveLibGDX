@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3fc87448-0858-428b-b70d-4ad8d82539cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/OrbHiveLibGDX.iws" beforeDir="false" afterPath="$PROJECT_DIR$/OrbHiveLibGDX.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/InputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/GameInputHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/BaseLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/BaseLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/core/com/metalmethodd/orbhive/scenes/BaseLevel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/com/metalmethodd/orbhive/InputHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/com/metalmethodd/orbhive/scenes/BaseLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/core/com/metalmethodd/orbhive/scenes/BaseLevel.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -99,25 +101,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="1" />
-          <entry key="java" value="17" />
+          <entry key="java" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="17" />
+          <entry key="JAVA" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="1" />
-          <entry key="java" value="1015" />
+          <entry key="java" value="1156" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="1015" />
+          <entry key="JAVA" value="1156" />
         </counts>
       </usages-collector>
     </session>
@@ -168,23 +170,27 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="260" lean-forward="true" selection-start-line="249" selection-start-column="8" selection-end-line="260" />
+                <state relative-caret-position="350">
+                  <caret line="279" column="31" selection-start-line="279" selection-start-column="31" selection-end-line="279" selection-end-column="31" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#2966#10089#0" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Player.java">
+            <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/AssetLoader.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
-                  <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+                <state relative-caret-position="180">
+                  <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -219,7 +225,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
+                <state relative-caret-position="291">
+                  <caret line="26" selection-start-line="26" selection-end-line="26" />
                   <folding>
                     <element signature="e#168#169#0" expanded="true" />
                     <element signature="e#195#196#0" expanded="true" />
@@ -228,11 +235,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/InputHandler.java">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/GameInputHandler.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret lean-forward="true" />
+                <state relative-caret-position="20">
+                  <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#216#217#0" expanded="true" />
@@ -270,10 +277,13 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/BaseLevel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="311">
-                  <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+                <state relative-caret-position="20">
+                  <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#1449#1465#0" />
+                    <element signature="e#2370#2371#0" expanded="true" />
+                    <element signature="e#2399#2400#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -303,6 +313,8 @@
     <findStrings>
       <find>bg</find>
       <find>sprites</find>
+      <find>render</find>
+      <find>dispo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -350,7 +362,6 @@
       <list>
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/AssetLoader.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplahScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/OrbHiveGame.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/Constants.java" />
@@ -359,9 +370,11 @@
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/Base.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/GameOverScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/SplashScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/InputHandler.java" />
+        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/GameInputHandler.java" />
         <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/BaseLevel.java" />
+        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java" />
+        <option value="$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java" />
       </list>
     </option>
   </component>
@@ -444,7 +457,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545522098708" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545523620038" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/android/assets" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -561,8 +574,8 @@
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Build" order="0" weight="0.33426574" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49932885" visible="true" weight="0.38601398" />
+      <window_info anchor="bottom" id="Find" order="2" visible="true" weight="0.32867134" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49932885" weight="0.38601398" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -598,13 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/AssetLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="9" column="57" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -648,8 +654,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/GameOverScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="31" selection-start-line="30" selection-end-line="31" />
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -657,16 +666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -680,20 +679,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/GameInputHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="260" lean-forward="true" selection-start-line="249" selection-start-column="8" selection-end-line="260" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/InputHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="20">
+          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#216#217#0" expanded="true" />
@@ -704,10 +693,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/BaseLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state relative-caret-position="20">
+          <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1449#1465#0" />
+            <element signature="e#2370#2371#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/AssetLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/scenes/LevelOne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#168#169#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/metalmethodd/orbhive/TextureHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="279" column="31" selection-start-line="279" selection-start-column="31" selection-end-line="279" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2966#10089#0" />
           </folding>
         </state>
       </provider>

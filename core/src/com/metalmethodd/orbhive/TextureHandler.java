@@ -23,7 +23,7 @@ public class TextureHandler {
     /**
      * Responsible for rendering images with indices x, y, width and height
      */
-    private SpriteBatch batcher;
+    private SpriteBatch batch;
 
     /**
      * for calculating the window size
@@ -65,31 +65,34 @@ public class TextureHandler {
 
 
 
-    public TextureHandler( int gameHeight, int midPointY) {
-
+    public TextureHandler() {
+        AssetLoader.load();
         this.sprites = AssetLoader.getSprites();
 
-        this.gameHeight = gameHeight;
-        this.midPointY = midPointY;
+        int screenWidth = Gdx.graphics.getWidth();
+        int screenHeight = Gdx.graphics.getHeight();
+        int gameWidth = Constants.SCREEN_WIDTH;
+        gameHeight = screenHeight / (screenWidth / gameWidth);
+
+        midPointY = (int) (gameHeight / 2);
+
+
+
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(true, 455, 256);
+        camera.setToOrtho(true, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
-        batcher = new SpriteBatch();
+        batch = new SpriteBatch();
         //Attatch Batch to camera
-        batcher.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
 
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
 
-        initGameObjects();
         initAssets();
 
     }
 
-    private void initGameObjects() {
-        //scrollHandler = gameWorld.getScrollHandler();
-    }
 
     private void initAssets() {
         bg = new TextureRegion(sprites, 224, 0, 32, 256);
@@ -233,8 +236,59 @@ public class TextureHandler {
     }
 
     public void dispose(){
-        batcher.dispose();
+        AssetLoader.dispose();
+        batch.dispose();
         shapeRenderer.dispose();
+    }
+
+
+    /*
+    private TextureRegion playerState() {
+
+
+        if (controller.playerState(player) == EntityState.FULL) {
+            return playerFull;
+        }
+
+        if (controller.playerState(player) == EntityState.MID) {
+            return playerMid;
+        }
+
+        if (controller.playerState(player) == EntityState.LAST) {
+            return playerLast;
+        }
+
+        return playerFull;
+    }
+  */
+    private void fillBlackBg() {
+        Gdx.gl.glClearColor(0, 0, 0, 1f);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
+
+    public void drawBgTexture() {
+        batch.disableBlending();
+        batch.begin();
+        int width = 32;
+        int windowWidth = 455;
+        int x = 0;
+        while (windowWidth > x) {
+            batch.draw(bg, x, 0, width, 256);
+            x += width;
+        }
+        batch.end();
+        batch.enableBlending();
+
+    }
+
+    private void drawHalfDownBgTexture() {
+        int width = 32;
+        int windowWidth = 455;
+        int x = 0;
+        while (windowWidth > x) {
+            batch.draw(halfDownBg, x, 128, width, 128);
+            x += width;
+        }
     }
 
     /**
@@ -247,16 +301,16 @@ public class TextureHandler {
 
         //drawBackgroundColor();
 
-        batcher.begin();
+        batch.begin();
 
         // Disable transparency - this is good for performance when drawing images that do not require transparency.
-        batcher.disableBlending();
+        batch.disableBlending();
 
         drawBgTexture();
         //drawHalfDownBgTexture();
 
         // Draw elements that require transparency
-        batcher.enableBlending();
+        batch.enableBlending();
         //drawPlayer(runTime, playerState());
 
 
@@ -278,57 +332,13 @@ public class TextureHandler {
         // Draw non-bitmap elements
 //        drawPlayerBoundingRect();
 //        drawEnemyBoundingRect(enemy);
-        batcher.end();
+        batch.end();
     }
 
-    /*
-    private TextureRegion playerState() {
-
-
-        if (controller.playerState(player) == EntityState.FULL) {
-            return playerFull;
-        }
-
-        if (controller.playerState(player) == EntityState.MID) {
-            return playerMid;
-        }
-
-        if (controller.playerState(player) == EntityState.LAST) {
-            return playerLast;
-        }
-
-        return playerFull;
-    }
-  */
-
-    private void fillBlackBg() {
-        Gdx.gl.glClearColor(0, 0, 0, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    }
-
-    public void drawBgTexture() {
-        int width = 32;
-        int windowWidth = 455;
-        int x = 0;
-        while (windowWidth > x) {
-            batcher.draw(bg, x, 0, width, 256);
-            x += width;
-        }
-    }
-
-    private void drawHalfDownBgTexture() {
-        int width = 32;
-        int windowWidth = 455;
-        int x = 0;
-        while (windowWidth > x) {
-            batcher.draw(halfDownBg, x, 128, width, 128);
-            x += width;
-        }
-    }
 /*
     private void drawPlayer(float runTime, TextureRegion playerState) {
 
-        batcher.draw(
+        batch.draw(
                 playerState,
                 ((int) player.getPosition().x),
                 ((int) player.getPosition().y),
@@ -355,7 +365,7 @@ public class TextureHandler {
     }
 
     private void drawPlayerShot(float runTime) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) playerShootAnimation.getKeyFrame(runTime),
                 player.getPosition().x + 50,
                 player.getPosition().y +50,
@@ -365,7 +375,7 @@ public class TextureHandler {
     }
 
     private void drawPlayerEngine(float runTime) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) engineAnimation.getKeyFrame(runTime),
                 player.getPosition().x + 1,
                 player.getPosition().y + 15,
@@ -375,7 +385,7 @@ public class TextureHandler {
     }
 
     private void drawPlayerExplosion(float runTime) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) playerExplosionAnimation.getKeyFrame(runTime),
                 player.getPosition().x,
                 player.getPosition().y,
@@ -426,7 +436,7 @@ public class TextureHandler {
 
     private void drawEnemyFirst(float runTime, Enemy enemy) {
 
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
                 enemy.getPosition().x,
                 enemy.getPosition().y,
@@ -436,7 +446,7 @@ public class TextureHandler {
     }
 
     private void drawEnemySecond(float runTime, Enemy enemy) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
                 enemy.getPosition().x,
                 enemy.getPosition().y,
@@ -446,7 +456,7 @@ public class TextureHandler {
     }
 
     private void drawEnemySecondOption(float runTime) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
                 100,
                 300,
@@ -456,7 +466,7 @@ public class TextureHandler {
     }
 
     private void drawWasp(float runTime, Enemy enemy) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
                 enemy.getPosition().x,
                 enemy.getPosition().y,
@@ -466,7 +476,7 @@ public class TextureHandler {
     }
 
     private void drawWaspDeath(float runTime) {
-        batcher.draw(
+        batch.draw(
                 (TextureRegion) enemyFirstWaspDeathAnimation.getKeyFrame(runTime),
                 250,
                 100,
@@ -474,6 +484,5 @@ public class TextureHandler {
                 16
         );
     }*/
-
 }
 

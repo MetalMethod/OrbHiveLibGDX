@@ -6,8 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.metalmethodd.orbhive.InputHandler;
+import com.metalmethodd.orbhive.GameInputHandler;
 import com.metalmethodd.orbhive.OrbHiveGame;
 import com.metalmethodd.orbhive.TextureHandler;
 
@@ -21,10 +20,8 @@ public class BaseLevel implements Screen {
     protected OrbHiveGame game;
     protected OrthographicCamera camera;
 
-    protected InputHandler inputHandler;
+    protected GameInputHandler gameInputHandler;
     protected TextureHandler textureHandler;
-
-    protected int midPointY;
 
     public BaseLevel(OrbHiveGame game){
         this.game = game;
@@ -33,10 +30,9 @@ public class BaseLevel implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        inputHandler = new InputHandler();
+        gameInputHandler = new GameInputHandler();
 
-        //midPointY =
-        //textureHandler = new TextureHandler(gameHeight, midPointY);
+        textureHandler = new TextureHandler();
     }
 
 
@@ -52,23 +48,22 @@ public class BaseLevel implements Screen {
      */
     public void render(float delta) {
 
-        batch.begin();
-
-        // Disable transparency - this is good for performance when drawing images that do not require transparency.
-        batch.disableBlending();
-
-        textureHandler.drawBgTexture();
-        //drawHalfDownBgTexture();
-
-        // Draw elements that require transparency
-        batch.enableBlending();
-        //drawPlayer(runTime, playerState());
-
-
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
             game.setScreen(new GameOverScreen(game));
         }
 
+
+        //batch.begin();
+
+        // Disable transparency - this is good for performance when drawing images that do not require transparency.
+        //batch.disableBlending();
+
+        //textureHandler.drawBgTexture();
+        //drawHalfDownBgTexture();
+
+        // Draw elements that require transparency
+        //batch.enableBlending();
+        //drawPlayer(runTime, playerState());
 
 
         /*
@@ -107,7 +102,7 @@ public class BaseLevel implements Screen {
      * call batch.dispose(); on every level;
      */
     public void dispose() {
-
+        textureHandler.dispose();
     }
 
     public void checkExitGame(){

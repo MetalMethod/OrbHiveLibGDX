@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
-public class InputHandler implements InputProcessor {
+public class GameInputHandler implements InputProcessor {
 
-    public InputHandler(){
+    public GameInputHandler(){
             Gdx.input.setInputProcessor(this);
     }
 
