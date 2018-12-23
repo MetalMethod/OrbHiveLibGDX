@@ -26,15 +26,12 @@ public class LevelOne extends BaseLevel {
         drawBackgroundColor();
 
         textureHandler.drawBgLevelOne();
-        //drawHalfDownBgTexture();
 
-        //drawPlayer(runTime, playerState());
         textureHandler.drawPlayer(player, runTime);
 
         /*
         if player overlaps wasp
             do shit - player and wasp methods
-
 
         Intersector.overlaps(player_rectangle , wasp_rectangle)
                 */

@@ -364,10 +364,11 @@ public class TextureHandler {
         batch.disableBlending();
         batch.end();
 
-    /**    if (controller.isPlayerMoving()) {
-            drawPlayerEngine(runTime);
+        if (player.getIsPlayermoving()) {
+            drawPlayerEngine(runTime, player);
         }
 
+        /*
         if (controller.isPlayerHit()) {
             drawPlayerExplosion(runTime);
         }
@@ -393,7 +394,11 @@ public class TextureHandler {
         );
     }
 
-    private void drawPlayerEngine(float runTime) {
+ */
+
+    private void drawPlayerEngine(float runTime, Player player) {
+        batch.begin();
+        batch.enableBlending();
         batch.draw(
                 (TextureRegion) engineAnimation.getKeyFrame(runTime),
                 player.getPosition().x + 1,
@@ -401,8 +406,11 @@ public class TextureHandler {
                 10,
                 10
         );
+        batch.disableBlending();
+        batch.end();
     }
 
+    /**
     private void drawPlayerExplosion(float runTime) {
         batch.draw(
                 (TextureRegion) playerExplosionAnimation.getKeyFrame(runTime),

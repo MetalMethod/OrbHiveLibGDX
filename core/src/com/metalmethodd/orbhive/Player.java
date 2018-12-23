@@ -130,7 +130,9 @@ public class Player {
     }
 
 
-
+    public boolean getIsPlayermoving(){
+        return  isPlayerMoving;
+    }
 
 
 
