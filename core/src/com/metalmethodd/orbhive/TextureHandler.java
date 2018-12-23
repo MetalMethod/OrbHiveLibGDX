@@ -239,24 +239,25 @@ public class TextureHandler {
     }
 
 
-    /*
-    private TextureRegion playerState() {
 
-        if (controller.playerState(player) == EntityState.FULL) {
+    private TextureRegion playerState(Player player) {
+
+        if (player.getState() == Player.EntityState.FULL) {
             return playerFull;
         }
 
-        if (controller.playerState(player) == EntityState.MID) {
+        if (player.getState() == Player.EntityState.MID) {
             return playerMid;
         }
 
-        if (controller.playerState(player) == EntityState.LAST) {
+        if (player.getState() == Player.EntityState.LAST) {
             return playerLast;
         }
 
         return playerFull;
     }
-  */
+
+
     private void fillBlackBg() {
         Gdx.gl.glClearColor(0, 0, 0, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -345,11 +346,12 @@ public class TextureHandler {
         batch.end();
     }
 
-/*
-    private void drawPlayer(float runTime, TextureRegion playerState) {
 
+    public void drawPlayer(Player player, float runTime) {
+        batch.begin();
+        batch.enableBlending();
         batch.draw(
-                playerState,
+                playerState(player),
                 ((int) player.getPosition().x),
                 ((int) player.getPosition().y),
                 50,
@@ -359,8 +361,10 @@ public class TextureHandler {
                 1, 1,
                 0
         );
+        batch.disableBlending();
+        batch.end();
 
-        if (controller.isPlayerMoving()) {
+    /**    if (controller.isPlayerMoving()) {
             drawPlayerEngine(runTime);
         }
 
@@ -371,9 +375,14 @@ public class TextureHandler {
         if(controller.isPlayerShooting()){
             drawPlayerShot(runTime);
         }
+*/
 
     }
 
+
+
+
+/**
     private void drawPlayerShot(float runTime) {
         batch.draw(
                 (TextureRegion) playerShootAnimation.getKeyFrame(runTime),

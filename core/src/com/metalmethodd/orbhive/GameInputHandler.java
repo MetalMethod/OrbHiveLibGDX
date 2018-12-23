@@ -6,8 +6,12 @@ import com.badlogic.gdx.InputProcessor;
 
 public class GameInputHandler implements InputProcessor {
 
-    public GameInputHandler(){
-            Gdx.input.setInputProcessor(this);
+    private final Player player;
+
+    public GameInputHandler(Player player){
+
+        Gdx.input.setInputProcessor(this);
+        this.player = player;
     }
 
     @Override
@@ -17,6 +21,7 @@ public class GameInputHandler implements InputProcessor {
             case Input.Keys.W:
             case Input.Keys.UP: {
                 System.out.println("UP");
+                player.moveUp();
                 break;
             }
 

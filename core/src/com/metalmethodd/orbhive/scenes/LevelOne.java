@@ -1,15 +1,27 @@
 package com.metalmethodd.orbhive.scenes;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
+import com.metalmethodd.orbhive.GameInputHandler;
 import com.metalmethodd.orbhive.OrbHiveGame;
+import com.metalmethodd.orbhive.Player;
 
 public class LevelOne extends BaseLevel {
 
+    private Player player;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
+
+        player = new Player(new Vector2(100,100));
+
+        gameInputHandler = new GameInputHandler(player);
     }
 
     public void render(float delta) {
+        runTime += delta;
+        player.update(delta);
+
         checkExitGame();
         drawBackgroundColor();
 
@@ -17,7 +29,7 @@ public class LevelOne extends BaseLevel {
         //drawHalfDownBgTexture();
 
         //drawPlayer(runTime, playerState());
-
+        textureHandler.drawPlayer(player, runTime);
 
         /*
         if player overlaps wasp

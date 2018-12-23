@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.metalmethodd.orbhive.GameInputHandler;
 import com.metalmethodd.orbhive.OrbHiveGame;
+import com.metalmethodd.orbhive.Player;
 import com.metalmethodd.orbhive.TextureHandler;
 
 import static com.metalmethodd.orbhive.Constants.SCREEN_HEIGHT;
@@ -23,14 +24,13 @@ public class BaseLevel implements Screen {
     protected GameInputHandler gameInputHandler;
     protected TextureHandler textureHandler;
 
+    protected float runTime;
+
     public BaseLevel(OrbHiveGame game){
         this.game = game;
         this.batch = game.batch;
-
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-        gameInputHandler = new GameInputHandler();
 
         textureHandler = new TextureHandler();
     }
@@ -47,6 +47,7 @@ public class BaseLevel implements Screen {
      * drawBackgroundColor();
      */
     public void render(float delta) {
+        runTime += delta;
 
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
             game.setScreen(new GameOverScreen(game));
