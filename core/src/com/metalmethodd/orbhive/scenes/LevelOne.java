@@ -28,6 +28,7 @@ public class LevelOne extends BaseLevel {
         textureHandler.drawBgLevelOne();
 
         textureHandler.drawPlayer(player, runTime);
+        textureHandler.drawPlayerBoundingRect(player);
 
         /*
         if player overlaps wasp

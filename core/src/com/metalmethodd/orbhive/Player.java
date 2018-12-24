@@ -2,7 +2,6 @@ package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.metalmethodd.orbhive.Constants;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
@@ -36,12 +35,12 @@ public class Player {
             this.position = position;
             velocity = new Vector2(0, 0);
 
-            acceleration = new Vector2(Constants.wind, Constants.gravity);
+            acceleration = new Vector2(Constants.PLAYER_WIND, Constants.PLAYER_GRAVITY);
 
-            boundingRectangle = new Rectangle(position.x, position.y, width, height);
+            boundingRectangle = new Rectangle(getPosition().x, getPosition().y , width, height);
 
             currentState = EntityState.FULL;
-            lifes = Constants.initialEntityLives;
+            lifes = Constants.INITIAL_PLAYER_LIVES;
     }
 
 
@@ -76,10 +75,11 @@ public class Player {
 
 
     public void update(float delta) {
-        velocity.add(acceleration.cpy().scl(delta));
+        // velocity.add(acceleration.cpy().scl(delta));
         position.add(velocity.cpy().scl(delta));
 
-        boundingRectangle.set(getPosition().x, getPosition().y, width, height);
+        boundingRectangle.x = position.x;
+        boundingRectangle.y = position.y + DRAW_PLAYER_HEIGHT_FIX;
 
         updateLifes();
 
@@ -89,7 +89,7 @@ public class Player {
 
     private void updateLifes() {
         if (lifes < 1) {
-            lifes = Constants.initialEntityLives;
+            lifes = Constants.INITIAL_PLAYER_LIVES;
         }
     }
 
@@ -103,22 +103,22 @@ public class Player {
 
 
     public void moveUp() {
-        setVelocity((Vector2) getVelocity().add(0, -Constants.movementVelocity));
+        setVelocity((Vector2) getVelocity().add(0, -Constants.PLAYER_VELOCITY));
         isPlayerMoving = true;
     }
 
     public void moveForward() {
-        setVelocity((Vector2) getVelocity().add(Constants.movementVelocity, 0));
+        setVelocity((Vector2) getVelocity().add(Constants.PLAYER_VELOCITY, 0));
         isPlayerMoving = true;
     }
 
     public void moveDown() {
-        setVelocity((Vector2) getVelocity().add(0, Constants.movementVelocity));
+        setVelocity((Vector2) getVelocity().add(0, Constants.PLAYER_VELOCITY));
         isPlayerMoving = true;
     }
 
     public void moveBack() {
-        setVelocity((Vector2) getVelocity().add(-Constants.movementVelocity, 0));
+        setVelocity((Vector2) getVelocity().add(-Constants.PLAYER_VELOCITY, 0));
         isPlayerMoving = true;
     }
 
@@ -176,16 +176,16 @@ public class Player {
             setPosition(getPosition().set(screenPaddingLeft, getPosition().y));
         }
         //right
-        if (getPosition().x > screenWidth - screenPaddingRight) {
-            setPosition(getPosition().set(screenWidth - screenPaddingRight, getPosition().y));
+        if (getPosition().x > SCREEN_WIDTH - screenPaddingRight) {
+            setPosition(getPosition().set(SCREEN_WIDTH - screenPaddingRight, getPosition().y));
         }
         //top
         if (getPosition().y < screenPaddingTop) {
             setPosition(getPosition().set(getPosition().x, screenPaddingTop));
         }
         //down
-        if (getPosition().y > screenHeight - screenPaddingBottom) {
-            setPosition(getPosition().set(getPosition().x, screenHeight - screenPaddingBottom));
+        if (getPosition().y > SCREEN_HEIGHT - screenPaddingBottom) {
+            setPosition(getPosition().set(getPosition().x, SCREEN_HEIGHT - screenPaddingBottom));
         }
     }
 

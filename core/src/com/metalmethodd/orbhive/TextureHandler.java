@@ -348,6 +348,8 @@ public class TextureHandler {
 
 
     public void drawPlayer(Player player, float runTime) {
+
+
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -356,8 +358,8 @@ public class TextureHandler {
                 ((int) player.getPosition().y),
                 50,
                 50,
-                Constants.playerSize,
-                Constants.playerSize,
+                Constants.PLAYER_SIZE,
+                Constants.PLAYER_SIZE,
                 1, 1,
                 0
         );
@@ -430,17 +432,20 @@ public class TextureHandler {
 
         shapeRenderer.end();
     }
+*/
 
-    private void drawPlayerBoundingRect() {
+    public void drawPlayerBoundingRect(Player player) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
         // Draw player bounding rectangle
         shapeRenderer.setColor(255f, 0f, 0f, 0.35f);
-        shapeRenderer.rect(player.getBoundingRectangle().x, player.getBoundingRectangle().y, player.getWidth(), player.getHeight());
+        shapeRenderer.rect(player.getBoundingRectangle().x, player.getBoundingRectangle().y , player.getWidth(), player.getHeight());
 
         shapeRenderer.end();
 
     }
+
+    /**
         private void drawPlayerBulletRect(){
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
