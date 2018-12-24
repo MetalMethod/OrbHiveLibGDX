@@ -37,11 +37,11 @@ public class GameOverScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        batch.draw(backgroundImage, 0, 0,455*2,256*2);
+        batch.draw(backgroundImage, 0, 0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         batch.end();
 
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            game.setScreen(new GameOverScreen(game));
+            game.setScreen(new SplashScreen(game));
         }
 
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
