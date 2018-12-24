@@ -75,16 +75,16 @@ public class Player {
 
 
     public void update(float delta) {
-        // velocity.add(acceleration.cpy().scl(delta));
+        velocity.add(acceleration.cpy().scl(delta));
         position.add(velocity.cpy().scl(delta));
-
-        boundingRectangle.x = position.x;
-        boundingRectangle.y = position.y + DRAW_PLAYER_HEIGHT_FIX;
-
+        detectWalls();
+        updateBoundingRectangle();
         updateLifes();
 
-        detectWalls();
+    }
 
+    private void updateBoundingRectangle() {
+        boundingRectangle.setPosition(getPosition());
     }
 
     private void updateLifes() {
@@ -189,14 +189,9 @@ public class Player {
         }
     }
 
-
-
-
-
     public void shoot() {
         System.out.println("shoot");
     }
-
 
 }
 

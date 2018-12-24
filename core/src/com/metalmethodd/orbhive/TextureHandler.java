@@ -435,11 +435,13 @@ public class TextureHandler {
 */
 
     public void drawPlayerBoundingRect(Player player) {
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+//        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
         // Draw player bounding rectangle
-        shapeRenderer.setColor(255f, 0f, 0f, 0.35f);
-        shapeRenderer.rect(player.getBoundingRectangle().x, player.getBoundingRectangle().y , player.getWidth(), player.getHeight());
+//        shapeRenderer.setColor(255f, 0f, 0f, 0.35f);
+        shapeRenderer.setColor(255f, 0f, 0f, 1);
+        shapeRenderer.rect(player.getBoundingRectangle().x, player.getBoundingRectangle().y + Constants.DRAW_PLAYER_HEIGHT_FIX , player.getWidth(), player.getHeight());
 
         shapeRenderer.end();
 
