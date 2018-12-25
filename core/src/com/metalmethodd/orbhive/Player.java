@@ -103,22 +103,22 @@ public class Player {
 
 
     public void moveUp() {
-        setVelocity((Vector2) getVelocity().add(0, -Constants.PLAYER_VELOCITY));
+        setVelocity(getVelocity().add(0, -Constants.PLAYER_VELOCITY));
         isPlayerMoving = true;
     }
 
     public void moveForward() {
-        setVelocity((Vector2) getVelocity().add(Constants.PLAYER_VELOCITY, 0));
+        setVelocity(getVelocity().add(Constants.PLAYER_VELOCITY, 0));
         isPlayerMoving = true;
     }
 
     public void moveDown() {
-        setVelocity((Vector2) getVelocity().add(0, Constants.PLAYER_VELOCITY));
+        setVelocity(getVelocity().add(0, Constants.PLAYER_VELOCITY));
         isPlayerMoving = true;
     }
 
     public void moveBack() {
-        setVelocity((Vector2) getVelocity().add(-Constants.PLAYER_VELOCITY, 0));
+        setVelocity(getVelocity().add(-Constants.PLAYER_VELOCITY, 0));
         isPlayerMoving = true;
     }
 
@@ -128,12 +128,12 @@ public class Player {
     }
 
     public void stopMovePlayerY() {
-        setVelocity((Vector2) getVelocity().set(getVelocity().x, 0));
+        setVelocity(getVelocity().set(getVelocity().x, 0));
         isPlayerMoving = false;
     }
 
     public void stopMovePlayerX() {
-        setVelocity((Vector2) getVelocity().set(0, getVelocity().y));
+        setVelocity(getVelocity().set(0, getVelocity().y));
         isPlayerMoving = false;
     }
 
