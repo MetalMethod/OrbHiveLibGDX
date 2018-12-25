@@ -172,20 +172,20 @@ public class Player {
 
     public void detectWalls() {
         //left
-        if (getPosition().x < screenPaddingLeft) {
-            setPosition(getPosition().set(screenPaddingLeft, getPosition().y));
+        if (getPosition().x < SCREEN_PADDING_LEFT) {
+            setPosition(getPosition().set(SCREEN_PADDING_LEFT, getPosition().y));
         }
         //right
-        if (getPosition().x > SCREEN_WIDTH - screenPaddingRight) {
-            setPosition(getPosition().set(SCREEN_WIDTH - screenPaddingRight, getPosition().y));
+        if (getPosition().x > SCREEN_WIDTH - SCREEN_PADDING_RIGHT) {
+            setPosition(getPosition().set(SCREEN_WIDTH - SCREEN_PADDING_RIGHT, getPosition().y));
         }
         //top
-        if (getPosition().y < screenPaddingTop) {
-            setPosition(getPosition().set(getPosition().x, screenPaddingTop));
+        if (getPosition().y < SCREEN_PADDING_TOP) {
+            setPosition(getPosition().set(getPosition().x, SCREEN_PADDING_TOP));
         }
         //down
-        if (getPosition().y > SCREEN_HEIGHT - screenPaddingBottom) {
-            setPosition(getPosition().set(getPosition().x, SCREEN_HEIGHT - screenPaddingBottom));
+        if (getPosition().y > SCREEN_HEIGHT - SCREEN_PADDING_BOTTOM) {
+            setPosition(getPosition().set(getPosition().x, SCREEN_HEIGHT - SCREEN_PADDING_BOTTOM));
         }
     }
 

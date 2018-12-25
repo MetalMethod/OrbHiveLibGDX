@@ -11,10 +11,10 @@ public class Constants {
     public static final int PLAYER_SIZE = 40;
     public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
 
-    public static final int screenPaddingLeft = 5;
-    public static final int screenPaddingRight = 45;
-    public static final int screenPaddingTop = 0;
-    public static final int screenPaddingBottom = 36;
+    public static final int SCREEN_PADDING_LEFT = 5;
+    public static final int SCREEN_PADDING_RIGHT = 45;
+    public static final int SCREEN_PADDING_TOP = 0;
+    public static final int SCREEN_PADDING_BOTTOM = 36;
 
     public static final int enemyCreationX = SCREEN_WIDTH + 20;
 
