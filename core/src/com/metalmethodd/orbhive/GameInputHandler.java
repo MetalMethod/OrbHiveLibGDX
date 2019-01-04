@@ -48,7 +48,8 @@ public class GameInputHandler implements InputProcessor {
 
             case Input.Keys.SPACE:
             case Input.Keys.M: {
-                System.out.println("SHOOT");
+                player.shoot();
+                break;
             }
         }
         return true;

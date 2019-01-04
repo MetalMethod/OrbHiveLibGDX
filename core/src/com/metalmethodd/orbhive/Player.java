@@ -11,6 +11,10 @@ public class Player {
     private Vector2 velocity;
     private Vector2 acceleration;
 
+    private boolean isShooting;
+
+    private TextureHandler text = new TextureHandler();
+
     private int height;
     private int width;
 
@@ -83,6 +87,7 @@ public class Player {
 
     }
 
+
     private void updateBoundingRectangle() {
         boundingRectangle.setPosition(getPosition());
     }
@@ -106,6 +111,11 @@ public class Player {
         setVelocity(getVelocity().add(0, -Constants.PLAYER_VELOCITY));
         isPlayerMoving = true;
     }
+
+    public boolean isShooting() {
+        return isShooting;
+    }
+
 
     public void moveForward() {
         setVelocity(getVelocity().add(Constants.PLAYER_VELOCITY, 0));
@@ -190,8 +200,18 @@ public class Player {
     }
 
     public void shoot() {
+
+
         System.out.println("shoot");
+        isShooting = true;
+
     }
+
+
+    public void setShooting(boolean shooting) {
+        isShooting = shooting;
+    }
+
 
 }
 
