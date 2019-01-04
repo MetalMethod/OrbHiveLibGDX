@@ -1,6 +1,5 @@
 package com.metalmethodd.orbhive.scenes;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -48,16 +47,21 @@ public class LevelOne extends BaseLevel {
             shapeRenderer.setColor(Color.RED);
             shapeRenderer.end();
 
+            bulletOne.x += 5;
+
+
+            if (bulletOne.x >= Constants.SCREEN_WIDTH * 2) {
+                player.setShooting(false);
+                bulletOne.set((int) player.getBoundingRectangle().x + player.getBoundingRectangle().width, (int) player.getBoundingRectangle().y * 2, 8, 8);
+
+
+                //cant get the player x and y to the all window, values must be unique. player on top bullet appears on bottom
+            }
         }
 
-        bulletOne.x += 5;
 
-        if (bulletOne.x >= Constants.SCREEN_WIDTH * 2) {
-            player.setShooting(false);
-            bulletOne.set(player.getPosition().x * 2, player.getPosition().y * 2, 8, 8);
-            
 
-        }
+
 
 
 
