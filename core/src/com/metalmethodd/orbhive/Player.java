@@ -24,29 +24,33 @@ public class Player {
     private int lifes;
     private boolean isPlayerMoving;
 
+    private Bullet bullet;
+
+    public Player(Vector2 position) {
+        this.width = Constants.PLAYER_WIDTH;
+        this.height = Constants.PLAYER_HEIGHT;
+
+        this.position = position;
+        velocity = new Vector2(0, 0);
+
+        acceleration = new Vector2(Constants.PLAYER_WIND, Constants.PLAYER_GRAVITY);
+
+        boundingRectangle = new Rectangle(getPosition().x, getPosition().y , width, height);
+
+        currentState = EntityState.FULL;
+        lifes = Constants.INITIAL_PLAYER_LIVES;
+
+        bullet = new Bullet(new Vector2(0,-100));
+    }
+
     public enum EntityState {
         FULL,
         MID,
         LAST,
         DEAD,
         NEUTRAL
+
     }
-
-    public Player(Vector2 position) {
-            this.width = Constants.PLAYER_WIDTH;
-            this.height = Constants.PLAYER_HEIGHT;
-
-            this.position = position;
-            velocity = new Vector2(0, 0);
-
-            acceleration = new Vector2(Constants.PLAYER_WIND, Constants.PLAYER_GRAVITY);
-
-            boundingRectangle = new Rectangle(getPosition().x, getPosition().y , width, height);
-
-            currentState = EntityState.FULL;
-            lifes = Constants.INITIAL_PLAYER_LIVES;
-    }
-
 
     public Vector2 getPosition() {
         return position;
@@ -85,8 +89,9 @@ public class Player {
         updateBoundingRectangle();
         updateLifes();
 
-    }
+        bullet.update(delta);
 
+    }
 
     private void updateBoundingRectangle() {
         boundingRectangle.setPosition(getPosition());
@@ -111,11 +116,6 @@ public class Player {
         setVelocity(getVelocity().add(0, -Constants.PLAYER_VELOCITY));
         isPlayerMoving = true;
     }
-
-    public boolean isShooting() {
-        return isShooting;
-    }
-
 
     public void moveForward() {
         setVelocity(getVelocity().add(Constants.PLAYER_VELOCITY, 0));
@@ -200,18 +200,21 @@ public class Player {
     }
 
     public void shoot() {
-
-
-        System.out.println("shoot");
+        bullet = new Bullet(new Vector2(getPosition().x, getPosition().y));
         isShooting = true;
-
     }
 
+    public boolean isShooting() {
+        return isShooting;
+    }
 
     public void setShooting(boolean shooting) {
         isShooting = shooting;
     }
 
+    public Bullet getBullet() {
+        return bullet;
+    }
 
 }
 

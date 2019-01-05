@@ -18,6 +18,9 @@ public class Constants {
 
     public static final int enemyCreationX = SCREEN_WIDTH + 20;
 
+    public static final float BULLET_HEIGHT = 4;
+    public static final float BULLET_WIDTH = 7;
+    public static final float BULLET_SPEED = 9 ;
 
     // PHYSICS
     public static final int PLAYER_VELOCITY = 180;

@@ -50,7 +50,7 @@ public class HtmlLauncher extends GwtApplication {
      // END OF CODE FOR RESIZABLE APPLICATION
 
     @Override
-    public ApplicationListener createApplicationListener() {
+     public ApplicationListener createApplicationListener() {
         return new OrbHiveGame();
     }
 }
