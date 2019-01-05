@@ -42,13 +42,16 @@ public class SplashScreen implements Screen {
                 , Gdx.graphics.getHeight());
         batch.end();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
+                Gdx.input.isTouched()
+        ) {
             game.setScreen(new LevelOne(game));
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
+
     }
 
     @Override
