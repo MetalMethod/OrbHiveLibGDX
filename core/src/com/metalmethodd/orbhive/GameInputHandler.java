@@ -3,6 +3,7 @@ package com.metalmethodd.orbhive;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 
 public class GameInputHandler implements InputProcessor {
 
@@ -48,6 +49,7 @@ public class GameInputHandler implements InputProcessor {
 
             case Input.Keys.SPACE:
             case Input.Keys.M: {
+                player.shoot();
                 System.out.println("SHOOT");
             }
         }

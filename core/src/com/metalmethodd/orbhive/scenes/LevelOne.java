@@ -2,6 +2,7 @@ package com.metalmethodd.orbhive.scenes;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.metalmethodd.orbhive.Bullet;
 import com.metalmethodd.orbhive.GameInputHandler;
 import com.metalmethodd.orbhive.OrbHiveGame;
 import com.metalmethodd.orbhive.Player;
@@ -13,7 +14,7 @@ public class LevelOne extends BaseLevel {
     public LevelOne(OrbHiveGame game) {
         super(game);
 
-        player = new Player(new Vector2(100,100));
+        player = new Player(new Vector2(100, 100));
 
         gameInputHandler = new GameInputHandler(player);
     }
@@ -29,6 +30,8 @@ public class LevelOne extends BaseLevel {
 
         textureHandler.drawPlayer(player, runTime);
         textureHandler.drawPlayerBoundingRect(player);
+
+        textureHandler.drawPlayerBulletRect(player.getBullet());
 
         /*
         if player overlaps wasp
