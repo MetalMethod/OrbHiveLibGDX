@@ -32,7 +32,14 @@ public class LevelOne extends BaseLevel {
         textureHandler.drawPlayer(player, runTime);
         textureHandler.drawPlayerBoundingRect(player);
 
-        textureHandler.drawPlayerBulletRect(player.getBullet());
+        for (Bullet bullet : player.getBullets()) {
+            if (bullet.getPosition().x >= Constants.SCREEN_WIDTH){
+                player.getBullets().remove(bullet);
+                return;
+            }
+            textureHandler.drawPlayerBulletRect(bullet);
+        }
+        //textureHandler.drawPlayerBulletRect(player.getBullet());
 
         /*
         if player overlaps wasp

@@ -3,6 +3,9 @@ package com.metalmethodd.orbhive;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static com.metalmethodd.orbhive.Constants.*;
 
 public class Player {
@@ -10,6 +13,7 @@ public class Player {
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
+    private List<Bullet> bullets;
 
     private boolean isShooting;
 
@@ -30,6 +34,8 @@ public class Player {
         this.width = Constants.PLAYER_WIDTH;
         this.height = Constants.PLAYER_HEIGHT;
 
+        this.bullets = new LinkedList<Bullet>();
+
         this.position = position;
         velocity = new Vector2(0, 0);
 
@@ -40,7 +46,7 @@ public class Player {
         currentState = EntityState.FULL;
         lifes = Constants.INITIAL_PLAYER_LIVES;
 
-        bullet = new Bullet(new Vector2(0,-100));
+        //bullet = new Bullet(new Vector2(0,-100));
     }
 
     public enum EntityState {
@@ -89,7 +95,10 @@ public class Player {
         updateBoundingRectangle();
         updateLifes();
 
-        bullet.update(delta);
+        for (Bullet bullet : bullets) {
+            bullet.update(delta);
+        }
+        //bullet.update(delta);
 
     }
 
@@ -109,6 +118,10 @@ public class Player {
 
     private void setVelocity(Vector2 velocity) {
         this.velocity = velocity;
+    }
+
+    public List<Bullet> getBullets() {
+        return bullets;
     }
 
 
@@ -201,6 +214,7 @@ public class Player {
 
     public void shoot() {
         bullet = new Bullet(new Vector2(getPosition().x, getPosition().y));
+        bullets.add(new Bullet(new Vector2(getPosition().x, getPosition().y)));
         isShooting = true;
     }
 
