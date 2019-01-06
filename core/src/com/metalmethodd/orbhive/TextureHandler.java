@@ -405,8 +405,22 @@ public class TextureHandler {
 
     }
 
-    /**
-     private void drawEnemyBoundingRect(Enemy enemy) {
+    public void drawEnemy(SimpleEnemy enemy){
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0, 0, 0, 1f);
+        shapeRenderer.rect(enemy.getBoundingRectangle().x, enemy.getBoundingRectangle().y , Constants.SIMPLE_ENEMY_WIDTH, Constants.SIMPLE_ENEMY_HEIGTH);
+        shapeRenderer.end();
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(255, 0, 0, 1f);
+        shapeRenderer.rect(enemy.getBoundingRectangle().x , enemy.getBoundingRectangle().y, Constants.SIMPLE_ENEMY_WIDTH, Constants.SIMPLE_ENEMY_HEIGTH);
+        shapeRenderer.end();
+
+    }
+
+
+     public void drawEnemyBoundingRect(SimpleEnemy enemy) {
      shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
      // Draw player bounding rectangle
@@ -415,8 +429,8 @@ public class TextureHandler {
 
      shapeRenderer.end();
      }
-
-     private void drawEnemyFirst(float runTime, Enemy enemy) {
+/**
+     public void drawEnemyFirst(float runTime, SimpleEnemy enemy) {
 
      batch.draw(
      (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),

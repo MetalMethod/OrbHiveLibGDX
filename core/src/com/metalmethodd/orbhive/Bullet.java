@@ -16,6 +16,7 @@ public class Bullet {
     private float height;
     private float width;
 
+
     private Rectangle boundingRectangle;
 
     public Bullet(Vector2 position) {
