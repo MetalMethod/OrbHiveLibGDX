@@ -45,10 +45,14 @@ public class LevelOne extends BaseLevel {
             textureHandler.drawPlayerBulletRect(bullet);
         }
 
-        textureHandler.drawEnemyBoundingRect(wasp);
+        //textureHandler.drawEnemyBoundingRect(wasp);
         textureHandler.drawWasp(runTime, wasp);
 
         if (wasp.getBoundingRectangle().x < 0) {
+            wasp = EnemyFactory.createWasp();
+        }
+
+        if(wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())){
             wasp = EnemyFactory.createWasp();
         }
     }
