@@ -3,8 +3,6 @@ package com.metalmethodd.orbhive;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-import static com.metalmethodd.orbhive.Constants.BULLET_SPEED;
-
 public class SimpleEnemy {
 
     private Vector2 position;
@@ -18,7 +16,7 @@ public class SimpleEnemy {
 
     public SimpleEnemy(Vector2 position) {
 
-        this.height = Constants.SIMPLE_ENEMY_HEIGTH;
+        this.height = Constants.SIMPLE_ENEMY_HEIGHT;
         this.width = Constants.SIMPLE_ENEMY_WIDTH;
         this.position = position;
         this.boundingRectangle = new Rectangle();
@@ -27,11 +25,10 @@ public class SimpleEnemy {
 
 
     public void update(float delta) {
-        position.x -= 5;
+        position.x -= speed;
         boundingRectangle.x = position.x;
         boundingRectangle.y = position.y;
     }
-
 
 
     public float getHeight() {

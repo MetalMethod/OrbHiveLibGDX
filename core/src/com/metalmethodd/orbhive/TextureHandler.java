@@ -1,7 +1,6 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,7 +11,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import static com.metalmethodd.orbhive.Constants.BULLET_HEIGHT;
 import static com.metalmethodd.orbhive.Constants.BULLET_WIDTH;
-
 
 public class TextureHandler {
 
@@ -66,7 +64,6 @@ public class TextureHandler {
     private Animation enemyFirstWaspDeathAnimation;
     private Animation playerShootAnimation;
 
-
     public TextureHandler() {
         AssetLoader.load();
         this.sprites = AssetLoader.getSprites();
@@ -89,9 +86,7 @@ public class TextureHandler {
         shapeRenderer.setProjectionMatrix(camera.combined);
 
         initAssets();
-
     }
-
 
     private void initAssets() {
         bg = new TextureRegion(sprites, 224, 0, 32, 256);
@@ -154,7 +149,6 @@ public class TextureHandler {
         TextureRegion[] playerShootFrames = {};
         playerShootAnimation = new Animation(0.15f, (Object[]) playerShootFrames);
         playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
-
 
         // ENEMIES
         enemyFirstOne = new TextureRegion(sprites, 0, 133, 16, 14);
@@ -239,7 +233,6 @@ public class TextureHandler {
 
 
     private TextureRegion playerState(Player player) {
-
         if (player.getState() == Player.EntityState.FULL) {
             return playerFull;
         }
@@ -301,8 +294,6 @@ public class TextureHandler {
     }
 
     public void drawPlayer(Player player, float runTime) {
-
-
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -332,9 +323,7 @@ public class TextureHandler {
             drawPlayerShot(runTime);
         }
 */
-
     }
-
 
     /**
      * private void drawPlayerShot(float runTime) {
@@ -372,7 +361,6 @@ public class TextureHandler {
      * 48
      * );
      * }
-
      */
 
     public void drawPlayerBoundingRect(Player player) {
@@ -388,50 +376,47 @@ public class TextureHandler {
 
     }
 
-
-        // Draw player bullet bounding rectangle
     public void drawPlayerBulletRect(Bullet bullet) {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0, 0, 0, 1f);
-        shapeRenderer.rect(bullet.getBoundingRectangle().x , bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
+        shapeRenderer.rect(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(255, 0, 0, 1f);
-        shapeRenderer.rect(bullet.getBoundingRectangle().x , bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
+        shapeRenderer.rect(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
-
-
     }
 
-    public void drawEnemy(SimpleEnemy enemy){
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(0, 0, 0, 1f);
-        shapeRenderer.rect(enemy.getBoundingRectangle().x, enemy.getBoundingRectangle().y , Constants.SIMPLE_ENEMY_WIDTH, Constants.SIMPLE_ENEMY_HEIGTH);
-        shapeRenderer.end();
-
+    public void drawEnemyBoundingRect(Wasp enemy) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(255, 0, 0, 1f);
-        shapeRenderer.rect(enemy.getBoundingRectangle().x , enemy.getBoundingRectangle().y, Constants.SIMPLE_ENEMY_WIDTH, Constants.SIMPLE_ENEMY_HEIGTH);
-        shapeRenderer.end();
 
+        // Draw player bounding rectangle
+        shapeRenderer.setColor(255f, 0f, 0f, 1f);
+        shapeRenderer.rect(enemy.getBoundingRectangle().x, enemy.getBoundingRectangle().y, enemy.getWidth(), enemy.getHeight());
+
+        shapeRenderer.end();
     }
 
+    public void drawWasp(float runTime, Wasp enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                enemy.getWidth(),
+                enemy.getHeight()
+        );
+        batch.disableBlending();
+        batch.end();
+    }
 
-     public void drawEnemyBoundingRect(SimpleEnemy enemy) {
-     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-     // Draw player bounding rectangle
-     shapeRenderer.setColor(255f, 0f, 0f, 0.35f);
-     shapeRenderer.rect(enemy.getBoundingRectangle().x, enemy.getBoundingRectangle().y, enemy.getWidth(), enemy.getHeight());
-
-     shapeRenderer.end();
-     }
-/**
+    /**
      public void drawEnemyFirst(float runTime, SimpleEnemy enemy) {
-
+     batch.begin();
+     batch.enableBlending();
      batch.draw(
      (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
      enemy.getPosition().x,
@@ -439,46 +424,39 @@ public class TextureHandler {
      enemy.getWidth(),
      enemy.getHeight()
      );
+     batch.disableBlending();
+     batch.end();
      }
+     * private void drawEnemySecond(float runTime, Enemy enemy) {
+     * batch.draw(
+     * (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
+     * enemy.getPosition().x,
+     * enemy.getPosition().y,
+     * enemy.getWidth(),
+     * enemy.getHeight()
+     * );
+     * }
+     * <p>
+     * private void drawEnemySecondOption(float runTime) {
+     * batch.draw(
+     * (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
+     * 100,
+     * 300,
+     * 16,
+     * 16
+     * );
+     * }
+     */
 
-     private void drawEnemySecond(float runTime, Enemy enemy) {
-     batch.draw(
-     (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
-     enemy.getPosition().x,
-     enemy.getPosition().y,
-     enemy.getWidth(),
-     enemy.getHeight()
-     );
-     }
-
-     private void drawEnemySecondOption(float runTime) {
-     batch.draw(
-     (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
-     100,
-     300,
-     16,
-     16
-     );
-     }
-
-     private void drawWasp(float runTime, Enemy enemy) {
-     batch.draw(
-     (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
-     enemy.getPosition().x,
-     enemy.getPosition().y,
-     16,
-     16
-     );
-     }
-
-     private void drawWaspDeath(float runTime) {
-     batch.draw(
-     (TextureRegion) enemyFirstWaspDeathAnimation.getKeyFrame(runTime),
-     250,
-     100,
-     16,
-     16
-     );
-     }*/
+/**
+ private void drawWaspDeath(float runTime) {
+ batch.draw(
+ (TextureRegion) enemyFirstWaspDeathAnimation.getKeyFrame(runTime),
+ 250,
+ 100,
+ 16,
+ 16
+ );
+ }*/
 }
 

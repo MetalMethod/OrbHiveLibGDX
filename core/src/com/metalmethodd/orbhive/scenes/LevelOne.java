@@ -1,47 +1,37 @@
 package com.metalmethodd.orbhive.scenes;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.*;
 
 public class LevelOne extends BaseLevel {
 
     private Player player;
-    private SimpleEnemy enemy;
-    private SimpleEnemy[] enemys;
-
+    private Wasp wasp;
+    private Wasp[] enemies;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
-
 
         player = new Player(new Vector2(100, 100));
 
         gameInputHandler = new GameInputHandler(player);
 
-        enemys = new SimpleEnemy[]{
-                EnemyFactory.createEnemy(),
-                EnemyFactory.createEnemy(),
-                EnemyFactory.createEnemy()
+        enemies = new Wasp[]{
+                EnemyFactory.createWasp(),
+                EnemyFactory.createWasp(),
+                EnemyFactory.createWasp()
         };
-        enemy = EnemyFactory.createEnemy();
+        wasp = EnemyFactory.createWasp();
     }
 
     public void render(float delta) {
         runTime += delta;
-        player.update(delta);
-
-        enemy.update(delta);
-
-
-        System.out.println("enemy x =  " + enemy.getPosition().x);
-        System.out.println("enemy Y =  " + enemy.getBoundingRectangle().y);
-
         checkExitGame();
         drawBackgroundColor();
-
         textureHandler.drawBgLevelOne();
+
+        player.update(delta);
+        wasp.update(delta);
 
         textureHandler.drawPlayer(player, runTime);
         //textureHandler.drawPlayerBoundingRect(player);
@@ -52,20 +42,16 @@ public class LevelOne extends BaseLevel {
                 return;
             }
 
-
             textureHandler.drawPlayerBulletRect(bullet);
         }
 
-        textureHandler.drawEnemyBoundingRect(enemy);
-        textureHandler.drawEnemy(enemy);
+        textureHandler.drawEnemyBoundingRect(wasp);
+        textureHandler.drawWasp(runTime, wasp);
 
-        if (enemy.getBoundingRectangle().x < 0) {
-            enemy = EnemyFactory.createEnemy();
+        if (wasp.getBoundingRectangle().x < 0) {
+            wasp = EnemyFactory.createWasp();
         }
     }
-
-
-//textureHandler.drawPlayerBulletRect(player.getBullet());
 
         /*
         if player overlaps wasp
@@ -76,9 +62,9 @@ public class LevelOne extends BaseLevel {
 
 
     @Override
-/**
- * Dispose all texture, sprites, animations, background, etc
- */
+    /**
+     * Dispose all texture, sprites, animations, background, etc
+     */
     public void dispose() {
         // dispose images here
         batch.dispose();

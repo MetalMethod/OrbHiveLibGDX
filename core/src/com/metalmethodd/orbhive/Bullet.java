@@ -48,7 +48,6 @@ public class Bullet {
     public void update(float delta) {
         position.x += BULLET_SPEED;
         updateBoundingRectangle();
-
     }
 
     private void updateBoundingRectangle() {

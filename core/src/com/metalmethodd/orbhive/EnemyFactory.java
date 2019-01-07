@@ -5,13 +5,21 @@ import com.badlogic.gdx.math.Vector2;
 public class EnemyFactory {
 
 
-public static SimpleEnemy createEnemy(){
+    public static SimpleEnemy createSimpleEnemy() {
 
-    float randomY = (float) ((Math.random() * Constants.SCREEN_HEIGHT));
-    Vector2 position = new Vector2(Constants.SCREEN_WIDTH, randomY);
+        float randomY = (float) ((Math.random() * Constants.SCREEN_HEIGHT));
+        Vector2 position = new Vector2(Constants.SCREEN_WIDTH, randomY);
 
-    return new SimpleEnemy(position);
-}
+        return new SimpleEnemy(position);
+    }
+
+    public static Wasp createWasp() {
+
+        float randomY = (float) ((Math.random() * Constants.SCREEN_HEIGHT));
+        Vector2 position = new Vector2(Constants.SCREEN_WIDTH, randomY);
+
+        return new Wasp(position);
+    }
 
 
 }
