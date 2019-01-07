@@ -34,7 +34,6 @@ public class LevelOne extends BaseLevel {
         wasp.update(delta);
 
         textureHandler.drawPlayer(player, runTime);
-        //textureHandler.drawPlayerBoundingRect(player);
 
         for (Bullet bullet : player.getBullets()) {
             if (bullet.getPosition().x >= Constants.SCREEN_WIDTH) {
@@ -45,7 +44,6 @@ public class LevelOne extends BaseLevel {
             textureHandler.drawPlayerBulletRect(bullet);
         }
 
-        //textureHandler.drawEnemyBoundingRect(wasp);
         textureHandler.drawWasp(runTime, wasp);
 
         if (wasp.getBoundingRectangle().x < 0) {
@@ -54,15 +52,14 @@ public class LevelOne extends BaseLevel {
 
         if(wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())){
             wasp = EnemyFactory.createWasp();
+            player.takeHit(Constants.playerHitAcceleration);
+            if (player.getState() == Player.EntityState.DEAD){
+                game.setScreen(new GameOverScreen(game));
+            }
+            // TODO: 1/7/2019 player lose lives logic here
         }
     }
 
-        /*
-        if player overlaps wasp
-            do shit - player and wasp methods
-
-        Intersector.overlaps(player_rectangle , wasp_rectangle)
-                */
 
 
     @Override
@@ -72,5 +69,6 @@ public class LevelOne extends BaseLevel {
     public void dispose() {
         // dispose images here
         batch.dispose();
+        textureHandler.dispose();
     }
 }
