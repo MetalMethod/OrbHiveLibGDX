@@ -2,6 +2,7 @@ package com.metalmethodd.orbhive.scenes;
 
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.*;
+import com.metalmethodd.orbhive.enemys.Wasp;
 
 public class LevelOne extends BaseLevel {
 
@@ -67,7 +68,6 @@ public class LevelOne extends BaseLevel {
      * Dispose all texture, sprites, animations, background, etc
      */
     public void dispose() {
-        // dispose images here
         batch.dispose();
         textureHandler.dispose();
     }

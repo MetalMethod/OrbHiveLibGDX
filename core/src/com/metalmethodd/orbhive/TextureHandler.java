@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.metalmethodd.orbhive.enemys.Wasp;
 
 import static com.metalmethodd.orbhive.Constants.BULLET_HEIGHT;
 import static com.metalmethodd.orbhive.Constants.BULLET_WIDTH;

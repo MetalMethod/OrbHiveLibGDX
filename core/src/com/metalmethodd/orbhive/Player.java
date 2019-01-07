@@ -14,21 +14,13 @@ public class Player {
     private Vector2 velocity;
     private Vector2 acceleration;
     private List<Bullet> bullets;
-
-    private boolean isShooting;
-
-    private TextureHandler text = new TextureHandler();
-
     private int height;
     private int width;
-
     private Rectangle boundingRectangle;
-
     private EntityState currentState;
     private int lifes;
     private boolean isPlayerMoving;
 
-    private Bullet bullet;
 
     public Player(Vector2 position) {
         this.width = Constants.PLAYER_WIDTH;
@@ -46,7 +38,6 @@ public class Player {
         currentState = EntityState.FULL;
         lifes = Constants.INITIAL_PLAYER_LIVES;
 
-        //bullet = new Bullet(new Vector2(0,-100));
     }
 
     public enum EntityState {
@@ -93,12 +84,10 @@ public class Player {
         position.add(velocity.cpy().scl(delta));
         detectWalls();
         updateBoundingRectangle();
-        //updateLifes();
 
         for (Bullet bullet : bullets) {
             bullet.update(delta);
         }
-        //bullet.update(delta);
 
     }
 
@@ -171,8 +160,6 @@ public class Player {
 
         lifes--;
 
-        System.out.println("hit. remaining lifes: " + String.valueOf(lifes));
-
     }
 
     public EntityState getState() {
@@ -213,22 +200,9 @@ public class Player {
     }
 
     public void shoot() {
-        bullet = new Bullet(new Vector2(getPosition().x, getPosition().y));
         bullets.add(new Bullet(new Vector2(getPosition().x, getPosition().y)));
-        isShooting = true;
     }
 
-    public boolean isShooting() {
-        return isShooting;
-    }
-
-    public void setShooting(boolean shooting) {
-        isShooting = shooting;
-    }
-
-    public Bullet getBullet() {
-        return bullet;
-    }
 
 }
 
