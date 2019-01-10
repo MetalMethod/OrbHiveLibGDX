@@ -2,9 +2,7 @@ package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-
-import java.util.LinkedList;
-import java.util.List;
+import com.badlogic.gdx.utils.Array;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
@@ -13,7 +11,7 @@ public class Player {
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
-    private List<Bullet> bullets;
+    private Array<Bullet> bullets;
     private int height;
     private int width;
     private Rectangle boundingRectangle;
@@ -26,7 +24,7 @@ public class Player {
         this.width = Constants.PLAYER_WIDTH;
         this.height = Constants.PLAYER_HEIGHT;
 
-        this.bullets = new LinkedList<Bullet>();
+        this.bullets = new Array<Bullet>();
 
         this.position = position;
         velocity = new Vector2(0, 0);
@@ -109,7 +107,7 @@ public class Player {
         this.velocity = velocity;
     }
 
-    public List<Bullet> getBullets() {
+    public Array<Bullet> getBullets() {
         return bullets;
     }
 
