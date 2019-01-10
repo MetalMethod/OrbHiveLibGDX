@@ -21,13 +21,12 @@ public class LevelOne extends BaseLevel {
         gameInputHandler = new GameInputHandler(player);
 
         enemies = new Array<Wasp>();
-        enemies.add(EnemyFactory.createWasp());
 
         wasp = EnemyFactory.createWasp();
 
+
         bullets = new Array<Bullet>();
     }
-
 
 
     public void render(float delta) {
@@ -40,26 +39,39 @@ public class LevelOne extends BaseLevel {
 
         textureHandler.drawPlayer(player, runTime);
 
-        textureHandler.drawWasp(runTime, wasp);
-
-        ///////ENEMIES
-        for(Wasp wasp : enemies){
-            wasp.update(delta);
-
-                }
-
-        if (wasp.getBoundingRectangle().x < 0) {
-            wasp = EnemyFactory.createWasp();
-        }
-
-        if(wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())){
-            wasp = EnemyFactory.createWasp();
-            player.takeHit(Constants.playerHitAcceleration);
-        }
-
-        if (player.getState() == Player.EntityState.DEAD){
+        //GAME OVER CONDITION
+        if (player.getState() == Player.EntityState.DEAD) {
             game.setScreen(new GameOverScreen(game));
         }
+
+
+        System.out.println(runTime);
+        ///////ENEMIES
+        if(runTime > 1.0 && runTime < 1.1){
+            enemies.add(EnemyFactory.createWasp());
+        }
+
+        if(runTime > 3.0 && runTime < 3.1){
+            enemies.add(EnemyFactory.createWasp());
+        }
+
+        for (Wasp wasp : enemies) {
+            wasp.update();
+            textureHandler.drawWasp(runTime, wasp);
+
+            if (wasp.getPosition().x < 0) {
+                System.out.println("restart wasp");
+                enemies.removeValue(wasp, false);
+                enemies.add(EnemyFactory.createWasp());
+            }
+
+            if (wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
+                enemies.removeValue(wasp, false);
+                player.takeHit(Constants.playerHitAcceleration);
+                enemies.add(EnemyFactory.createWasp());
+            }
+        }
+
 
         /////// BULLETS
         bullets = player.getBullets();
@@ -74,7 +86,6 @@ public class LevelOne extends BaseLevel {
         }
 
     }
-
 
 
     @Override

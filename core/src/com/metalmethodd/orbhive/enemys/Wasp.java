@@ -22,10 +22,9 @@ public class Wasp {
         this.boundingRectangle = new Rectangle();
     }
 
-    public void update(float delta) {
+    public void update() {
         position.x -= speed;
-        boundingRectangle.x = position.x;
-        boundingRectangle.y = position.y;
+        boundingRectangle.setPosition(position);
     }
 
     public float getHeight() {
