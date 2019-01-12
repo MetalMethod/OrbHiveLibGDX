@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.metalmethodd.orbhive.enemys.Wasp;
 
-import static com.metalmethodd.orbhive.Constants.BULLET_HEIGHT;
-import static com.metalmethodd.orbhive.Constants.BULLET_WIDTH;
+import static com.metalmethodd.orbhive.Constants.*;
 
 public class TextureHandler {
 
@@ -395,7 +394,7 @@ public class TextureHandler {
 
         // Draw player bounding rectangle
         shapeRenderer.setColor(255f, 0f, 0f, 1f);
-        shapeRenderer.rect(enemy.getBoundingRectangle().x, enemy.getBoundingRectangle().y, enemy.getWidth(), enemy.getHeight());
+        shapeRenderer.rect(enemy.getBoundingRectangle().x, enemy.getBoundingRectangle().y, WASP_WIDTH, WASP_HEIGHT);
 
         shapeRenderer.end();
     }

@@ -4,11 +4,15 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.Constants;
 
+import static com.metalmethodd.orbhive.Constants.WASP_ENEMY_SPEED;
+import static com.metalmethodd.orbhive.Constants.WASP_HEIGHT;
+import static com.metalmethodd.orbhive.Constants.WASP_WIDTH;
+
 public class Wasp {
 
     private Vector2 position;
 
-    private int speed = Constants.WASP_ENEMY_SPEED;
+    private int speed = WASP_ENEMY_SPEED;
 
     private float height;
     private float width;
@@ -16,10 +20,10 @@ public class Wasp {
     private Rectangle boundingRectangle;
 
     public Wasp(Vector2 position) {
-        this.height = Constants.WASP_ENEMY_HEIGHT;
-        this.width = Constants.WASP_WIDTH;
+        height = Constants.WASP_HEIGHT;
+        width = WASP_WIDTH;
         this.position = position;
-        this.boundingRectangle = new Rectangle();
+        boundingRectangle = new Rectangle(position.x, position.y, WASP_WIDTH, WASP_HEIGHT);
     }
 
     public void update() {

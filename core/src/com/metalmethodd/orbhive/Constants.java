@@ -16,8 +16,6 @@ public class Constants {
     public static final int SCREEN_PADDING_TOP = 0;
     public static final int SCREEN_PADDING_BOTTOM = 36;
 
-    public static final int enemyCreationX = SCREEN_WIDTH + 20;
-
     public static final float BULLET_HEIGHT = 4;
     public static final float BULLET_WIDTH = 7;
     public static final float BULLET_SPEED = 9 ;
@@ -27,9 +25,8 @@ public class Constants {
     public static final int SIMPLE_ENEMY_SPEED = 3;
 
     public static final int WASP_WIDTH = 16;
-    public static final int WASP_ENEMY_HEIGHT = 16;
+    public static final int WASP_HEIGHT = 16;
     public static final int WASP_ENEMY_SPEED = 3;
-
 
     // PHYSICS
     public static final int PLAYER_VELOCITY = 180;

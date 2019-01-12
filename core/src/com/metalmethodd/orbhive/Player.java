@@ -82,11 +82,6 @@ public class Player {
         position.add(velocity.cpy().scl(delta));
         detectWalls();
         updateBoundingRectangle();
-
-        for (Bullet bullet : bullets) {
-            bullet.update(delta);
-        }
-
     }
 
     private void updateBoundingRectangle() {
