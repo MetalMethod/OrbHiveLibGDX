@@ -314,15 +314,15 @@ public class TextureHandler {
             drawPlayerEngine(runTime, player);
         }
 
-        /*
-        if (controller.isPlayerHit()) {
-            drawPlayerExplosion(runTime);
+        if (player.isPlayerHit()) {
+            drawPlayerExplosion(runTime, player);
         }
 
-        if(controller.isPlayerShooting()){
-            drawPlayerShot(runTime);
-        }
-*/
+        /**
+         if(controller.isPlayerShooting()){
+         drawPlayerShot(runTime);
+         }
+         */
     }
 
     /**
@@ -351,17 +351,21 @@ public class TextureHandler {
         batch.end();
     }
 
-    /**
-     * private void drawPlayerExplosion(float runTime) {
-     * batch.draw(
-     * (TextureRegion) playerExplosionAnimation.getKeyFrame(runTime),
-     * player.getPosition().x,
-     * player.getPosition().y,
-     * 48,
-     * 48
-     * );
-     * }
-     */
+
+    private void drawPlayerExplosion(float runTime, Player player) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) playerExplosionAnimation.getKeyFrame(runTime),
+                player.getPosition().x,
+                player.getPosition().y,
+                48,
+                48
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
 
     public void drawPlayerBoundingRect(Player player) {
 //        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -383,10 +387,10 @@ public class TextureHandler {
         shapeRenderer.rect(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(255, 0, 0, 1f);
-        shapeRenderer.rect(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
-        shapeRenderer.end();
+        // shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        // shapeRenderer.setColor(255, 0, 0, 1f);
+        // shapeRenderer.rect(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
+        // shapeRenderer.end();
     }
 
     public void drawEnemyBoundingRect(Wasp enemy) {

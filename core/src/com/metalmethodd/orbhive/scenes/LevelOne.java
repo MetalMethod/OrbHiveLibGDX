@@ -33,7 +33,7 @@ public class LevelOne extends BaseLevel {
         player.update(delta);
 
         textureHandler.drawPlayer(player, runTime);
-        textureHandler.drawPlayerBoundingRect(player);
+        //textureHandler.drawPlayerBoundingRect(player);
 
         gameOverCondition();
 
@@ -61,7 +61,7 @@ public class LevelOne extends BaseLevel {
         for (Wasp wasp : enemies) {
             wasp.update();
             textureHandler.drawWasp(runTime, wasp);
-            textureHandler.drawEnemyBoundingRect(wasp);
+            //textureHandler.drawEnemyBoundingRect(wasp);
 
             if (wasp.getBoundingRectangle().x < 0) {
                 enemies.removeValue(wasp, false);
@@ -70,7 +70,7 @@ public class LevelOne extends BaseLevel {
 
             if (wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
                 enemies.removeValue(wasp, false);
-                player.takeHit(Constants.playerHitAcceleration);
+                player.takeHit(Constants.PLAYER_HIT_ACCELERATION);
                 enemies.add(EnemyFactory.createWasp());
             }
         }

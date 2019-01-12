@@ -19,6 +19,7 @@ public class Player {
     private int lifes;
     private boolean isPlayerMoving;
 
+    private float playerHitTime;
 
     public Player(Vector2 position) {
         this.width = Constants.PLAYER_WIDTH;
@@ -28,14 +29,14 @@ public class Player {
 
         this.position = position;
         velocity = new Vector2(0, 0);
-
         acceleration = new Vector2(Constants.PLAYER_WIND, Constants.PLAYER_GRAVITY);
 
-        boundingRectangle = new Rectangle(getPosition().x, getPosition().y , width, height);
+        boundingRectangle = new Rectangle(getPosition().x, getPosition().y, width, height);
 
         currentState = EntityState.FULL;
         lifes = Constants.INITIAL_PLAYER_LIVES;
 
+        playerHitTime = 0;
     }
 
     public enum EntityState {
@@ -75,13 +76,12 @@ public class Player {
     /**
      * must be called every frame
      */
-
-
     public void update(float delta) {
         velocity.add(acceleration.cpy().scl(delta));
         position.add(velocity.cpy().scl(delta));
         detectWalls();
         updateBoundingRectangle();
+        updateHitAnimation();
     }
 
     private void updateBoundingRectangle() {
@@ -142,17 +142,27 @@ public class Player {
         isPlayerMoving = false;
     }
 
-
-    public boolean getIsPlayermoving(){
-        return  isPlayerMoving;
+    public boolean getIsPlayermoving() {
+        return isPlayerMoving;
     }
 
-
     public void takeHit(int hitAmount) {
-        velocity.set(getVelocity().add(-hitAmount, 0));
+        /** if hit animation is playing
+         *the player don't get hit
+         */
+        if (!isPlayerHit()) {
+            velocity.set(getVelocity().add(-hitAmount, 0));
+            playerHitTime = PLAYER_HIT_ANIMATION_DURATION;
+            lifes--;
+        }
+    }
 
-        lifes--;
+    public boolean isPlayerHit() {
+        return playerHitTime > 0;
+    }
 
+    private void updateHitAnimation() {
+        playerHitTime--;
     }
 
     public EntityState getState() {

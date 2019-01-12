@@ -10,6 +10,7 @@ public class Constants {
     public static final int PLAYER_HEIGHT = 25;
     public static final int PLAYER_SIZE = 40;
     public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
+    public static final float PLAYER_HIT_ANIMATION_DURATION = 50;
 
     public static final int SCREEN_PADDING_LEFT = 5;
     public static final int SCREEN_PADDING_RIGHT = 45;
@@ -35,7 +36,7 @@ public class Constants {
 
     public static final int movementAcceleration = 50;
 
-    public static int playerHitAcceleration = 70;
+    public static int PLAYER_HIT_ACCELERATION = 70;
     public static int enemyHitAcceleration = -100;
 
 
