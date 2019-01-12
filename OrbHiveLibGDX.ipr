@@ -203,6 +203,8 @@
       <module fileurl="file://$PROJECT_DIR$/desktop/desktop_test.iml" filepath="$PROJECT_DIR$/desktop/desktop_test.iml" group="desktop" />
       <module fileurl="file://$PROJECT_DIR$/html/html.iml" filepath="$PROJECT_DIR$/html/html.iml" group="html" />
       <module fileurl="file://$PROJECT_DIR$/html/html_main.iml" filepath="$PROJECT_DIR$/html/html_main.iml" group="html" />
+      <module fileurl="file://$PROJECT_DIR$/html/html_main.iml" filepath="$PROJECT_DIR$/html/html_main.iml" group="html" />
+      <module fileurl="file://$PROJECT_DIR$/html/html_test.iml" filepath="$PROJECT_DIR$/html/html_test.iml" group="html" />
       <module fileurl="file://$PROJECT_DIR$/html/html_test.iml" filepath="$PROJECT_DIR$/html/html_test.iml" group="html" />
     </modules>
   </component>
