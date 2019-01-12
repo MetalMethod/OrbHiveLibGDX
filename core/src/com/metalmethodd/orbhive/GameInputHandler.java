@@ -20,28 +20,24 @@ public class GameInputHandler implements InputProcessor {
         switch (keycode) {
             case Input.Keys.W:
             case Input.Keys.UP: {
-                System.out.println("UP");
                 player.moveUp();
                 break;
             }
 
             case Input.Keys.D:
             case Input.Keys.RIGHT: {
-                System.out.println("RIGHT");
                 player.moveForward();
                 break;
             }
 
             case Input.Keys.S:
             case Input.Keys.DOWN: {
-                System.out.println("DOWN");
                 player.moveDown();
                 break;
             }
 
             case Input.Keys.A:
             case Input.Keys.LEFT: {
-                System.out.println("LEFT");
                 player.moveBack();
                 break;
             }
