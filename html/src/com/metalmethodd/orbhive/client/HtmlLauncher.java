@@ -29,10 +29,13 @@ public class HtmlLauncher extends GwtApplication {
 
          int width = Constants.GAME_WIDTH;
          int height = Constants.GAME_HEIGHT;
-         float aspectRatio = width / height;
+
+         int dif = width - height;
+         int proportion = width / dif;
+
 
          int screenWidth = Window.getClientWidth() - PADDING;
-         int screenHeight = (screenWidth / width) * height;
+         int screenHeight = Window.getClientWidth() - (proportion * dif);
 
          cfg = new GwtApplicationConfiguration(screenWidth, screenHeight);
          Window.enableScrolling(false);
