@@ -6,14 +6,17 @@ import com.metalmethodd.orbhive.gameobjects.enemies.BrainSmall;
 import com.metalmethodd.orbhive.gameobjects.enemies.SimpleEnemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 
-import java.util.concurrent.ThreadLocalRandom;
+//TODO find solution to build html module using this import
+//import java.util.concurrent.ThreadLocalRandom;
 
 public class EnemyFactory {
 
-    public static int getRandomInt(int min, int max){
+    public static int getRandomInt(int min, int max) {
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
+        // return ThreadLocalRandom.current().nextInt(min, max + 1);
+
+        return min + (int) (Math.random() * ((max - min) + 1));
     }
 
     public static Wasp createWasp() {
@@ -36,6 +39,5 @@ public class EnemyFactory {
 
         return new BrainSmall(position);
     }
-
 
 }
