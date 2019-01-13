@@ -7,28 +7,31 @@ import com.metalmethodd.orbhive.Constants;
 public abstract class AbstractGameObject {
 
     protected Vector2 position;
+    protected Vector2 velocity;
+    protected Vector2 acceleration;
 
     protected float height;
     protected float width;
 
     protected int speed;
 
-    private Rectangle boundingRectangle;
+    protected Rectangle boundingRectangle;
 
     public AbstractGameObject(Vector2 position, int width, int height){
         this.height = height;
         this.width = width;
         this.position = position;
+        velocity = new Vector2(0, 0);
+        acceleration = new Vector2(0, 0);
         speed = Constants.INITIAL_GAMEOBJECT_SPEED;
         boundingRectangle = new Rectangle();
     }
 
-    public void init(){
+    protected void init(){
         boundingRectangle.set(position.x, position.y, width, height);
     }
 
-    public void update() {
-        position.x -= speed;
+    protected void updateBoundingRectangle() {
         boundingRectangle.setPosition(position);
     }
 

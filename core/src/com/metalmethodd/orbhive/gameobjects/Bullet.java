@@ -1,58 +1,32 @@
 package com.metalmethodd.orbhive.gameobjects;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.metalmethodd.orbhive.Constants;
 
-import static com.metalmethodd.orbhive.Constants.BULLET_SPEED;
-import static com.metalmethodd.orbhive.Constants.PLAYER_HEIGHT;
-import static com.metalmethodd.orbhive.Constants.PLAYER_WIDTH;
+import static com.metalmethodd.orbhive.Constants.*;
 
-public class Bullet {
-
-    private Vector2 position;
-    private Vector2 velocity;
-    private Vector2 acceleration;
-
-    private float height;
-    private float width;
-
-
-    private Rectangle boundingRectangle;
+public class Bullet extends AbstractGameObject{
 
     public Bullet(Vector2 position) {
-        width = Constants.BULLET_WIDTH;
-        height = Constants.BULLET_HEIGHT;
+        super(position, BULLET_WIDTH, BULLET_HEIGHT);
+        init();
+        speed = BULLET_SPEED;
 
-        this.position = position;
         fixPositionOnPlayerGun();
+    }
 
-        velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, 0);
+    /**
+     * Must always call updateBoundingRectangle()
+     * in the end after of all  methods calls
+     */
+    public void update() {
+        position.x += speed;
 
-        boundingRectangle = new Rectangle();
+        //must call updateBoundingRectangle() after all methods
+        updateBoundingRectangle();
     }
 
     private void fixPositionOnPlayerGun() {
         position.x += PLAYER_WIDTH;
         position.y += PLAYER_HEIGHT - 7;
     }
-
-    public Vector2 getPosition() {
-        return position;
-    }
-
-    public Rectangle getBoundingRectangle() {
-        return boundingRectangle;
-    }
-
-    public void update() {
-        position.x += BULLET_SPEED;
-        updateBoundingRectangle();
-    }
-
-    private void updateBoundingRectangle() {
-        boundingRectangle.setPosition(getPosition());
-    }
-
 }

@@ -192,6 +192,13 @@
       </item>
     </group>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="igorb">
+      <words>
+        <w>alway</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OrbHiveLibGDX.iml" filepath="$PROJECT_DIR$/OrbHiveLibGDX.iml" />
@@ -203,8 +210,6 @@
       <module fileurl="file://$PROJECT_DIR$/desktop/desktop_test.iml" filepath="$PROJECT_DIR$/desktop/desktop_test.iml" group="desktop" />
       <module fileurl="file://$PROJECT_DIR$/html/html.iml" filepath="$PROJECT_DIR$/html/html.iml" group="html" />
       <module fileurl="file://$PROJECT_DIR$/html/html_main.iml" filepath="$PROJECT_DIR$/html/html_main.iml" group="html" />
-      <module fileurl="file://$PROJECT_DIR$/html/html_main.iml" filepath="$PROJECT_DIR$/html/html_main.iml" group="html" />
-      <module fileurl="file://$PROJECT_DIR$/html/html_test.iml" filepath="$PROJECT_DIR$/html/html_test.iml" group="html" />
       <module fileurl="file://$PROJECT_DIR$/html/html_test.iml" filepath="$PROJECT_DIR$/html/html_test.iml" group="html" />
     </modules>
   </component>

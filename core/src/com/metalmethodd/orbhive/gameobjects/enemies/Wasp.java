@@ -13,5 +13,17 @@ public class Wasp extends AbstractGameObject {
         init();
         speed = WASP_ENEMY_SPEED;
     }
+    /**
+     * Must always call updateBoundingRectangle()
+     * in the end after of all  methods calls
+     */
+    public void update() {
+        position.x -= speed;
+
+        //must call updateBoundingRectangle() after all methods
+        updateBoundingRectangle();
+    }
+
+
 
 }
