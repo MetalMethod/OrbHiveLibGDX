@@ -27,7 +27,9 @@ public class Constants {
 
     public static final int WASP_WIDTH = 16;
     public static final int WASP_HEIGHT = 16;
-    public static final int WASP_ENEMY_SPEED = 3;
+    public static final int WASP_DEFAULT_SPEED = 3;
+    public static final int WASP_MINIMUM_SPEED = 3;
+    public static final int WASP_MAXIMUM_SPEED = 5;
 
     // PHYSICS
     public static final int PLAYER_VELOCITY = 180;
