@@ -69,6 +69,10 @@ task dist(dependsOn: [clean, compileGwt]) {
             from "build/dist"
             into "../docs"
         }
+        copy {
+            from "index.html"
+            into "../docs/index.html"
+        }
     }
 }
 
