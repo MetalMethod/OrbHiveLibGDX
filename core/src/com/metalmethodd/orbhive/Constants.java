@@ -18,7 +18,7 @@ public class Constants {
     public static final int SCREEN_PADDING_BOTTOM = 36;
 
     public static final int BULLET_HEIGHT = 4;
-    public static final int BULLET_WIDTH = 7;
+    public static final int BULLET_WIDTH = 6;
     public static final int BULLET_SPEED = 9 ;
 
     public static final int WASP_WIDTH = 16;

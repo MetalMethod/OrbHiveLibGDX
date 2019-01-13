@@ -26,7 +26,7 @@ public class Bullet extends AbstractGameObject{
     }
 
     private void fixPositionOnPlayerGun() {
-        position.x += PLAYER_WIDTH;
+        position.x += PLAYER_WIDTH - 10;
         position.y += PLAYER_HEIGHT - 7;
     }
 }

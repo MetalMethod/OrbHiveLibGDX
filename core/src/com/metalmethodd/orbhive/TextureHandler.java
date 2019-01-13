@@ -56,6 +56,8 @@ public class TextureHandler {
     private TextureRegion enemyFirstWaspOne, enemyFirstWaspTwo, enemyFirstWaspThree, enemyFirstWaspFour;
     private TextureRegion enemyFirstWaspDeathOne, enemyFirstWaspDeathTwo, enemyFirstWaspDeathThree, enemyFirstWaspDeathFour, enemyFirstWaspDeathFive, enemyFirstWaspDeathSix, enemyFirstWaspDeathSeven;
 
+    private TextureRegion bulletOne, bulletTwo;
+
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
 
@@ -66,6 +68,7 @@ public class TextureHandler {
     private Animation enemyFirstWaspAnimation;
     private Animation enemyFirstWaspDeathAnimation;
     private Animation playerShootAnimation;
+
 
     public TextureHandler() {
         AssetLoader.load();
@@ -147,11 +150,27 @@ public class TextureHandler {
         playerExplosionAnimation = new Animation(0.15f, (Object[]) playerExplosions);
         playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
-
         //TODO: player shooting sprites
         TextureRegion[] playerShootFrames = {};
         playerShootAnimation = new Animation(0.15f, (Object[]) playerShootFrames);
         playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
+
+        // BULLETS
+        bulletOne = new TextureRegion(
+                sprites,
+                1,
+                183,
+                BULLET_WIDTH,
+                BULLET_HEIGHT
+        );
+
+        bulletTwo = new TextureRegion(
+                sprites,
+                13,
+                183,
+                7,
+                4
+        );
 
         // ENEMIES
         enemyFirstOne = new TextureRegion(sprites, 0, 133, 16, 14);
@@ -396,6 +415,14 @@ public class TextureHandler {
         // shapeRenderer.end();
     }
 
+    public void drawBulletOne(Bullet bullet) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
+        batch.disableBlending();
+        batch.end();
+    }
+
     public void drawEnemyBoundingRect(Wasp enemy) {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
@@ -462,21 +489,6 @@ public class TextureHandler {
         batch.disableBlending();
         batch.end();
     }
-
-    public void drawEnemySecondOption(float runTime, Enemy enemy) {
-        batch.begin();
-        batch.enableBlending();
-        batch.draw(
-                (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
-                enemy.getPosition().x,
-                enemy.getPosition().y,
-                16,
-                16
-        );
-        batch.disableBlending();
-        batch.end();
-    }
-
 
 }
 

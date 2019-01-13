@@ -155,7 +155,8 @@ public class BaseLevel implements Screen {
 
     protected void drawBullets() {
         for (Bullet bullet : bullets) {
-            textureHandler.drawPlayerBulletRect(bullet);
+            textureHandler.drawBulletOne(bullet);
+            //textureHandler.drawPlayerBulletRect(bullet);
         }
     }
 
