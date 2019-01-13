@@ -93,12 +93,16 @@ public class LevelOne extends BaseLevel {
         for (Wasp wasp : enemies) {
             for (Bullet bullet : bullets) {
                 if (wasp.getBoundingRectangle().overlaps(bullet.getBoundingRectangle())) {
-                    System.out.println("Enemy HIT");
-                    enemies.removeValue(wasp, false);
+                    killWasp(wasp);
+                    bullets.removeValue(bullet, false);
                 }
-
             }
         }
+    }
+
+    private void killWasp(Wasp wasp) {
+        System.out.println("Enemy HIT");
+        enemies.removeValue(wasp, false);
     }
 
 

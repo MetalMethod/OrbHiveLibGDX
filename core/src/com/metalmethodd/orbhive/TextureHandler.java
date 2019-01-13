@@ -403,15 +403,29 @@ public class TextureHandler {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, Wasp enemy) {
+    public void drawWasp(float runTime, Wasp wasp) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
-                enemy.getPosition().x,
-                enemy.getPosition().y,
-                enemy.getWidth(),
-                enemy.getHeight()
+                wasp.getPosition().x,
+                wasp.getPosition().y,
+                wasp.getWidth(),
+                wasp.getHeight()
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
+    public void drawWaspDeath(float runTime, Wasp wasp) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemyFirstWaspDeathAnimation.getKeyFrame(runTime),
+                wasp.getPosition().x,
+                wasp.getPosition().y,
+                wasp.getWidth(),
+                wasp.getHeight()
         );
         batch.disableBlending();
         batch.end();
@@ -452,15 +466,5 @@ public class TextureHandler {
      * }
      */
 
-/**
- private void drawWaspDeath(float runTime) {
- batch.draw(
- (TextureRegion) enemyFirstWaspDeathAnimation.getKeyFrame(runTime),
- 250,
- 100,
- 16,
- 16
- );
- }*/
 }
 
