@@ -3,51 +3,16 @@ package com.metalmethodd.orbhive.gameobjects.enemies;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.Constants;
+import com.metalmethodd.orbhive.gameobjects.AbstractGameObject;
 
-public class SimpleEnemy {
+import static com.metalmethodd.orbhive.Constants.SIMPLE_ENEMY_HEIGHT;
+import static com.metalmethodd.orbhive.Constants.SIMPLE_ENEMY_WIDTH;
 
-    private Vector2 position;
-
-    private int speed = Constants.SIMPLE_ENEMY_SPEED;
-
-    private float height;
-    private float width;
-
-    private Rectangle boundingRectangle;
+public class SimpleEnemy extends AbstractGameObject {
 
     public SimpleEnemy(Vector2 position) {
-
-        this.height = Constants.SIMPLE_ENEMY_HEIGHT;
-        this.width = Constants.SIMPLE_ENEMY_WIDTH;
-        this.position = position;
-        this.boundingRectangle = new Rectangle();
-
+        super(position,SIMPLE_ENEMY_WIDTH, SIMPLE_ENEMY_HEIGHT );
     }
 
 
-    public void update(float delta) {
-        position.x -= speed;
-        boundingRectangle.x = position.x;
-        boundingRectangle.y = position.y;
-    }
-
-
-    public float getHeight() {
-        return height;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-
-
-    public Vector2 getPosition() {
-        return position;
-
-    }
-
-    public Rectangle getBoundingRectangle() {
-        return boundingRectangle;
-    }
 }
