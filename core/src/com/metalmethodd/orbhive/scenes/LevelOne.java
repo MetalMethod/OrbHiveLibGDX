@@ -5,11 +5,13 @@ import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 
 public class LevelOne extends BaseLevel {
 
-    float previousSpawn;
+    private float previousSpawn;
+    private float previousBrainSpawn;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
         previousSpawn = runTime;
+        previousBrainSpawn = runTime;
     }
 
     /**
@@ -47,16 +49,15 @@ public class LevelOne extends BaseLevel {
 
     private void spawnEnemies() {
         // time to start first spawns
-        float initial = 1.0f;
+        final float initial = 1.0f;
 
         // interval of time since last spawning
-        float interval = 0.3f;
+        final float interval = 0.3f;
 
         // amount of time that spawning happens
-        float variation = 0.05f;
+        final float variation = 0.05f;
 
-        // HANDLE WASP
-        //first spawn
+        //first spawn. waits for initial time pass
         if (runTime > initial && runTime < initial + variation) {
             enemies.add(EnemyFactory.createWasp());
             previousSpawn = runTime;
@@ -67,6 +68,12 @@ public class LevelOne extends BaseLevel {
             enemies.add(EnemyFactory.createWasp());
             enemies.add(EnemyFactory.createSimpleEnemy());
             previousSpawn = runTime;
+        }
+
+        // Brain spawn by interval
+        if (runTime > previousBrainSpawn + 2 && runTime < previousBrainSpawn + 2 + variation * 4) {
+            enemies.add(EnemyFactory.createBrainSmall());
+            previousBrainSpawn = runTime;
         }
     }
 

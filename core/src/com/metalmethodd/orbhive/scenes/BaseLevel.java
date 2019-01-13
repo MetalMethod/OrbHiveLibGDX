@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
 import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
-import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.Player;
@@ -136,15 +135,20 @@ public class BaseLevel implements Screen {
 
     protected void drawEnemies(Array<Enemy> enemies) {
         for (Enemy enemy : enemies) {
+            //textureHandler.drawEnemyBoundingRect(enemy);
 
             switch (enemy.getEnemyType()) {
                 case Wasp:
                     textureHandler.drawWasp(runTime, enemy);
-                    //textureHandler.drawEnemyBoundingRect(wasp);
                     break;
 
                 case SimpleEnemy:
                     textureHandler.drawSimpleEnemy(runTime, enemy);
+                    break;
+
+                case BrainSmall:
+                    textureHandler.drawBrainSmall(runTime, enemy);
+                    break;
             }
         }
     }

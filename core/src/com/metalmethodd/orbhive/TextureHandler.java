@@ -449,27 +449,34 @@ public class TextureHandler {
         batch.end();
     }
 
-    /**
-     * private void drawEnemySecond(float runTime, Enemy enemy) {
-     * batch.draw(
-     * (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
-     * enemy.getPosition().x,
-     * enemy.getPosition().y,
-     * enemy.getWidth(),
-     * enemy.getHeight()
-     * );
-     * }
-     * <p>
-     * private void drawEnemySecondOption(float runTime) {
-     * batch.draw(
-     * (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
-     * 100,
-     * 300,
-     * 16,
-     * 16
-     * );
-     * }
-     */
+    public void drawBrainSmall(float runTime, Enemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                enemy.getWidth(),
+                enemy.getHeight()
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
+    public void drawEnemySecondOption(float runTime, Enemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                16,
+                16
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
 
 }
 

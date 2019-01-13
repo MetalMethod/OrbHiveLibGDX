@@ -21,15 +21,19 @@ public class Constants {
     public static final int BULLET_WIDTH = 7;
     public static final int BULLET_SPEED = 9 ;
 
-    public static final int SIMPLE_ENEMY_WIDTH = 16;
-    public static final int SIMPLE_ENEMY_HEIGHT = 16;
-    public static final int SIMPLE_ENEMY_SPEED = 2;
-
     public static final int WASP_WIDTH = 16;
     public static final int WASP_HEIGHT = 16;
     public static final int WASP_DEFAULT_SPEED = 3;
     public static final int WASP_MINIMUM_SPEED = 3;
     public static final int WASP_MAXIMUM_SPEED = 5;
+
+    public static final int SIMPLE_ENEMY_WIDTH = 16;
+    public static final int SIMPLE_ENEMY_HEIGHT = 16;
+    public static final int SIMPLE_ENEMY_SPEED = 2;
+
+    public static final int BRAIN_SMALL_WIDTH = 32;
+    public static final int BRAIN_SMALL_HEIGHT = 32;
+    public static final int BRAIN_SMALL_SPEED = 1;
 
     // PHYSICS
     public static final int PLAYER_VELOCITY = 180;
