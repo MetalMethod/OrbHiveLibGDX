@@ -70,13 +70,13 @@ public class TextureHandler {
 
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
-        int gameWidth = Constants.SCREEN_WIDTH;
+        int gameWidth = Constants.GAME_WIDTH;
         gameHeight = screenHeight / (screenWidth / gameWidth);
 
         midPointY = (int) (gameHeight / 2);
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(true, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+        camera.setToOrtho(true, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
 
         batch = new SpriteBatch();
         //Attatch Batch to camera

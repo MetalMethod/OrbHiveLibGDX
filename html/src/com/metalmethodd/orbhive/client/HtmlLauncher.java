@@ -15,7 +15,7 @@ public class HtmlLauncher extends GwtApplication {
     // USE THIS CODE FOR A FIXED SIZE APPLICATION
     // @Override
     // public GwtApplicationConfiguration getConfig() {
-    //    return new GwtApplicationConfiguration(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+    //    return new GwtApplicationConfiguration(Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
     // }
     // END CODE FOR FIXED SIZE APPLICATION
 
@@ -26,9 +26,15 @@ public class HtmlLauncher extends GwtApplication {
 
      @Override
      public GwtApplicationConfiguration getConfig() {
-         int w = Window.getClientWidth() - PADDING;
-         int h = Window.getClientHeight() - PADDING;
-         cfg = new GwtApplicationConfiguration(w, h);
+
+         int width = Constants.GAME_WIDTH;
+         int height = Constants.GAME_HEIGHT;
+         float aspectRatio = width / height;
+
+         int screenWidth = Window.getClientWidth() - PADDING;
+         int screenHeight = (screenWidth / width) * height;
+
+         cfg = new GwtApplicationConfiguration(screenWidth, screenHeight);
          Window.enableScrolling(false);
          Window.setMargin("0");
          Window.addResizeHandler(new ResizeListener());

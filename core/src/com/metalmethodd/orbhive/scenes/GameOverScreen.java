@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.metalmethodd.orbhive.OrbHiveGame;
 
-import static com.metalmethodd.orbhive.Constants.SCREEN_HEIGHT;
-import static com.metalmethodd.orbhive.Constants.SCREEN_WIDTH;
+import static com.metalmethodd.orbhive.Constants.GAME_HEIGHT;
+import static com.metalmethodd.orbhive.Constants.GAME_WIDTH;
 
 public class GameOverScreen implements Screen {
 
@@ -24,7 +24,7 @@ public class GameOverScreen implements Screen {
         this.batch = game.batch;
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
+        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
     }
 
     @Override

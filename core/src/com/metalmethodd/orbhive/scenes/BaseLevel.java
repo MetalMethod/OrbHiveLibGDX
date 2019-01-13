@@ -34,7 +34,7 @@ public class BaseLevel implements Screen {
         this.game = game;
         this.batch = game.batch;
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
+        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
 
         player = new Player(new Vector2(INITIAL_PLAYER_X, INITIAL_PLAYER_Y));
         enemies = new Array<Wasp>();
@@ -166,7 +166,7 @@ public class BaseLevel implements Screen {
         for (Bullet bullet : bullets) {
             bullet.update();
 
-            if (bullet.getPosition().x >= Constants.SCREEN_WIDTH) {
+            if (bullet.getPosition().x >= Constants.GAME_WIDTH) {
                 bullets.removeValue(bullet, false);
             }
         }

@@ -189,16 +189,16 @@ public class Player {
             setPosition(getPosition().set(SCREEN_PADDING_LEFT, getPosition().y));
         }
         //right
-        if (getPosition().x > SCREEN_WIDTH - SCREEN_PADDING_RIGHT) {
-            setPosition(getPosition().set(SCREEN_WIDTH - SCREEN_PADDING_RIGHT, getPosition().y));
+        if (getPosition().x > GAME_WIDTH - SCREEN_PADDING_RIGHT) {
+            setPosition(getPosition().set(GAME_WIDTH - SCREEN_PADDING_RIGHT, getPosition().y));
         }
         //top
         if (getPosition().y < SCREEN_PADDING_TOP) {
             setPosition(getPosition().set(getPosition().x, SCREEN_PADDING_TOP));
         }
         //down
-        if (getPosition().y > SCREEN_HEIGHT - SCREEN_PADDING_BOTTOM) {
-            setPosition(getPosition().set(getPosition().x, SCREEN_HEIGHT - SCREEN_PADDING_BOTTOM));
+        if (getPosition().y > GAME_HEIGHT - SCREEN_PADDING_BOTTOM) {
+            setPosition(getPosition().set(getPosition().x, GAME_HEIGHT - SCREEN_PADDING_BOTTOM));
         }
     }
 
