@@ -8,12 +8,20 @@ import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
-public class Wasp extends AbstractGameObject {
+public class Wasp extends AbstractGameObject implements Enemy{
+
+    private EnemyType enemyType;
 
     public Wasp(Vector2 position) {
         super(position, WASP_WIDTH, WASP_HEIGHT);
         init();
+        enemyType = EnemyType.Wasp;
         speed = getRandomSpeed();
+    }
+
+    @Override
+    public EnemyType getEnemyType() {
+        return enemyType;
     }
 
     /**

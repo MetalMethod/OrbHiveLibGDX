@@ -21,7 +21,7 @@ public class LevelOne extends BaseLevel {
         update(delta);
         drawBackground();
         drawPlayer();
-        drawEnemies();
+        drawEnemies(enemies);
         drawBullets();
     }
 
@@ -55,13 +55,17 @@ public class LevelOne extends BaseLevel {
         // amount of time that spawning happens
         float variation = 0.05f;
 
+        // HANDLE WASP
+        //first spawn
         if (runTime > initial && runTime < initial + variation) {
             enemies.add(EnemyFactory.createWasp());
             previousSpawn = runTime;
         }
 
+        // spawn by interval
         if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation * 4) {
             enemies.add(EnemyFactory.createWasp());
+            enemies.add(EnemyFactory.createSimpleEnemy());
             previousSpawn = runTime;
         }
     }

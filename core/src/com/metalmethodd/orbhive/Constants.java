@@ -23,7 +23,7 @@ public class Constants {
 
     public static final int SIMPLE_ENEMY_WIDTH = 16;
     public static final int SIMPLE_ENEMY_HEIGHT = 16;
-    public static final int SIMPLE_ENEMY_SPEED = 3;
+    public static final int SIMPLE_ENEMY_SPEED = 2;
 
     public static final int WASP_WIDTH = 16;
     public static final int WASP_HEIGHT = 16;

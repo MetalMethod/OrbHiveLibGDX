@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
+import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
@@ -29,7 +30,7 @@ public class BaseLevel implements Screen {
     protected float runTime;
 
     protected Player player;
-    protected Array<Wasp> enemies;
+    protected Array<Enemy> enemies;
     protected Array<Bullet> bullets;
 
 
@@ -40,7 +41,7 @@ public class BaseLevel implements Screen {
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
 
         player = new Player(new Vector2(INITIAL_PLAYER_X, INITIAL_PLAYER_Y));
-        enemies = new Array<Wasp>();
+        enemies = new Array<Enemy>();
         bullets = new Array<Bullet>();
 
         gameInputHandler = new GameInputHandler(player);
@@ -133,10 +134,18 @@ public class BaseLevel implements Screen {
         drawBackgroundColor();
     }
 
-    protected void drawEnemies() {
-        for (Wasp wasp : enemies) {
-            textureHandler.drawWasp(runTime, wasp);
-            //textureHandler.drawEnemyBoundingRect(wasp);
+    protected void drawEnemies(Array<Enemy> enemies) {
+        for (Enemy enemy : enemies) {
+
+            switch (enemy.getEnemyType()) {
+                case Wasp:
+                    textureHandler.drawWasp(runTime, enemy);
+                    //textureHandler.drawEnemyBoundingRect(wasp);
+                    break;
+
+                case SimpleEnemy:
+                    textureHandler.drawSimpleEnemy(runTime, enemy);
+            }
         }
     }
 
@@ -147,7 +156,7 @@ public class BaseLevel implements Screen {
     }
 
     protected void updateEnemies() {
-        for (Wasp wasp : enemies) {
+        for (Enemy wasp : enemies) {
             wasp.update();
 
             if (wasp.getBoundingRectangle().x < 0) {
@@ -175,8 +184,8 @@ public class BaseLevel implements Screen {
         }
     }
 
-    protected void checkCollisionBulletsEnemies(Array<Bullet> bullets, Array<Wasp> enemies) {
-        for (Wasp wasp : enemies) {
+    protected void checkCollisionBulletsEnemies(Array<Bullet> bullets, Array<Enemy> enemies) {
+        for (Enemy wasp : enemies) {
             for (Bullet bullet : bullets) {
                 if (wasp.getBoundingRectangle().overlaps(bullet.getBoundingRectangle())) {
                     killWasp(wasp);
@@ -186,7 +195,7 @@ public class BaseLevel implements Screen {
         }
     }
 
-    protected void killWasp(Wasp wasp) {
+    protected void killWasp(Enemy wasp) {
         System.out.println("Enemy HIT");
         enemies.removeValue(wasp, false);
     }

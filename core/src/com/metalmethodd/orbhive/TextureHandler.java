@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
@@ -405,7 +406,7 @@ public class TextureHandler {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, Wasp wasp) {
+    public void drawWasp(float runTime, Enemy wasp) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -433,20 +434,22 @@ public class TextureHandler {
         batch.end();
     }
 
+
+    public void drawSimpleEnemy(float runTime, Enemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                enemy.getWidth(),
+                enemy.getHeight()
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
     /**
-     public void drawEnemyFirst(float runTime, SimpleEnemy enemy) {
-     batch.begin();
-     batch.enableBlending();
-     batch.draw(
-     (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
-     enemy.getPosition().x,
-     enemy.getPosition().y,
-     enemy.getWidth(),
-     enemy.getHeight()
-     );
-     batch.disableBlending();
-     batch.end();
-     }
      * private void drawEnemySecond(float runTime, Enemy enemy) {
      * batch.draw(
      * (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),

@@ -10,7 +10,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class EnemyFactory {
 
     public static SimpleEnemy createSimpleEnemy() {
-
         float randomY = (float) (getRandomInt(1, Constants.GAME_HEIGHT));
         Vector2 position = new Vector2(Constants.GAME_WIDTH, randomY);
 
@@ -18,7 +17,6 @@ public class EnemyFactory {
     }
 
     public static Wasp createWasp() {
-
         float randomY = (float) (getRandomInt(1, Constants.GAME_HEIGHT));
         Vector2 position = new Vector2(Constants.GAME_WIDTH, randomY);
 
