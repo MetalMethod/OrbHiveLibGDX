@@ -4,6 +4,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.Constants;
 import com.metalmethodd.orbhive.gameobjects.AbstractGameObject;
+import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
+
 import static com.metalmethodd.orbhive.Constants.*;
 
 public class Wasp extends AbstractGameObject {
@@ -26,11 +28,7 @@ public class Wasp extends AbstractGameObject {
     }
 
     private int getRandomSpeed(){
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
-        int randomNumber = ThreadLocalRandom.current().nextInt(Constants.WASP_MINIMUM_SPEED, Constants.WASP_MAXIMUM_SPEED + 1);
-
-        return randomNumber;
+        return EnemyFactory.getRandomInt(Constants.WASP_MINIMUM_SPEED, Constants.WASP_MAXIMUM_SPEED);
     }
 
 }
