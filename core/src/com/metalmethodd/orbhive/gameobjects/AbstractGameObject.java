@@ -20,7 +20,11 @@ public abstract class AbstractGameObject {
         this.width = width;
         this.position = position;
         speed = Constants.INITIAL_GAMEOBJECT_SPEED;
-        boundingRectangle = new Rectangle(position.x, position.y, width, height);
+        boundingRectangle = new Rectangle();
+    }
+
+    public void init(){
+        boundingRectangle.set(position.x, position.y, width, height);
     }
 
     public void update() {

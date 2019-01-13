@@ -12,6 +12,7 @@ public class SimpleEnemy extends AbstractGameObject {
 
     public SimpleEnemy(Vector2 position) {
         super(position,SIMPLE_ENEMY_WIDTH, SIMPLE_ENEMY_HEIGHT );
+        init();
     }
 
 
