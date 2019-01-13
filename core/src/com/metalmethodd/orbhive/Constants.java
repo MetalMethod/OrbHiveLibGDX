@@ -17,17 +17,23 @@ public class Constants {
     public static final int SCREEN_PADDING_TOP = 0;
     public static final int SCREEN_PADDING_BOTTOM = 36;
 
-    public static final float BULLET_HEIGHT = 4;
-    public static final float BULLET_WIDTH = 7;
-    public static final float BULLET_SPEED = 9 ;
-
-    public static final int SIMPLE_ENEMY_WIDTH = 16;
-    public static final int SIMPLE_ENEMY_HEIGHT = 16;
-    public static final int SIMPLE_ENEMY_SPEED = 3;
+    public static final int BULLET_HEIGHT = 4;
+    public static final int BULLET_WIDTH = 7;
+    public static final int BULLET_SPEED = 9 ;
 
     public static final int WASP_WIDTH = 16;
     public static final int WASP_HEIGHT = 16;
-    public static final int WASP_ENEMY_SPEED = 3;
+    public static final int WASP_DEFAULT_SPEED = 3;
+    public static final int WASP_MINIMUM_SPEED = 3;
+    public static final int WASP_MAXIMUM_SPEED = 5;
+
+    public static final int SIMPLE_ENEMY_WIDTH = 16;
+    public static final int SIMPLE_ENEMY_HEIGHT = 16;
+    public static final int SIMPLE_ENEMY_SPEED = 2;
+
+    public static final int BRAIN_SMALL_WIDTH = 32;
+    public static final int BRAIN_SMALL_HEIGHT = 32;
+    public static final int BRAIN_SMALL_SPEED = 1;
 
     // PHYSICS
     public static final int PLAYER_VELOCITY = 180;
@@ -41,6 +47,7 @@ public class Constants {
 
 
     // GAME LOGIC
+    public static final int INITIAL_GAMEOBJECT_SPEED = 0;
     public static int INITIAL_PLAYER_LIVES = 3;
     public static final float INITIAL_PLAYER_X = 100f;
     public static final float INITIAL_PLAYER_Y = 100f;

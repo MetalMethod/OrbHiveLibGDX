@@ -1,20 +1,14 @@
-package com.metalmethodd.orbhive;
+package com.metalmethodd.orbhive.gameobjects;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.metalmethodd.orbhive.Constants;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
-public class Player {
+public class Player extends AbstractGameObject{
 
-    private Vector2 position;
-    private Vector2 velocity;
-    private Vector2 acceleration;
     private Array<Bullet> bullets;
-    private int height;
-    private int width;
-    private Rectangle boundingRectangle;
     private EntityState currentState;
     private int lifes;
     private boolean isPlayerMoving;
@@ -22,16 +16,12 @@ public class Player {
     private float playerHitTime;
 
     public Player(Vector2 position) {
-        this.width = Constants.PLAYER_WIDTH;
-        this.height = Constants.PLAYER_HEIGHT;
+        super(position, PLAYER_WIDTH, PLAYER_HEIGHT);
+        init();
 
-        this.bullets = new Array<Bullet>();
-
-        this.position = position;
-        velocity = new Vector2(0, 0);
         acceleration = new Vector2(Constants.PLAYER_WIND, Constants.PLAYER_GRAVITY);
 
-        boundingRectangle = new Rectangle(getPosition().x, getPosition().y, width, height);
+        this.bullets = new Array<Bullet>();
 
         currentState = EntityState.FULL;
         lifes = Constants.INITIAL_PLAYER_LIVES;
@@ -45,27 +35,6 @@ public class Player {
         LAST,
         DEAD,
         NEUTRAL
-
-    }
-
-    public Vector2 getPosition() {
-        return position;
-    }
-
-    public Vector2 getVelocity() {
-        return velocity;
-    }
-
-    public Rectangle getBoundingRectangle() {
-        return boundingRectangle;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
     }
 
     public void stop() {
@@ -74,18 +43,17 @@ public class Player {
     }
 
     /**
-     * must be called every frame
+     * Must always call updateBoundingRectangle()
+     * in the end after of all  methods calls
      */
     public void update(float delta) {
         velocity.add(acceleration.cpy().scl(delta));
         position.add(velocity.cpy().scl(delta));
         detectWalls();
-        updateBoundingRectangle();
         updateHitAnimation();
-    }
 
-    private void updateBoundingRectangle() {
-        boundingRectangle.setPosition(getPosition());
+        //must call updateBoundingRectangle() after all methods
+        updateBoundingRectangle();
     }
 
     private void updateLifes() {
@@ -105,7 +73,6 @@ public class Player {
     public Array<Bullet> getBullets() {
         return bullets;
     }
-
 
     public void moveUp() {
         setVelocity(getVelocity().add(0, -Constants.PLAYER_VELOCITY));
@@ -205,7 +172,6 @@ public class Player {
     public void shoot() {
         bullets.add(new Bullet(new Vector2(getPosition().x, getPosition().y)));
     }
-
 
 }
 

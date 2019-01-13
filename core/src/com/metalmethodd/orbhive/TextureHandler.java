@@ -8,7 +8,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.metalmethodd.orbhive.enemys.Wasp;
+import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
+import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
+import com.metalmethodd.orbhive.gameobjects.Bullet;
+import com.metalmethodd.orbhive.gameobjects.Player;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
@@ -403,7 +406,7 @@ public class TextureHandler {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, Wasp wasp) {
+    public void drawWasp(float runTime, Enemy wasp) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -431,40 +434,49 @@ public class TextureHandler {
         batch.end();
     }
 
-    /**
-     public void drawEnemyFirst(float runTime, SimpleEnemy enemy) {
-     batch.begin();
-     batch.enableBlending();
-     batch.draw(
-     (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
-     enemy.getPosition().x,
-     enemy.getPosition().y,
-     enemy.getWidth(),
-     enemy.getHeight()
-     );
-     batch.disableBlending();
-     batch.end();
-     }
-     * private void drawEnemySecond(float runTime, Enemy enemy) {
-     * batch.draw(
-     * (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
-     * enemy.getPosition().x,
-     * enemy.getPosition().y,
-     * enemy.getWidth(),
-     * enemy.getHeight()
-     * );
-     * }
-     * <p>
-     * private void drawEnemySecondOption(float runTime) {
-     * batch.draw(
-     * (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
-     * 100,
-     * 300,
-     * 16,
-     * 16
-     * );
-     * }
-     */
+
+    public void drawSimpleEnemy(float runTime, Enemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                enemy.getWidth(),
+                enemy.getHeight()
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
+    public void drawBrainSmall(float runTime, Enemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                enemy.getWidth(),
+                enemy.getHeight()
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
+    public void drawEnemySecondOption(float runTime, Enemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) enemySecondOptionAnimation.getKeyFrame(runTime),
+                enemy.getPosition().x,
+                enemy.getPosition().y,
+                16,
+                16
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
 
 }
 
