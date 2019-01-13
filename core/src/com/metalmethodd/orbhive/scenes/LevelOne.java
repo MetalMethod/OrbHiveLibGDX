@@ -46,9 +46,14 @@ public class LevelOne extends BaseLevel {
     }
 
     private void spawnEnemies() {
+        // time to start first spawns
         float initial = 1.0f;
+
+        // interval of time since last spawning
         float interval = 0.3f;
-        float variation = 0.1f;
+
+        // amount of time that spawning happens
+        float variation = 0.05f;
 
         if (runTime > initial && runTime < initial + variation) {
             enemies.add(EnemyFactory.createWasp());
