@@ -47,33 +47,6 @@ public class BaseLevel implements Screen {
      * drawBackgroundColor();
      */
     public void render(float delta) {
-        runTime += delta;
-
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            game.setScreen(new GameOverScreen(game));
-        }
-
-
-        //batch.begin();
-
-        // Disable transparency - this is good for performance when drawing images that do not require transparency.
-        //batch.disableBlending();
-
-        //textureHandler.drawBgTexture();
-        //drawHalfDownBgTexture();
-
-        // Draw elements that require transparency
-        //batch.enableBlending();
-        //drawPlayer(runTime, playerState());
-
-
-        /*
-        if player overlaps wasp
-            do shit - player and wasp methods
-
-
-        Intersector.overlaps(player_rectangle , wasp_rectangle)
-                */
 
     }
 

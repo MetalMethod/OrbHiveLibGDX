@@ -13,6 +13,9 @@ public class LevelOne extends BaseLevel {
 
     private Array<Bullet> bullets;
 
+    float previousSpawn;
+
+
     public LevelOne(OrbHiveGame game) {
         super(game);
 
@@ -21,34 +24,63 @@ public class LevelOne extends BaseLevel {
         enemies = new Array<Wasp>();
         wasp = EnemyFactory.createWasp();
         bullets = new Array<Bullet>();
+
+        previousSpawn = runTime;
     }
 
 
     public void render(float delta) {
-        runTime += delta;
-        checkExitGame();
+        updateLevel(delta);
         drawBackgroundColor();
         textureHandler.drawBgLevelOne();
-
-        player.update(delta);
-
         textureHandler.drawPlayer(player, runTime);
+        drawEnemies();
+        drawBullets();
         //textureHandler.drawPlayerBoundingRect(player);
+    }
+
+    private void drawEnemies() {
+        for(Wasp wasp : enemies) {
+            textureHandler.drawWasp(runTime, wasp);
+            //textureHandler.drawEnemyBoundingRect(wasp);
+        }
+    }
+
+    private void drawBullets() {
+        for(Bullet bullet : bullets){
+            textureHandler.drawPlayerBulletRect(bullet);
+        }
+    }
+
+
+    private void updateLevel(float delta) {
+        runTime += delta;
+        checkExitGame();
+        player.update(delta);
 
         gameOverCondition();
 
-        ///////ENEMIES
-        if (runTime > 1.0 && runTime < 1.1) {
-            enemies.add(EnemyFactory.createWasp());
-        }
-
-        if (runTime > 3.0 && runTime < 3.1) {
-            enemies.add(EnemyFactory.createWasp());
-        }
-
+        spawnEnemies();
         updateEnemies();
         updateBullets();
+
         checkCollisionBulletsEnemies(bullets, enemies);
+    }
+
+    private void spawnEnemies() {
+        float initial = 1.0f;
+        float interval = 0.3f;
+        float variation = 0.1f;
+
+        if (runTime > initial && runTime < initial + variation) {
+            enemies.add(EnemyFactory.createWasp());
+            previousSpawn = runTime;
+        }
+
+        if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation*4) {
+            enemies.add(EnemyFactory.createWasp());
+            previousSpawn = runTime;
+        }
     }
 
     private void gameOverCondition() {
@@ -60,8 +92,6 @@ public class LevelOne extends BaseLevel {
     private void updateEnemies() {
         for (Wasp wasp : enemies) {
             wasp.update();
-            textureHandler.drawWasp(runTime, wasp);
-            //textureHandler.drawEnemyBoundingRect(wasp);
 
             if (wasp.getBoundingRectangle().x < 0) {
                 enemies.removeValue(wasp, false);
@@ -81,7 +111,6 @@ public class LevelOne extends BaseLevel {
 
         for (Bullet bullet : bullets) {
             bullet.update();
-            textureHandler.drawPlayerBulletRect(bullet);
 
             if (bullet.getPosition().x >= Constants.SCREEN_WIDTH) {
                 bullets.removeValue(bullet, false);
