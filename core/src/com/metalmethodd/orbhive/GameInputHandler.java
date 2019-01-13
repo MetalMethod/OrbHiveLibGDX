@@ -3,6 +3,7 @@ package com.metalmethodd.orbhive;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.metalmethodd.orbhive.gameobjects.Player;
 
 public class GameInputHandler implements InputProcessor {
 

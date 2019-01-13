@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.metalmethodd.orbhive.enemys.Wasp;
+import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
+import com.metalmethodd.orbhive.gameobjects.Bullet;
+import com.metalmethodd.orbhive.gameobjects.Player;
 
 import static com.metalmethodd.orbhive.Constants.*;
 

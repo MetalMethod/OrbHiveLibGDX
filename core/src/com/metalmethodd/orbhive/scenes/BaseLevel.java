@@ -9,7 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
-import com.metalmethodd.orbhive.enemys.Wasp;
+import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
+import com.metalmethodd.orbhive.gameobjects.Bullet;
+import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
+import com.metalmethodd.orbhive.gameobjects.Player;
 
 import static com.metalmethodd.orbhive.Constants.*;
 

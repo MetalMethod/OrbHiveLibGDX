@@ -1,8 +1,9 @@
-package com.metalmethodd.orbhive;
+package com.metalmethodd.orbhive.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
-import com.metalmethodd.orbhive.enemys.SimpleEnemy;
-import com.metalmethodd.orbhive.enemys.Wasp;
+import com.metalmethodd.orbhive.Constants;
+import com.metalmethodd.orbhive.gameobjects.enemies.SimpleEnemy;
+import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 
 public class EnemyFactory {
 

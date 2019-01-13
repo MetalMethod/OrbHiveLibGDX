@@ -6271,13 +6271,13 @@ Vtb,com.google.web.bindery.event.shared.UmbrellaException::UmbrellaException(Lja
 a,com.google.web.bindery.event.shared.UmbrellaException::causes,com.google.web.bindery.event.shared.UmbrellaException,causes,com/google/web/bindery/event/shared/UmbrellaException.java,62,-1
 Wtb,com.google.web.bindery.event.shared.UmbrellaException::makeMessage(Ljava/util/Set;)Ljava/lang/String;,com.google.web.bindery.event.shared.UmbrellaException,makeMessage,com/google/web/bindery/event/shared/UmbrellaException.java,39,0
 wNb,com.metalmethodd.orbhive.AssetLoader::sprites,com.metalmethodd.orbhive.AssetLoader,sprites,com/metalmethodd/orbhive/AssetLoader.java,7,-1
-Bullet,,com.metalmethodd.orbhive.Bullet,,com/metalmethodd/orbhive/Bullet.java,10,-1
-xNb,com.metalmethodd.orbhive.Bullet::Bullet(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.Bullet,Bullet,com/metalmethodd/orbhive/Bullet.java,22,0
-a,com.metalmethodd.orbhive.Bullet::boundingRectangle,com.metalmethodd.orbhive.Bullet,boundingRectangle,com/metalmethodd/orbhive/Bullet.java,20,-1
-b,com.metalmethodd.orbhive.Bullet::position,com.metalmethodd.orbhive.Bullet,position,com/metalmethodd/orbhive/Bullet.java,12,-1
+Bullet,,com.metalmethodd.orbhive.gameobjects.Bullet,,com/metalmethodd/orbhive/Bullet.java,10,-1
+xNb,com.metalmethodd.orbhive.gameobjects.Bullet::Bullet(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.gameobjects.Bullet,Bullet,com/metalmethodd/orbhive/Bullet.java,22,0
+a,com.metalmethodd.orbhive.gameobjects.Bullet::boundingRectangle,com.metalmethodd.orbhive.gameobjects.Bullet,boundingRectangle,com/metalmethodd/orbhive/Bullet.java,20,-1
+b,com.metalmethodd.orbhive.gameobjects.Bullet::position,com.metalmethodd.orbhive.gameobjects.Bullet,position,com/metalmethodd/orbhive/Bullet.java,12,-1
 yNb,com.metalmethodd.orbhive.Constants::INITIAL_PLAYER_LIVES,com.metalmethodd.orbhive.Constants,INITIAL_PLAYER_LIVES,com/metalmethodd/orbhive/Constants.java,44,-1
 zNb,com.metalmethodd.orbhive.Constants::PLAYER_HIT_ACCELERATION,com.metalmethodd.orbhive.Constants,PLAYER_HIT_ACCELERATION,com/metalmethodd/orbhive/Constants.java,39,-1
-ANb,com.metalmethodd.orbhive.EnemyFactory::createWasp()Lcom/metalmethodd/orbhive/enemys/Wasp;,com.metalmethodd.orbhive.EnemyFactory,createWasp,com/metalmethodd/orbhive/EnemyFactory.java,18,0
+ANb,com.metalmethodd.orbhive.gameobjects.EnemyFactory::createWasp()Lcom/metalmethodd/orbhive/enemys/Wasp;,com.metalmethodd.orbhive.gameobjects.EnemyFactory,createWasp,com/metalmethodd/orbhive/EnemyFactory.java,18,0
 GameInputHandler,,com.metalmethodd.orbhive.GameInputHandler,,com/metalmethodd/orbhive/GameInputHandler.java,7,-1
 BNb,com.metalmethodd.orbhive.GameInputHandler::$keyDown(Lcom/metalmethodd/orbhive/GameInputHandler;I)Z,com.metalmethodd.orbhive.GameInputHandler,$keyDown,com/metalmethodd/orbhive/GameInputHandler.java,18,0
 CNb,com.metalmethodd.orbhive.GameInputHandler::$keyUp(Lcom/metalmethodd/orbhive/GameInputHandler;I)Z,com.metalmethodd.orbhive.GameInputHandler,$keyUp,com/metalmethodd/orbhive/GameInputHandler.java,56,0
@@ -6289,40 +6289,40 @@ FNb,com.metalmethodd.orbhive.OrbHiveGame::$render(Lcom/metalmethodd/orbhive/OrbH
 GNb,com.metalmethodd.orbhive.OrbHiveGame::OrbHiveGame() <init>,com.metalmethodd.orbhive.OrbHiveGame,OrbHiveGame,com/metalmethodd/orbhive/OrbHiveGame.java,7,0
 a,com.metalmethodd.orbhive.OrbHiveGame::batch,com.metalmethodd.orbhive.OrbHiveGame,batch,com/metalmethodd/orbhive/OrbHiveGame.java,8,-1
 b,com.metalmethodd.orbhive.OrbHiveGame::splash,com.metalmethodd.orbhive.OrbHiveGame,splash,com/metalmethodd/orbhive/OrbHiveGame.java,10,-1
-Player,,com.metalmethodd.orbhive.Player,,com/metalmethodd/orbhive/Player.java,9,-1
-HNb,com.metalmethodd.orbhive.Player::$getState(Lcom/metalmethodd/orbhive/Player;)Lcom/metalmethodd/orbhive/Player$EntityState;,com.metalmethodd.orbhive.Player,$getState,com/metalmethodd/orbhive/Player.java,168,0
-INb,com.metalmethodd.orbhive.Player::$moveBack(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$moveBack,com/metalmethodd/orbhive/Player.java,125,0
-JNb,com.metalmethodd.orbhive.Player::$moveDown(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$moveDown,com/metalmethodd/orbhive/Player.java,120,0
-KNb,com.metalmethodd.orbhive.Player::$moveForward(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$moveForward,com/metalmethodd/orbhive/Player.java,115,0
-LNb,com.metalmethodd.orbhive.Player::$moveUp(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$moveUp,com/metalmethodd/orbhive/Player.java,110,0
-MNb,com.metalmethodd.orbhive.Player::$setPosition(Lcom/metalmethodd/orbhive/Player;Lcom/badlogic/gdx/math/Vector2;)V,com.metalmethodd.orbhive.Player,$setPosition,com/metalmethodd/orbhive/Player.java,97,0
-NNb,com.metalmethodd.orbhive.Player::$setVelocity(Lcom/metalmethodd/orbhive/Player;Lcom/badlogic/gdx/math/Vector2;)V,com.metalmethodd.orbhive.Player,$setVelocity,com/metalmethodd/orbhive/Player.java,101,0
-ONb,com.metalmethodd.orbhive.Player::$shoot(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$shoot,com/metalmethodd/orbhive/Player.java,205,0
-PNb,com.metalmethodd.orbhive.Player::$stopMovePlayerX(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$stopMovePlayerX,com/metalmethodd/orbhive/Player.java,140,0
-QNb,com.metalmethodd.orbhive.Player::$stopMovePlayerY(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.Player,$stopMovePlayerY,com/metalmethodd/orbhive/Player.java,135,0
-RNb,com.metalmethodd.orbhive.Player::$takeHit(Lcom/metalmethodd/orbhive/Player;I)V,com.metalmethodd.orbhive.Player,$takeHit,com/metalmethodd/orbhive/Player.java,149,0
-SNb,com.metalmethodd.orbhive.Player::$update(Lcom/metalmethodd/orbhive/Player;F)V,com.metalmethodd.orbhive.Player,$update,com/metalmethodd/orbhive/Player.java,79,0
-TNb,com.metalmethodd.orbhive.Player::Player(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.Player,Player,com/metalmethodd/orbhive/Player.java,24,0
-a,com.metalmethodd.orbhive.Player::acceleration,com.metalmethodd.orbhive.Player,acceleration,com/metalmethodd/orbhive/Player.java,13,-1
-b,com.metalmethodd.orbhive.Player::boundingRectangle,com.metalmethodd.orbhive.Player,boundingRectangle,com/metalmethodd/orbhive/Player.java,17,-1
-c,com.metalmethodd.orbhive.Player::bullets,com.metalmethodd.orbhive.Player,bullets,com/metalmethodd/orbhive/Player.java,14,-1
-d,com.metalmethodd.orbhive.Player::currentState,com.metalmethodd.orbhive.Player,currentState,com/metalmethodd/orbhive/Player.java,18,-1
-e,com.metalmethodd.orbhive.Player::height,com.metalmethodd.orbhive.Player,height,com/metalmethodd/orbhive/Player.java,15,-1
-f,com.metalmethodd.orbhive.Player::isPlayerMoving,com.metalmethodd.orbhive.Player,isPlayerMoving,com/metalmethodd/orbhive/Player.java,20,-1
-g,com.metalmethodd.orbhive.Player::lifes,com.metalmethodd.orbhive.Player,lifes,com/metalmethodd/orbhive/Player.java,19,-1
-i,com.metalmethodd.orbhive.Player::playerHitTime,com.metalmethodd.orbhive.Player,playerHitTime,com/metalmethodd/orbhive/Player.java,22,-1
-j,com.metalmethodd.orbhive.Player::position,com.metalmethodd.orbhive.Player,position,com/metalmethodd/orbhive/Player.java,11,-1
-k,com.metalmethodd.orbhive.Player::velocity,com.metalmethodd.orbhive.Player,velocity,com/metalmethodd/orbhive/Player.java,12,-1
-n,com.metalmethodd.orbhive.Player::width,com.metalmethodd.orbhive.Player,width,com/metalmethodd/orbhive/Player.java,16,-1
-Player$EntityState,,com.metalmethodd.orbhive.Player$EntityState,,com/metalmethodd/orbhive/Player.java,42,-1
-ZNb,com.metalmethodd.orbhive.Player$EntityState::$clinit()V,com.metalmethodd.orbhive.Player$EntityState,$clinit,com/metalmethodd/orbhive/Player.java,42,0
-UNb,com.metalmethodd.orbhive.Player$EntityState::DEAD,com.metalmethodd.orbhive.Player$EntityState,DEAD,com/metalmethodd/orbhive/Player.java,46,-1
-VNb,com.metalmethodd.orbhive.Player$EntityState::FULL,com.metalmethodd.orbhive.Player$EntityState,FULL,com/metalmethodd/orbhive/Player.java,43,-1
-WNb,com.metalmethodd.orbhive.Player$EntityState::LAST,com.metalmethodd.orbhive.Player$EntityState,LAST,com/metalmethodd/orbhive/Player.java,45,-1
-XNb,com.metalmethodd.orbhive.Player$EntityState::MID,com.metalmethodd.orbhive.Player$EntityState,MID,com/metalmethodd/orbhive/Player.java,44,-1
-YNb,com.metalmethodd.orbhive.Player$EntityState::NEUTRAL,com.metalmethodd.orbhive.Player$EntityState,NEUTRAL,com/metalmethodd/orbhive/Player.java,47,-1
-$Nb,com.metalmethodd.orbhive.Player$EntityState::Player$EntityState(Ljava/lang/String;I) <init>,com.metalmethodd.orbhive.Player$EntityState,Player$EntityState,com/metalmethodd/orbhive/Player.java,42,0
-_Nb,com.metalmethodd.orbhive.Player$EntityState::values()[Lcom/metalmethodd/orbhive/Player$EntityState;,com.metalmethodd.orbhive.Player$EntityState,values,com/metalmethodd/orbhive/Player.java,42,0
+Player,,com.metalmethodd.orbhive.gameobjects.Player,,com/metalmethodd/orbhive/Player.java,9,-1
+HNb,com.metalmethodd.orbhive.gameobjects.Player::$getState(Lcom/metalmethodd/orbhive/Player;)Lcom/metalmethodd/orbhive/Player$EntityState;,com.metalmethodd.orbhive.gameobjects.Player,$getState,com/metalmethodd/orbhive/Player.java,168,0
+INb,com.metalmethodd.orbhive.gameobjects.Player::$moveBack(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$moveBack,com/metalmethodd/orbhive/Player.java,125,0
+JNb,com.metalmethodd.orbhive.gameobjects.Player::$moveDown(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$moveDown,com/metalmethodd/orbhive/Player.java,120,0
+KNb,com.metalmethodd.orbhive.gameobjects.Player::$moveForward(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$moveForward,com/metalmethodd/orbhive/Player.java,115,0
+LNb,com.metalmethodd.orbhive.gameobjects.Player::$moveUp(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$moveUp,com/metalmethodd/orbhive/Player.java,110,0
+MNb,com.metalmethodd.orbhive.gameobjects.Player::$setPosition(Lcom/metalmethodd/orbhive/Player;Lcom/badlogic/gdx/math/Vector2;)V,com.metalmethodd.orbhive.gameobjects.Player,$setPosition,com/metalmethodd/orbhive/Player.java,97,0
+NNb,com.metalmethodd.orbhive.gameobjects.Player::$setVelocity(Lcom/metalmethodd/orbhive/Player;Lcom/badlogic/gdx/math/Vector2;)V,com.metalmethodd.orbhive.gameobjects.Player,$setVelocity,com/metalmethodd/orbhive/Player.java,101,0
+ONb,com.metalmethodd.orbhive.gameobjects.Player::$shoot(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$shoot,com/metalmethodd/orbhive/Player.java,205,0
+PNb,com.metalmethodd.orbhive.gameobjects.Player::$stopMovePlayerX(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$stopMovePlayerX,com/metalmethodd/orbhive/Player.java,140,0
+QNb,com.metalmethodd.orbhive.gameobjects.Player::$stopMovePlayerY(Lcom/metalmethodd/orbhive/Player;)V,com.metalmethodd.orbhive.gameobjects.Player,$stopMovePlayerY,com/metalmethodd/orbhive/Player.java,135,0
+RNb,com.metalmethodd.orbhive.gameobjects.Player::$takeHit(Lcom/metalmethodd/orbhive/Player;I)V,com.metalmethodd.orbhive.gameobjects.Player,$takeHit,com/metalmethodd/orbhive/Player.java,149,0
+SNb,com.metalmethodd.orbhive.gameobjects.Player::$update(Lcom/metalmethodd/orbhive/Player;F)V,com.metalmethodd.orbhive.gameobjects.Player,$update,com/metalmethodd/orbhive/Player.java,79,0
+TNb,com.metalmethodd.orbhive.gameobjects.Player::Player(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.gameobjects.Player,Player,com/metalmethodd/orbhive/Player.java,24,0
+a,com.metalmethodd.orbhive.gameobjects.Player::acceleration,com.metalmethodd.orbhive.gameobjects.Player,acceleration,com/metalmethodd/orbhive/Player.java,13,-1
+b,com.metalmethodd.orbhive.gameobjects.Player::boundingRectangle,com.metalmethodd.orbhive.gameobjects.Player,boundingRectangle,com/metalmethodd/orbhive/Player.java,17,-1
+c,com.metalmethodd.orbhive.gameobjects.Player::bullets,com.metalmethodd.orbhive.gameobjects.Player,bullets,com/metalmethodd/orbhive/Player.java,14,-1
+d,com.metalmethodd.orbhive.gameobjects.Player::currentState,com.metalmethodd.orbhive.gameobjects.Player,currentState,com/metalmethodd/orbhive/Player.java,18,-1
+e,com.metalmethodd.orbhive.gameobjects.Player::height,com.metalmethodd.orbhive.gameobjects.Player,height,com/metalmethodd/orbhive/Player.java,15,-1
+f,com.metalmethodd.orbhive.gameobjects.Player::isPlayerMoving,com.metalmethodd.orbhive.gameobjects.Player,isPlayerMoving,com/metalmethodd/orbhive/Player.java,20,-1
+g,com.metalmethodd.orbhive.gameobjects.Player::lifes,com.metalmethodd.orbhive.gameobjects.Player,lifes,com/metalmethodd/orbhive/Player.java,19,-1
+i,com.metalmethodd.orbhive.gameobjects.Player::playerHitTime,com.metalmethodd.orbhive.gameobjects.Player,playerHitTime,com/metalmethodd/orbhive/Player.java,22,-1
+j,com.metalmethodd.orbhive.gameobjects.Player::position,com.metalmethodd.orbhive.gameobjects.Player,position,com/metalmethodd/orbhive/Player.java,11,-1
+k,com.metalmethodd.orbhive.gameobjects.Player::velocity,com.metalmethodd.orbhive.gameobjects.Player,velocity,com/metalmethodd/orbhive/Player.java,12,-1
+n,com.metalmethodd.orbhive.gameobjects.Player::width,com.metalmethodd.orbhive.gameobjects.Player,width,com/metalmethodd/orbhive/Player.java,16,-1
+Player$EntityState,,com.metalmethodd.orbhive.gameobjects.Player$EntityState,,com/metalmethodd/orbhive/Player.java,42,-1
+ZNb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::$clinit()V,com.metalmethodd.orbhive.gameobjects.Player$EntityState,$clinit,com/metalmethodd/orbhive/Player.java,42,0
+UNb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::DEAD,com.metalmethodd.orbhive.gameobjects.Player$EntityState,DEAD,com/metalmethodd/orbhive/Player.java,46,-1
+VNb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::FULL,com.metalmethodd.orbhive.gameobjects.Player$EntityState,FULL,com/metalmethodd/orbhive/Player.java,43,-1
+WNb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::LAST,com.metalmethodd.orbhive.gameobjects.Player$EntityState,LAST,com/metalmethodd/orbhive/Player.java,45,-1
+XNb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::MID,com.metalmethodd.orbhive.gameobjects.Player$EntityState,MID,com/metalmethodd/orbhive/Player.java,44,-1
+YNb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::NEUTRAL,com.metalmethodd.orbhive.gameobjects.Player$EntityState,NEUTRAL,com/metalmethodd/orbhive/Player.java,47,-1
+$Nb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::Player$EntityState(Ljava/lang/String;I) <init>,com.metalmethodd.orbhive.gameobjects.Player$EntityState,Player$EntityState,com/metalmethodd/orbhive/Player.java,42,0
+_Nb,com.metalmethodd.orbhive.gameobjects.Player$EntityState::values()[Lcom/metalmethodd/orbhive/Player$EntityState;,com.metalmethodd.orbhive.gameobjects.Player$EntityState,values,com/metalmethodd/orbhive/Player.java,42,0
 TextureHandler,,com.metalmethodd.orbhive.TextureHandler,,com/metalmethodd/orbhive/TextureHandler.java,15,-1
 aOb,com.metalmethodd.orbhive.TextureHandler::$drawBgLevelOne(Lcom/metalmethodd/orbhive/TextureHandler;)V,com.metalmethodd.orbhive.TextureHandler,$drawBgLevelOne,com/metalmethodd/orbhive/TextureHandler.java,272,0
 bOb,com.metalmethodd.orbhive.TextureHandler::$drawPlayer(Lcom/metalmethodd/orbhive/TextureHandler;Lcom/metalmethodd/orbhive/Player;F)V,com.metalmethodd.orbhive.TextureHandler,$drawPlayer,com/metalmethodd/orbhive/TextureHandler.java,296,0
@@ -6386,13 +6386,13 @@ a,com.metalmethodd.orbhive.client.HtmlLauncher::cfg,com.metalmethodd.orbhive.cli
 HtmlLauncher$ResizeListener,,com.metalmethodd.orbhive.client.HtmlLauncher$ResizeListener,,com/metalmethodd/orbhive/client/HtmlLauncher.java,45,-1
 iOb,com.metalmethodd.orbhive.client.HtmlLauncher$ResizeListener::HtmlLauncher$ResizeListener(Lcom/metalmethodd/orbhive/client/HtmlLauncher;) <init>,com.metalmethodd.orbhive.client.HtmlLauncher$ResizeListener,HtmlLauncher$ResizeListener,com/metalmethodd/orbhive/client/HtmlLauncher.java,45,0
 a,com.metalmethodd.orbhive.client.HtmlLauncher$ResizeListener::this$01,com.metalmethodd.orbhive.client.HtmlLauncher$ResizeListener,this$01,com/metalmethodd/orbhive/client/HtmlLauncher.java,45,-1
-Wasp,,com.metalmethodd.orbhive.enemys.Wasp,,com/metalmethodd/orbhive/enemys/Wasp.java,11,-1
-jOb,com.metalmethodd.orbhive.enemys.Wasp::Wasp(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.enemys.Wasp,Wasp,com/metalmethodd/orbhive/enemys/Wasp.java,22,0
-a,com.metalmethodd.orbhive.enemys.Wasp::boundingRectangle,com.metalmethodd.orbhive.enemys.Wasp,boundingRectangle,com/metalmethodd/orbhive/enemys/Wasp.java,20,-1
-b,com.metalmethodd.orbhive.enemys.Wasp::height,com.metalmethodd.orbhive.enemys.Wasp,height,com/metalmethodd/orbhive/enemys/Wasp.java,17,-1
-c,com.metalmethodd.orbhive.enemys.Wasp::position,com.metalmethodd.orbhive.enemys.Wasp,position,com/metalmethodd/orbhive/enemys/Wasp.java,13,-1
-d,com.metalmethodd.orbhive.enemys.Wasp::speed,com.metalmethodd.orbhive.enemys.Wasp,speed,com/metalmethodd/orbhive/enemys/Wasp.java,15,-1
-e,com.metalmethodd.orbhive.enemys.Wasp::width,com.metalmethodd.orbhive.enemys.Wasp,width,com/metalmethodd/orbhive/enemys/Wasp.java,18,-1
+Wasp,,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,,com/metalmethodd/orbhive/enemys/Wasp.java,11,-1
+jOb,com.metalmethodd.orbhive.gameobjects.enemies.Wasp::Wasp(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,Wasp,com/metalmethodd/orbhive/enemys/Wasp.java,22,0
+a,com.metalmethodd.orbhive.gameobjects.enemies.Wasp::boundingRectangle,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,boundingRectangle,com/metalmethodd/orbhive/enemys/Wasp.java,20,-1
+b,com.metalmethodd.orbhive.gameobjects.enemies.Wasp::height,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,height,com/metalmethodd/orbhive/enemys/Wasp.java,17,-1
+c,com.metalmethodd.orbhive.gameobjects.enemies.Wasp::position,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,position,com/metalmethodd/orbhive/enemys/Wasp.java,13,-1
+d,com.metalmethodd.orbhive.gameobjects.enemies.Wasp::speed,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,speed,com/metalmethodd/orbhive/enemys/Wasp.java,15,-1
+e,com.metalmethodd.orbhive.gameobjects.enemies.Wasp::width,com.metalmethodd.orbhive.gameobjects.enemies.Wasp,width,com/metalmethodd/orbhive/enemys/Wasp.java,18,-1
 BaseLevel,,com.metalmethodd.orbhive.scenes.BaseLevel,,com/metalmethodd/orbhive/scenes/BaseLevel.java,17,-1
 kOb,com.metalmethodd.orbhive.scenes.BaseLevel::$checkCollisionBulletsEnemies(Lcom/metalmethodd/orbhive/scenes/BaseLevel;Lcom/badlogic/gdx/utils/Array;Lcom/badlogic/gdx/utils/Array;)V,com.metalmethodd.orbhive.scenes.BaseLevel,$checkCollisionBulletsEnemies,com/metalmethodd/orbhive/scenes/BaseLevel.java,175,0
 lOb,com.metalmethodd.orbhive.scenes.BaseLevel::$drawBullets(Lcom/metalmethodd/orbhive/scenes/BaseLevel;)V,com.metalmethodd.orbhive.scenes.BaseLevel,$drawBullets,com/metalmethodd/orbhive/scenes/BaseLevel.java,140,0

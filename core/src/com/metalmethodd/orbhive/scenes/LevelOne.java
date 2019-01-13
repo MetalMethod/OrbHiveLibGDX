@@ -1,6 +1,7 @@
 package com.metalmethodd.orbhive.scenes;
 
 import com.metalmethodd.orbhive.*;
+import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 
 public class LevelOne extends BaseLevel {
 

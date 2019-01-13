@@ -1,7 +1,8 @@
-package com.metalmethodd.orbhive;
+package com.metalmethodd.orbhive.gameobjects;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.metalmethodd.orbhive.Constants;
 
 import static com.metalmethodd.orbhive.Constants.BULLET_SPEED;
 import static com.metalmethodd.orbhive.Constants.PLAYER_HEIGHT;

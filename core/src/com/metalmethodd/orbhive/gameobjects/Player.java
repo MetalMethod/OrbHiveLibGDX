@@ -1,8 +1,10 @@
-package com.metalmethodd.orbhive;
+package com.metalmethodd.orbhive.gameobjects;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.metalmethodd.orbhive.Constants;
+import com.metalmethodd.orbhive.gameobjects.Bullet;
 
 import static com.metalmethodd.orbhive.Constants.*;
 

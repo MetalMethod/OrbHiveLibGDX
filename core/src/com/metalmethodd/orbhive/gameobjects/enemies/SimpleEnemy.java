@@ -1,4 +1,4 @@
-package com.metalmethodd.orbhive.enemys;
+package com.metalmethodd.orbhive.gameobjects.enemies;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
