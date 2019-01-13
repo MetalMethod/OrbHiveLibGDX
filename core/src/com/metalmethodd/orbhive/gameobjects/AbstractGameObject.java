@@ -17,7 +17,7 @@ public abstract class AbstractGameObject {
 
     protected Rectangle boundingRectangle;
 
-    public AbstractGameObject(Vector2 position, int width, int height){
+    public AbstractGameObject(Vector2 position, int width, int height) {
         this.height = height;
         this.width = width;
         this.position = position;
@@ -27,7 +27,7 @@ public abstract class AbstractGameObject {
         boundingRectangle = new Rectangle();
     }
 
-    protected void init(){
+    protected void init() {
         boundingRectangle.set(position.x, position.y, width, height);
     }
 
@@ -45,6 +45,14 @@ public abstract class AbstractGameObject {
 
     public Vector2 getPosition() {
         return position;
+    }
+
+    public Vector2 getVelocity() {
+        return velocity;
+    }
+
+    public Vector2 getAcceleration() {
+        return acceleration;
     }
 
     public Rectangle getBoundingRectangle() {
