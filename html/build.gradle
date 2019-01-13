@@ -71,7 +71,7 @@ task dist(dependsOn: [clean, compileGwt]) {
         }
         copy {
             from "index.html"
-            into "../docs/index.html"
+            into "../docs"
         }
     }
 }
