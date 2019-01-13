@@ -5,21 +5,22 @@ import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
 import com.metalmethodd.orbhive.enemys.Wasp;
 
+import static com.metalmethodd.orbhive.Constants.INITIAL_PLAYER_X;
+import static com.metalmethodd.orbhive.Constants.INITIAL_PLAYER_Y;
+
 public class LevelOne extends BaseLevel {
 
     private Player player;
     private Wasp wasp;
     private Array<Wasp> enemies;
-
     private Array<Bullet> bullets;
 
     float previousSpawn;
 
-
     public LevelOne(OrbHiveGame game) {
         super(game);
 
-        player = new Player(new Vector2(100, 100));
+        player = new Player(new Vector2(INITIAL_PLAYER_X, INITIAL_PLAYER_Y));
         gameInputHandler = new GameInputHandler(player);
         enemies = new Array<Wasp>();
         wasp = EnemyFactory.createWasp();
@@ -31,27 +32,12 @@ public class LevelOne extends BaseLevel {
 
     public void render(float delta) {
         updateLevel(delta);
-        drawBackgroundColor();
-        textureHandler.drawBgLevelOne();
-        textureHandler.drawPlayer(player, runTime);
+
+        drawBackground();
+        drawPlayer();
         drawEnemies();
         drawBullets();
-        //textureHandler.drawPlayerBoundingRect(player);
     }
-
-    private void drawEnemies() {
-        for(Wasp wasp : enemies) {
-            textureHandler.drawWasp(runTime, wasp);
-            //textureHandler.drawEnemyBoundingRect(wasp);
-        }
-    }
-
-    private void drawBullets() {
-        for(Bullet bullet : bullets){
-            textureHandler.drawPlayerBulletRect(bullet);
-        }
-    }
-
 
     private void updateLevel(float delta) {
         runTime += delta;
@@ -67,19 +53,26 @@ public class LevelOne extends BaseLevel {
         checkCollisionBulletsEnemies(bullets, enemies);
     }
 
-    private void spawnEnemies() {
-        float initial = 1.0f;
-        float interval = 0.3f;
-        float variation = 0.1f;
+    private void drawPlayer() {
+        textureHandler.drawPlayer(player, runTime);
+        //textureHandler.drawPlayerBoundingRect(player);
+    }
 
-        if (runTime > initial && runTime < initial + variation) {
-            enemies.add(EnemyFactory.createWasp());
-            previousSpawn = runTime;
+    private void drawBackground() {
+        drawBackgroundColor();
+        textureHandler.drawBgLevelOne();
+    }
+
+    private void drawEnemies() {
+        for(Wasp wasp : enemies) {
+            textureHandler.drawWasp(runTime, wasp);
+            //textureHandler.drawEnemyBoundingRect(wasp);
         }
+    }
 
-        if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation*4) {
-            enemies.add(EnemyFactory.createWasp());
-            previousSpawn = runTime;
+    private void drawBullets() {
+        for(Bullet bullet : bullets){
+            textureHandler.drawPlayerBulletRect(bullet);
         }
     }
 
@@ -134,6 +127,21 @@ public class LevelOne extends BaseLevel {
         enemies.removeValue(wasp, false);
     }
 
+    private void spawnEnemies() {
+        float initial = 1.0f;
+        float interval = 0.3f;
+        float variation = 0.1f;
+
+        if (runTime > initial && runTime < initial + variation) {
+            enemies.add(EnemyFactory.createWasp());
+            previousSpawn = runTime;
+        }
+
+        if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation*4) {
+            enemies.add(EnemyFactory.createWasp());
+            previousSpawn = runTime;
+        }
+    }
 
     @Override
     /**

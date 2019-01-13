@@ -42,4 +42,6 @@ public class Constants {
 
     // GAME LOGIC
     public static int INITIAL_PLAYER_LIVES = 3;
+    public static final float INITIAL_PLAYER_X = 100f;
+    public static final float INITIAL_PLAYER_Y = 100f;
 }
