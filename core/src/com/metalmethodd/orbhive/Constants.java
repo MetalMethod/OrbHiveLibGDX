@@ -54,5 +54,5 @@ public class Constants {
     public static final float INITIAL_PLAYER_Y = 100f;
 
     // TOUCH
-    public static final float PLAYER_DRAG_VELOCITY = 0.3f;
+    public static final float PLAYER_DRAG_VELOCITY = 0.05f;
 }

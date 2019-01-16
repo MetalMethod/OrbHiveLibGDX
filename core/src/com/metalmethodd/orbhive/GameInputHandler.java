@@ -138,19 +138,19 @@ public class GameInputHandler implements InputProcessor {
          */
 
         if (dragPos.x > touchPos.x) {
-            player.moveForwardDrag();
+            player.moveForwardDrag(distance);
         }
 
         if (dragPos.x < touchPos.x) {
-            player.moveBackDrag();
+            player.moveBackDrag(distance);
         }
 
         if (dragPos.y > touchPos.y) {
-            player.moveUpDrag();
+            player.moveUpDrag(distance);
         }
 
-        if(dragPos.y < touchPos.y){
-            player.moveDownDrag();
+        if (dragPos.y < touchPos.y) {
+            player.moveDownDrag(distance);
         }
 
         return true;
@@ -158,8 +158,7 @@ public class GameInputHandler implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        player.stopMovePlayerX();
-        player.stopMovePlayerY();
+        player.stop();
         return true;
     }
 
