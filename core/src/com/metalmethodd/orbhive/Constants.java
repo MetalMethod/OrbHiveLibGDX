@@ -52,4 +52,7 @@ public class Constants {
     public static final int INITIAL_PLAYER_LIVES = 3;
     public static final float INITIAL_PLAYER_X = 100f;
     public static final float INITIAL_PLAYER_Y = 100f;
+
+    // TOUCH
+    public static final float PLAYER_DRAG_VELOCITY = 0.3f;
 }

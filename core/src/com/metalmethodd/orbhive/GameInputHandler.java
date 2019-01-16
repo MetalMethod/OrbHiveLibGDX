@@ -138,23 +138,19 @@ public class GameInputHandler implements InputProcessor {
          */
 
         if (dragPos.x > touchPos.x) {
-            player.moveForward();
-            System.out.println("drag forward");
+            player.moveForwardDrag();
         }
 
         if (dragPos.x < touchPos.x) {
-            player.moveBack();
-            System.out.println("drag back");
+            player.moveBackDrag();
         }
 
         if (dragPos.y > touchPos.y) {
-            player.moveDown();
-            System.out.println("drag down");
+            player.moveUpDrag();
         }
 
         if(dragPos.y < touchPos.y){
-            player.moveUp();
-            System.out.println("drag up");
+            player.moveDownDrag();
         }
 
         return true;

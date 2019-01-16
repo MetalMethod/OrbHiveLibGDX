@@ -98,6 +98,28 @@ public class Player extends AbstractGameObject{
         isPlayerMoving = true;
     }
 
+
+    public void moveUpDrag() {
+        setVelocity(getVelocity().add(0, -Constants.PLAYER_VELOCITY * Constants.PLAYER_DRAG_VELOCITY));
+        isPlayerMoving = true;
+    }
+
+    public void moveForwardDrag() {
+        setVelocity(getVelocity().add(Constants.PLAYER_VELOCITY, 0));
+        isPlayerMoving = true;
+    }
+
+    public void moveDownDrag() {
+        setVelocity(getVelocity().add(0, Constants.PLAYER_VELOCITY));
+        isPlayerMoving = true;
+    }
+
+    public void moveBackDrag() {
+        setVelocity(getVelocity().add(-Constants.PLAYER_VELOCITY, 0));
+        isPlayerMoving = true;
+    }
+
+
     public void stopPlayer() {
         stopMovePlayerY();
         stopMovePlayerX();
