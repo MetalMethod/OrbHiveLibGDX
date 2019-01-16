@@ -7,13 +7,14 @@ import com.metalmethodd.orbhive.Constants;
 import static com.metalmethodd.orbhive.Constants.*;
 
 public class Player extends AbstractGameObject{
-
     private Array<Bullet> bullets;
     private EntityState currentState;
     private int lifes;
     private boolean isPlayerMoving;
 
     private float playerHitTime;
+    private int playerShootingTime;
+    private boolean isPlayerShooting;
 
     public Player(Vector2 position) {
         super(position, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -27,6 +28,8 @@ public class Player extends AbstractGameObject{
         lifes = Constants.INITIAL_PLAYER_LIVES;
 
         playerHitTime = 0;
+        playerShootingTime = 0;
+        isPlayerShooting = false;
     }
 
     public enum EntityState {
@@ -54,6 +57,7 @@ public class Player extends AbstractGameObject{
 
         //must call updateBoundingRectangle() after all methods
         updateBoundingRectangle();
+        updatePlayerShootingAnimation();
     }
 
     private void updateLifes() {
@@ -128,8 +132,18 @@ public class Player extends AbstractGameObject{
         return playerHitTime > 0;
     }
 
+    public boolean isPlayerShooting() {
+        return playerShootingTime > 0;
+    }
+
     private void updateHitAnimation() {
         playerHitTime--;
+        if(playerHitTime < 0) playerHitTime = 0;
+    }
+
+    private void updatePlayerShootingAnimation() {
+        playerShootingTime--;
+        if(playerShootingTime < 0) playerShootingTime = 0;
     }
 
     public EntityState getState() {
@@ -171,6 +185,7 @@ public class Player extends AbstractGameObject{
 
     public void shoot() {
         bullets.add(new Bullet(new Vector2(getPosition().x, getPosition().y)));
+        playerShootingTime = Constants.PLAYER_SHOOT_ANIMATION_DURATION;
     }
 
 }

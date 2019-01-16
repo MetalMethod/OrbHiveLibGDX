@@ -12,12 +12,12 @@
       <entry name="!?*.java" />
     </wildcardResourcePatterns>
     <bytecodeTargetLevel target="7">
-      <module name="core_main" target="1.7" />
-      <module name="core_test" target="1.7" />
-      <module name="desktop_main" target="1.7" />
-      <module name="desktop_test" target="1.7" />
-      <module name="html_main" target="1.7" />
-      <module name="html_test" target="1.7" />
+      <module name="core_main" target="1.6" />
+      <module name="core_test" target="1.6" />
+      <module name="desktop_main" target="1.6" />
+      <module name="desktop_test" target="1.6" />
+      <module name="html_main" target="1.6" />
+      <module name="html_test" target="1.6" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />

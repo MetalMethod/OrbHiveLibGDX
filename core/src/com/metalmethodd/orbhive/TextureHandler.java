@@ -58,6 +58,8 @@ public class TextureHandler {
 
     private TextureRegion bulletOne, bulletTwo;
 
+    private TextureRegion playerShootOne, playerShootTwo, playerShootThree, playerShootFour;
+
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
 
@@ -151,9 +153,21 @@ public class TextureHandler {
         playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
         //TODO: player shooting sprites
-        TextureRegion[] playerShootFrames = {};
+
+        playerShootOne = new TextureRegion(sprites, 0, 44, 15, 8);
+        playerShootTwo = new TextureRegion(sprites, 30, 44, 15, 8);
+        playerShootThree = new TextureRegion(sprites, 45, 44, 15, 8);
+        playerShootFour = new TextureRegion(sprites, 60, 44, 15, 8);
+
+        playerShootOne.flip(false, true);
+        playerShootTwo.flip(false, true);
+        playerShootThree.flip(false, true);
+        playerShootFour.flip(false, true);
+
+        //TODO: player shooting sprites to animation
+        TextureRegion[] playerShootFrames = {playerShootOne, playerShootTwo, playerShootThree, playerShootFour};
         playerShootAnimation = new Animation(0.15f, (Object[]) playerShootFrames);
-        playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
+        playerShootAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
         // BULLETS
         bulletOne = new TextureRegion(
@@ -340,24 +354,27 @@ public class TextureHandler {
             drawPlayerExplosion(runTime, player);
         }
 
-        /**
-         if(controller.isPlayerShooting()){
-         drawPlayerShot(runTime);
-         }
-         */
+        if (player.isPlayerShooting()) {
+            drawPlayerShot(runTime, player);
+        }
+
     }
 
-    /**
-     * private void drawPlayerShot(float runTime) {
-     * batch.draw(
-     * (TextureRegion) playerShootAnimation.getKeyFrame(runTime),
-     * player.getPosition().x + 50,
-     * player.getPosition().y +50,
-     * 10,
-     * 10
-     * );
-     * }
-     */
+
+    private void drawPlayerShot(float runTime, Player player) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) playerShootAnimation.getKeyFrame(runTime),
+                player.getPosition().x + 40,
+                player.getPosition().y + 17,
+                15,
+                8
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
 
     private void drawPlayerEngine(float runTime, Player player) {
         batch.begin();

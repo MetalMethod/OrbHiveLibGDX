@@ -11,6 +11,8 @@ public class Constants {
     public static final int PLAYER_SIZE = 40;
     public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
     public static final float PLAYER_HIT_ANIMATION_DURATION = 50;
+    public static final int PLAYER_HIT_ACCELERATION = 70;
+    public static final int PLAYER_SHOOT_ANIMATION_DURATION = 10;
 
     public static final int SCREEN_PADDING_LEFT = 5;
     public static final int SCREEN_PADDING_RIGHT = 45;
@@ -42,13 +44,12 @@ public class Constants {
 
     public static final int movementAcceleration = 50;
 
-    public static int PLAYER_HIT_ACCELERATION = 70;
-    public static int enemyHitAcceleration = -100;
+    public static final int enemyHitAcceleration = -100;
 
 
     // GAME LOGIC
     public static final int INITIAL_GAMEOBJECT_SPEED = 0;
-    public static int INITIAL_PLAYER_LIVES = 3;
+    public static final int INITIAL_PLAYER_LIVES = 3;
     public static final float INITIAL_PLAYER_X = 100f;
     public static final float INITIAL_PLAYER_Y = 100f;
 }
