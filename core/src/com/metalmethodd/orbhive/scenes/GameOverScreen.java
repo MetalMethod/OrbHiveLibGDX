@@ -28,7 +28,7 @@ public class GameOverScreen implements Screen {
     }
 
     @Override
-    public void show() {backgroundImage = new Texture("orbhive_title_light.png");
+    public void show() {backgroundImage = new Texture("orbhive_title_light_256x256.png");
     }
 
     @Override

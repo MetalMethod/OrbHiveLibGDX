@@ -29,7 +29,7 @@ public class SplashScreen implements Screen {
 
     @Override
     public void show() {
-        backgroundImage = new Texture("orbhive_title.png");
+        backgroundImage = new Texture("orbhive_title_256x256.png");
     }
 
     @Override
