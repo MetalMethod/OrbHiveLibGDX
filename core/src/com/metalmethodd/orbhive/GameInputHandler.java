@@ -162,7 +162,9 @@ public class GameInputHandler implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
+        player.stopMovePlayerX();
+        player.stopMovePlayerY();
+        return true;
     }
 
 
