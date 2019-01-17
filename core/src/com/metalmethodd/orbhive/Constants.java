@@ -3,7 +3,7 @@ package com.metalmethodd.orbhive;
 public class Constants {
 
     // GRAPHICS
-    public static final int GAME_WIDTH = 455;
+    public static final int GAME_WIDTH = 256;
     public static final int GAME_HEIGHT = 256;
 
     public static final int PLAYER_WIDTH = 40;
