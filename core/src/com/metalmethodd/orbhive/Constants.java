@@ -6,6 +6,8 @@ public class Constants {
     public static final int GAME_WIDTH = 256;
     public static final int GAME_HEIGHT = 256;
 
+    public static final float BACKGROUND_LEVEL_ONE_SPEED = 2f;
+
     public static final int PLAYER_WIDTH = 40;
     public static final int PLAYER_HEIGHT = 25;
     public static final int PLAYER_SIZE = 40;
@@ -58,4 +60,5 @@ public class Constants {
 
     // TOUCH
     public static final float PLAYER_DRAG_VELOCITY = 0.05f;
+
 }

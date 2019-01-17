@@ -1,17 +1,25 @@
 package com.metalmethodd.orbhive.scenes;
 
+import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.*;
+import com.metalmethodd.orbhive.gameobjects.Background;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
+
+import static com.metalmethodd.orbhive.Constants.BACKGROUND_LEVEL_ONE_SPEED;
+import static com.metalmethodd.orbhive.Constants.GAME_WIDTH;
 
 public class LevelOne extends BaseLevel {
 
     private float previousSpawn;
     private float previousBrainSpawn;
+    private Background background;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
         previousSpawn = runTime;
         previousBrainSpawn = runTime;
+
+        background = new Background(new Vector2(GAME_WIDTH, 0), 256, 256);
     }
 
     /**
@@ -34,8 +42,18 @@ public class LevelOne extends BaseLevel {
      * @param delta
      */
     private void update(float delta) {
+        updateBackground();
         updateLevelBasicLogic(delta);
         spawnEnemies();
+    }
+
+    private void updateBackground() {
+        background.setPosition(new Vector2(background.getPosition().x - BACKGROUND_LEVEL_ONE_SPEED, background.getPosition().y));
+
+        if(background.getPosition().x < -GAME_WIDTH){
+            background.setPosition(new Vector2(GAME_WIDTH, background.getPosition().y));
+        }
+
     }
 
     /**
@@ -44,7 +62,7 @@ public class LevelOne extends BaseLevel {
     @Override
     protected void drawBackground() {
         drawBackgroundColor();
-        textureHandler.drawBgLevelOne();
+        textureHandler.drawBgLevelOne(background);
     }
 
     private void spawnEnemies() {

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.metalmethodd.orbhive.gameobjects.Background;
 import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
@@ -46,7 +47,7 @@ public class TextureHandler {
      * Game Objects
      */
     //private Player player;
-    private TextureRegion bg, halfDownBg;
+    private TextureRegion bgTexture, halfDownBg;
     private Animation playerAnimation;
     private TextureRegion playerFull, playerMid, playerLast;
     private TextureRegion engineOne, engineTwo, engineThree;
@@ -107,7 +108,7 @@ public class TextureHandler {
         gameOverScreen = new TextureRegion(AssetLoader.getGameoverScreen(), GAME_WIDTH, GAME_HEIGHT);
         gameOverScreen.flip(false, true);
 
-        bg = new TextureRegion(sprites, 224, 0, 32, 256);
+        bgTexture = new TextureRegion(sprites, 224, 0, 32, 256);
         halfDownBg = new TextureRegion(sprites, 224, 128, 32, 128);
 
         playerFull = new TextureRegion(
@@ -304,10 +305,10 @@ public class TextureHandler {
         batch.disableBlending();
         batch.begin();
         int width = 32;
-        int windowWidth = 455;
+        int windowWidth = 256;
         int x = 0;
         while (windowWidth > x) {
-            batch.draw(bg, x, 0, width, 256);
+            batch.draw(bgTexture, x, 0, width, 256);
             x += width;
         }
         batch.end();
@@ -315,15 +316,16 @@ public class TextureHandler {
 
     }
 
-    public void drawBgLevelOne() {
+    public void drawBgLevelOne(Background background) {
         batch.disableBlending();
         batch.begin();
-        int width = 32;
-        int windowWidth = 455;
-        int x = 0;
-        while (windowWidth > x) {
-            batch.draw(bg, x, 0, width, 256);
-            x += width;
+        int tileWidth = 32;
+        int bg_position = (int) background.getPosition().x;
+
+        for(int i = 0; i < GAME_WIDTH; i += tileWidth){
+            batch.draw(bgTexture, bg_position + i , 0, tileWidth, GAME_HEIGHT);
+            batch.draw(bgTexture, bg_position + i - GAME_WIDTH, 0, tileWidth, GAME_HEIGHT);
+            batch.draw(bgTexture, bg_position + i + GAME_WIDTH, 0, tileWidth, GAME_HEIGHT);
         }
         batch.end();
         batch.enableBlending();
@@ -391,7 +393,7 @@ public class TextureHandler {
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) engineAnimation.getKeyFrame(runTime),
-                player.getPosition().x -7,
+                player.getPosition().x - 7,
                 player.getPosition().y + 15,
                 10 * 2,
                 10
@@ -443,10 +445,10 @@ public class TextureHandler {
     }
 
     public void drawBulletOne(Bullet bullet) {
-    //    batch.begin();
-     //   batch.enableBlending();
-      //  batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
-       // batch.disableBlending();
+        //    batch.begin();
+        //   batch.enableBlending();
+        //  batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
+        // batch.disableBlending();
         //batch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
