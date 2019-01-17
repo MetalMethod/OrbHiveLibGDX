@@ -5,7 +5,7 @@ import com.metalmethodd.orbhive.*;
 import com.metalmethodd.orbhive.gameobjects.Background;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 
-import static com.metalmethodd.orbhive.Constants.BACKGROUND_LEVEL_ONE_SPEED;
+import static com.metalmethodd.orbhive.Constants.BG_LVL_ONE_X_SPEED;
 import static com.metalmethodd.orbhive.Constants.GAME_WIDTH;
 
 public class LevelOne extends BaseLevel {
@@ -48,11 +48,15 @@ public class LevelOne extends BaseLevel {
     }
 
     private void updateBackground() {
-        background.setPosition(new Vector2(background.getPosition().x - BACKGROUND_LEVEL_ONE_SPEED, background.getPosition().y));
+        background.setPosition(new Vector2(
+                background.getPosition().x - BG_LVL_ONE_X_SPEED,
+                background.getPosition().y + Constants.BG_LVL_ONE_Y_SPEED
+        ));
 
         if(background.getPosition().x < -GAME_WIDTH){
             background.setPosition(new Vector2(GAME_WIDTH, background.getPosition().y));
         }
+
 
     }
 
@@ -67,7 +71,7 @@ public class LevelOne extends BaseLevel {
 
     private void spawnEnemies() {
         // time to start first spawns
-        final float initial = 1.0f;
+        final float initial = 2.0f;
 
         // interval of time since last spawning
         final float interval = 0.3f;

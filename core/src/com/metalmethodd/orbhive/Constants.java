@@ -6,7 +6,8 @@ public class Constants {
     public static final int GAME_WIDTH = 256;
     public static final int GAME_HEIGHT = 256;
 
-    public static final float BACKGROUND_LEVEL_ONE_SPEED = 2f;
+    public static final float BG_LVL_ONE_X_SPEED = 1.5f;
+    public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
 
     public static final int PLAYER_WIDTH = 40;
     public static final int PLAYER_HEIGHT = 25;
@@ -55,7 +56,7 @@ public class Constants {
     // GAME LOGIC
     public static final int INITIAL_GAMEOBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
-    public static final float INITIAL_PLAYER_X = 100f;
+    public static final float INITIAL_PLAYER_X = 50f;
     public static final float INITIAL_PLAYER_Y = 100f;
 
     // TOUCH

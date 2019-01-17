@@ -308,7 +308,7 @@ public class TextureHandler {
         int windowWidth = 256;
         int x = 0;
         while (windowWidth > x) {
-            batch.draw(bgTexture, x, 0, width, 256);
+            batch.draw(bgTexture, x, 0, width, GAME_HEIGHT);
             x += width;
         }
         batch.end();
@@ -317,18 +317,32 @@ public class TextureHandler {
     }
 
     public void drawBgLevelOne(Background background) {
+
+        //draw dark bg color
+        Gdx.gl.glClearColor(0.03f, 0.03f, 0.03f, 1f);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         batch.disableBlending();
         batch.begin();
         int tileWidth = 32;
-        int bg_position = (int) background.getPosition().x;
+        int bgX = (int) background.getPosition().x;
+        int bgY = (int) background.getPosition().y;
 
         for(int i = 0; i < GAME_WIDTH; i += tileWidth){
-            batch.draw(bgTexture, bg_position + i , 0, tileWidth, GAME_HEIGHT);
-            batch.draw(bgTexture, bg_position + i - GAME_WIDTH, 0, tileWidth, GAME_HEIGHT);
-            batch.draw(bgTexture, bg_position + i + GAME_WIDTH, 0, tileWidth, GAME_HEIGHT);
+            batch.draw(halfDownBg, bgX + i , bgY, tileWidth, GAME_HEIGHT/2);
+            batch.draw(halfDownBg, bgX + i - GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT/2);
+            batch.draw(halfDownBg, bgX + i + GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT/2);
         }
         batch.end();
         batch.enableBlending();
+
+        //draw rectangle below half of screen with light bg color
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0.75f, 0.75f, 0.75f, 1f);
+        shapeRenderer.rect(0, background.getPosition().y + 127, GAME_WIDTH, GAME_HEIGHT);
+        shapeRenderer.end();
+
+        //TODO draw the moon
     }
 
     private void drawHalfDownBgTexture() {
