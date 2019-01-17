@@ -8,6 +8,7 @@ import static com.metalmethodd.orbhive.Constants.GAME_HEIGHT;
 import static com.metalmethodd.orbhive.Constants.GAME_WIDTH;
 
 public class DesktopLauncher {
+
     public static void main(String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         new LwjglApplication(new OrbHiveGame(), config);

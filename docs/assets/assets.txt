@@ -1,6 +1,8 @@
 d:assets:0:application/unknown
 i:orbhive_title.png:3032:image/png
+i:orbhive_title_256x256.png:2150:image/png
 i:orbhive_title_light.png:2951:image/png
+i:orbhive_title_light_256x256.png:2001:image/png
 i:sprites.png:13830:image/png
 i:sprites_GRID.png:13239:image/png
 t:com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl:859:application/unknown

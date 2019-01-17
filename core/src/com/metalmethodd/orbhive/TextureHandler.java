@@ -37,6 +37,12 @@ public class TextureHandler {
     private int gameHeight;
 
     /**
+     * Fullscreen art
+     */
+    private TextureRegion splashScreen;
+    private TextureRegion gameOverScreen;
+
+    /**
      * Game Objects
      */
     //private Player player;
@@ -71,7 +77,6 @@ public class TextureHandler {
     private Animation enemyFirstWaspDeathAnimation;
     private Animation playerShootAnimation;
 
-
     public TextureHandler() {
         AssetLoader.load();
         this.sprites = AssetLoader.getSprites();
@@ -97,6 +102,11 @@ public class TextureHandler {
     }
 
     private void initAssets() {
+        splashScreen = new TextureRegion(AssetLoader.getSplashScreen(), GAME_WIDTH, GAME_HEIGHT);
+        splashScreen.flip(false, true);
+        gameOverScreen = new TextureRegion(AssetLoader.getGameoverScreen(), GAME_WIDTH, GAME_HEIGHT);
+        gameOverScreen.flip(false, true);
+
         bg = new TextureRegion(sprites, 224, 0, 32, 256);
         halfDownBg = new TextureRegion(sprites, 224, 128, 32, 128);
 
@@ -507,5 +517,22 @@ public class TextureHandler {
         batch.end();
     }
 
+    public void drawSplashScreen() {
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+
+        batch.draw(splashScreen, 0, 0, GAME_WIDTH, GAME_HEIGHT);
+        batch.end();
+
+    }
+
+    public void drawGameOverScreen() {
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+
+        batch.draw(gameOverScreen, 0, 0, GAME_WIDTH, GAME_HEIGHT);
+        batch.end();
+
+    }
 }
 
