@@ -19,9 +19,12 @@ public class Constants {
     public static final int SCREEN_PADDING_TOP = 0;
     public static final int SCREEN_PADDING_BOTTOM = 36;
 
-    public static final int BULLET_HEIGHT = 4;
-    public static final int BULLET_WIDTH = 6;
-    public static final int BULLET_SPEED = 9 ;
+    public static final int BULLET_HEIGHT = 10;
+    public static final int BULLET_WIDTH = 10;
+    public static final int BULLET_SPEED = 10 ;
+    public static final int BULLET_CIRCLE_RADIUS = 5;
+    public static final int BULLET_CIRCLE_SEGMENTS = 10;
+
 
     public static final int WASP_WIDTH = 16;
     public static final int WASP_HEIGHT = 16;

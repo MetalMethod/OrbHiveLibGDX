@@ -184,8 +184,8 @@ public class TextureHandler {
                 sprites,
                 1,
                 183,
-                BULLET_WIDTH,
-                BULLET_HEIGHT
+                6,
+                4
         );
 
         bulletTwo = new TextureRegion(
@@ -443,11 +443,18 @@ public class TextureHandler {
     }
 
     public void drawBulletOne(Bullet bullet) {
-        batch.begin();
-        batch.enableBlending();
-        batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
-        batch.disableBlending();
-        batch.end();
+    //    batch.begin();
+     //   batch.enableBlending();
+      //  batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
+       // batch.disableBlending();
+        //batch.end();
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(200, 200, 100, 0.8f);
+        shapeRenderer.circle(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_CIRCLE_RADIUS, BULLET_CIRCLE_SEGMENTS);
+        shapeRenderer.rect(bullet.getBoundingRectangle().x - BULLET_HEIGHT, bullet.getBoundingRectangle().y - BULLET_CIRCLE_RADIUS, BULLET_WIDTH, BULLET_HEIGHT);
+        shapeRenderer.end();
+
     }
 
     public void drawEnemyBoundingRect(Wasp enemy) {
