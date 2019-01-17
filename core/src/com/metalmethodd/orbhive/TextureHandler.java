@@ -377,9 +377,9 @@ public class TextureHandler {
         batch.draw(
                 (TextureRegion) playerShootAnimation.getKeyFrame(runTime),
                 player.getPosition().x + 40,
-                player.getPosition().y + 17,
-                15,
-                8
+                player.getPosition().y + 14,
+                15 * 2,
+                8 + 4
         );
         batch.disableBlending();
         batch.end();
@@ -391,9 +391,9 @@ public class TextureHandler {
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) engineAnimation.getKeyFrame(runTime),
-                player.getPosition().x + 1,
+                player.getPosition().x -7,
                 player.getPosition().y + 15,
-                10,
+                10 * 2,
                 10
         );
         batch.disableBlending();
