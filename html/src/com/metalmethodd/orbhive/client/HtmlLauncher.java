@@ -58,8 +58,17 @@ public class HtmlLauncher extends GwtApplication {
      class ResizeListener implements ResizeHandler {
          @Override
          public void onResize(ResizeEvent event) {
-             int width = event.getWidth() - PADDING;
-             int height = event.getHeight() - PADDING;
+
+             int width = event.getWidth();
+             int height = event.getHeight();
+
+             // Trying to match a squasre in all window sizes
+             if(height < width){
+                 width = height;
+             }else{
+                 height = width;
+             }
+
              getRootPanel().setWidth("" + width + "px");
              getRootPanel().setHeight("" + height + "px");
              getApplicationListener().resize(width, height);
