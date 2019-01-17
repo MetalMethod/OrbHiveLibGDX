@@ -37,8 +37,15 @@ public class HtmlLauncher extends GwtApplication {
 
          int sdif = Window.getClientWidth() - (Window.getClientWidth() / prop);
 
-         int screenWidth = Window.getClientWidth() - PADDING;
-         int screenHeight = Window.getClientWidth() - sdif;
+         int screenWidth = Window.getClientWidth();
+         int screenHeight = Window.getClientHeight();
+
+         // Trying to match a squasre in all window sizes
+         if(screenHeight < screenWidth){
+             screenWidth = screenHeight;
+         }else{
+             screenHeight = screenWidth;
+         }
 
          cfg = new GwtApplicationConfiguration(screenWidth, screenHeight);
          Window.enableScrolling(false);
