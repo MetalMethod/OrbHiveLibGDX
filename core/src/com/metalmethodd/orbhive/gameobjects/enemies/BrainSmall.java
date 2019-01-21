@@ -13,7 +13,7 @@ public class BrainSmall extends AbstractGameObject implements Enemy {
     public BrainSmall(Vector2 position) {
         super(position,BRAIN_SMALL_WIDTH, BRAIN_SMALL_HEIGHT );
         init();
-        enemyType = EnemyType.BrainSmall;
+        enemyType = EnemyType.BRAIN_SMALL;
         speed = Constants.BRAIN_SMALL_SPEED;
     }
 

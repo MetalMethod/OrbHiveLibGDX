@@ -1,6 +1,5 @@
 package com.metalmethodd.orbhive.gameobjects.enemies;
 
-import java.util.concurrent.ThreadLocalRandom;
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.Constants;
 import com.metalmethodd.orbhive.gameobjects.AbstractGameObject;
@@ -15,7 +14,7 @@ public class Wasp extends AbstractGameObject implements Enemy{
     public Wasp(Vector2 position) {
         super(position, WASP_WIDTH, WASP_HEIGHT);
         init();
-        enemyType = EnemyType.Wasp;
+        enemyType = EnemyType.WASP;
         speed = getRandomSpeed();
     }
 

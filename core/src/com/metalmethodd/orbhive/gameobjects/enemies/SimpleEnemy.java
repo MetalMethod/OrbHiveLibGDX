@@ -14,7 +14,7 @@ public class SimpleEnemy extends AbstractGameObject implements Enemy {
     public SimpleEnemy(Vector2 position) {
         super(position,SIMPLE_ENEMY_WIDTH, SIMPLE_ENEMY_HEIGHT );
         init();
-        enemyType = EnemyType.SimpleEnemy;
+        enemyType = EnemyType.SIMPLE_ENEMY;
         speed = Constants.SIMPLE_ENEMY_SPEED;
     }
 

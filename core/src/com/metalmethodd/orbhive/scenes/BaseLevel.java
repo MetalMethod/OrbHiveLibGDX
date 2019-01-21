@@ -138,15 +138,15 @@ public class BaseLevel implements Screen {
             //textureHandler.drawEnemyBoundingRect(enemy);
 
             switch (enemy.getEnemyType()) {
-                case Wasp:
+                case WASP:
                     textureHandler.drawWasp(runTime, enemy);
                     break;
 
-                case SimpleEnemy:
+                case SIMPLE_ENEMY:
                     textureHandler.drawSimpleEnemy(runTime, enemy);
                     break;
 
-                case BrainSmall:
+                case BRAIN_SMALL:
                     textureHandler.drawBrainSmall(runTime, enemy);
                     break;
             }

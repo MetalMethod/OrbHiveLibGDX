@@ -6380,9 +6380,9 @@ k,com.metalmethodd.orbhive.gameobjects.AbstractGameObject::position,com.metalmet
 n,com.metalmethodd.orbhive.gameobjects.AbstractGameObject::speed,com.metalmethodd.orbhive.gameobjects.AbstractGameObject,speed,com/metalmethodd/orbhive/gameobjects/AbstractGameObject.java,16,-1
 o,com.metalmethodd.orbhive.gameobjects.AbstractGameObject::velocity,com.metalmethodd.orbhive.gameobjects.AbstractGameObject,velocity,com/metalmethodd/orbhive/gameobjects/AbstractGameObject.java,10,-1
 p,com.metalmethodd.orbhive.gameobjects.AbstractGameObject::width,com.metalmethodd.orbhive.gameobjects.AbstractGameObject,width,com/metalmethodd/orbhive/gameobjects/AbstractGameObject.java,14,-1
-Background,,com.metalmethodd.orbhive.gameobjects.Background,,com/metalmethodd/orbhive/gameobjects/Background.java,5,-1
-dOb,com.metalmethodd.orbhive.gameobjects.Background::$setPosition(Lcom/metalmethodd/orbhive/gameobjects/Background;Lcom/badlogic/gdx/math/Vector2;)V,com.metalmethodd.orbhive.gameobjects.Background,$setPosition,com/metalmethodd/orbhive/gameobjects/Background.java,10,0
-eOb,com.metalmethodd.orbhive.gameobjects.Background::Background(Lcom/badlogic/gdx/math/Vector2;II) <init>,com.metalmethodd.orbhive.gameobjects.Background,Background,com/metalmethodd/orbhive/gameobjects/Background.java,6,0
+Background,,com.metalmethodd.orbhive.gameobjects.background.Background,,com/metalmethodd/orbhive/gameobjects/Background.java,5,-1
+dOb,com.metalmethodd.orbhive.gameobjects.background.Background::$setPosition(Lcom/metalmethodd/orbhive/gameobjects/Background;Lcom/badlogic/gdx/math/Vector2;)V,com.metalmethodd.orbhive.gameobjects.background.Background,$setPosition,com/metalmethodd/orbhive/gameobjects/Background.java,10,0
+eOb,com.metalmethodd.orbhive.gameobjects.background.Background::Background(Lcom/badlogic/gdx/math/Vector2;II) <init>,com.metalmethodd.orbhive.gameobjects.background.Background,Background,com/metalmethodd/orbhive/gameobjects/Background.java,6,0
 Bullet,,com.metalmethodd.orbhive.gameobjects.Bullet,,com/metalmethodd/orbhive/gameobjects/Bullet.java,7,-1
 fOb,com.metalmethodd.orbhive.gameobjects.Bullet::Bullet(Lcom/badlogic/gdx/math/Vector2;) <init>,com.metalmethodd.orbhive.gameobjects.Bullet,Bullet,com/metalmethodd/orbhive/gameobjects/Bullet.java,9,0
 gOb,com.metalmethodd.orbhive.gameobjects.EnemyFactory::createWasp()Lcom/metalmethodd/orbhive/gameobjects/enemies/Wasp;,com.metalmethodd.orbhive.gameobjects.EnemyFactory,createWasp,com/metalmethodd/orbhive/gameobjects/EnemyFactory.java,22,0

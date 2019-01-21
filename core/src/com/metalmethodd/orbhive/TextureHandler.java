@@ -8,7 +8,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.metalmethodd.orbhive.gameobjects.Background;
+import com.metalmethodd.orbhive.gameobjects.background.Background;
+import com.metalmethodd.orbhive.gameobjects.background.Moon;
 import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
@@ -67,6 +68,8 @@ public class TextureHandler {
 
     private TextureRegion playerShootOne, playerShootTwo, playerShootThree, playerShootFour;
 
+    private TextureRegion moonBig;
+
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
 
@@ -110,6 +113,15 @@ public class TextureHandler {
 
         bgTexture = new TextureRegion(sprites, 224, 0, 32, 256);
         halfDownBg = new TextureRegion(sprites, 224, 128, 32, 128);
+
+        moonBig = new TextureRegion(
+                sprites,
+                144,
+                35,
+                80,
+                80
+        );
+        moonBig.flip(false, true);
 
         playerFull = new TextureRegion(
                 sprites,
@@ -163,8 +175,6 @@ public class TextureHandler {
         playerExplosionAnimation = new Animation(0.15f, (Object[]) playerExplosions);
         playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
-        //TODO: player shooting sprites
-
         playerShootOne = new TextureRegion(sprites, 0, 44, 15, 8);
         playerShootTwo = new TextureRegion(sprites, 30, 44, 15, 8);
         playerShootThree = new TextureRegion(sprites, 45, 44, 15, 8);
@@ -175,7 +185,6 @@ public class TextureHandler {
         playerShootThree.flip(false, true);
         playerShootFour.flip(false, true);
 
-        //TODO: player shooting sprites to animation
         TextureRegion[] playerShootFrames = {playerShootOne, playerShootTwo, playerShootThree, playerShootFour};
         playerShootAnimation = new Animation(0.15f, (Object[]) playerShootFrames);
         playerShootAnimation.setPlayMode(Animation.PlayMode.LOOP);
@@ -316,7 +325,7 @@ public class TextureHandler {
 
     }
 
-    public void drawBgLevelOne(Background background) {
+    public void drawBgLevelOne(Background background, Moon moon) {
 
         //draw dark bg color
         Gdx.gl.glClearColor(0.03f, 0.03f, 0.03f, 1f);
@@ -328,13 +337,14 @@ public class TextureHandler {
         int bgX = (int) background.getPosition().x;
         int bgY = (int) background.getPosition().y;
 
-        for(int i = 0; i < GAME_WIDTH; i += tileWidth){
-            batch.draw(halfDownBg, bgX + i , bgY, tileWidth, GAME_HEIGHT/2);
-            batch.draw(halfDownBg, bgX + i - GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT/2);
-            batch.draw(halfDownBg, bgX + i + GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT/2);
+        if(background.draw) {
+            for (int i = 0; i < GAME_WIDTH; i += tileWidth) {
+                batch.draw(halfDownBg, bgX + i, bgY, tileWidth, GAME_HEIGHT / 2);
+                batch.draw(halfDownBg, bgX + i - GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT / 2);
+            }
         }
         batch.end();
-        batch.enableBlending();
+        //batch.enableBlending();
 
         //draw rectangle below half of screen with light bg color
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -343,6 +353,8 @@ public class TextureHandler {
         shapeRenderer.end();
 
         //TODO draw the moon
+        //Moon moon = new Moon()
+        drawMoonBig(moon);
     }
 
     private void drawHalfDownBgTexture() {
@@ -352,6 +364,16 @@ public class TextureHandler {
         while (windowWidth > x) {
             batch.draw(halfDownBg, x, 128, width, 128);
             x += width;
+        }
+    }
+
+    public void drawMoonBig(Moon moon) {
+        if(moon.draw) {
+            batch.enableBlending();
+            batch.begin();
+            batch.draw(moonBig, moon.getPosition().x, moon.getPosition().y, moon.getWidth(), moon.getHeight());
+            batch.end();
+            batch.disableBlending();
         }
     }
 

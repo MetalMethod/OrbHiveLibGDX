@@ -2,17 +2,18 @@ package com.metalmethodd.orbhive.scenes;
 
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.*;
-import com.metalmethodd.orbhive.gameobjects.Background;
+import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
+import com.metalmethodd.orbhive.gameobjects.background.Moon;
 
-import static com.metalmethodd.orbhive.Constants.BG_LVL_ONE_X_SPEED;
-import static com.metalmethodd.orbhive.Constants.GAME_WIDTH;
+import static com.metalmethodd.orbhive.Constants.*;
 
 public class LevelOne extends BaseLevel {
 
     private float previousSpawn;
     private float previousBrainSpawn;
     private Background background;
+    private Moon moon;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
@@ -20,6 +21,7 @@ public class LevelOne extends BaseLevel {
         previousBrainSpawn = runTime;
 
         background = new Background(new Vector2(GAME_WIDTH, 0), 256, 256);
+        moon = new Moon(new Vector2(0,0), MOON_BIG_SIZE, MOON_BIG_SIZE);
     }
 
     /**
@@ -44,20 +46,46 @@ public class LevelOne extends BaseLevel {
     private void update(float delta) {
         updateBackground();
         updateLevelBasicLogic(delta);
-        spawnEnemies();
+        // spawnEnemies();
     }
 
     private void updateBackground() {
-        background.setPosition(new Vector2(
+        // scroll background to left
+        background.setPosition(
                 background.getPosition().x - BG_LVL_ONE_X_SPEED,
                 background.getPosition().y + Constants.BG_LVL_ONE_Y_SPEED
-        ));
+        );
 
-        if(background.getPosition().x < -GAME_WIDTH){
-            background.setPosition(new Vector2(GAME_WIDTH, background.getPosition().y));
+        //resets background to the right
+        if(background.getPosition().x < 0){
+            background.setPosition(GAME_WIDTH, background.getPosition().y);
         }
 
+        // update moon
+        if(background.getPosition().y < 300){
+            moon.setPosition(100, (int) (background.getPosition().y -200));
+        }
 
+        if(background.getPosition().y > 350 && background.getPosition().y <600 ){
+            moon.setPosition(100, (int) moon.getPosition().y);
+            moon.increaseSize(0.2);
+            background.draw = false;
+        }
+
+        if(background.getPosition().y > 600 && background.getPosition().y <730 ){
+            moon.setPosition((int) (moon.getPosition().x + 1), (int) moon.getPosition().y + 1);
+            moon.increaseSize(0.8);
+        }
+
+        if(background.getPosition().y > 730){
+//            backgroundReset();
+        }
+    }
+
+    private void backgroundReset() {
+        background.draw = true;
+        moon.draw = false;
+        background.setPosition(GAME_WIDTH,-GAME_HEIGHT);
     }
 
     /**
@@ -66,7 +94,7 @@ public class LevelOne extends BaseLevel {
     @Override
     protected void drawBackground() {
         drawBackgroundColor();
-        textureHandler.drawBgLevelOne(background);
+        textureHandler.drawBgLevelOne(background, moon);
     }
 
     private void spawnEnemies() {
