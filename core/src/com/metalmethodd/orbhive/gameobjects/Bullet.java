@@ -11,7 +11,6 @@ public class Bullet extends AbstractGameObject{
         init();
         speed = BULLET_SPEED;
 
-        fixPositionOnPlayerGun();
     }
 
     /**
@@ -25,7 +24,7 @@ public class Bullet extends AbstractGameObject{
         updateBoundingRectangle();
     }
 
-    private void fixPositionOnPlayerGun() {
+    public void fixPositionOnPlayerGun() {
         position.x += PLAYER_WIDTH + 1;
         position.y += PLAYER_HEIGHT - 4;
     }

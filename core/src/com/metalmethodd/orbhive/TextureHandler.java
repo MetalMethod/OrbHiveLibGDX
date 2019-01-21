@@ -337,7 +337,7 @@ public class TextureHandler {
         int bgX = (int) background.getPosition().x;
         int bgY = (int) background.getPosition().y;
 
-        if(background.draw) {
+        if (background.draw) {
             for (int i = 0; i < GAME_WIDTH; i += tileWidth) {
                 batch.draw(halfDownBg, bgX + i, bgY, tileWidth, GAME_HEIGHT / 2);
                 batch.draw(halfDownBg, bgX + i - GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT / 2);
@@ -368,7 +368,7 @@ public class TextureHandler {
     }
 
     public void drawMoonBig(Moon moon) {
-        if(moon.draw) {
+        if (moon.draw) {
             batch.enableBlending();
             batch.begin();
             batch.draw(moonBig, moon.getPosition().x, moon.getPosition().y, moon.getWidth(), moon.getHeight());
@@ -471,7 +471,10 @@ public class TextureHandler {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0, 0, 0, 1f);
-        shapeRenderer.rect(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_WIDTH, BULLET_HEIGHT);
+        shapeRenderer.rect(
+                bullet.getBoundingRectangle().x += PLAYER_WIDTH + 1,
+                bullet.getBoundingRectangle().y += PLAYER_HEIGHT - 4,
+                BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
 
         // shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
@@ -489,8 +492,12 @@ public class TextureHandler {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(200, 200, 100, 0.8f);
-        shapeRenderer.circle(bullet.getBoundingRectangle().x, bullet.getBoundingRectangle().y, BULLET_CIRCLE_RADIUS, BULLET_CIRCLE_SEGMENTS);
-        shapeRenderer.rect(bullet.getBoundingRectangle().x - BULLET_HEIGHT, bullet.getBoundingRectangle().y - BULLET_CIRCLE_RADIUS, BULLET_WIDTH, BULLET_HEIGHT);
+        shapeRenderer.circle(
+                bullet.getPosition().x,
+                bullet.getPosition().y, BULLET_CIRCLE_RADIUS, BULLET_CIRCLE_SEGMENTS);
+        shapeRenderer.rect(
+                bullet.getPosition().x - BULLET_HEIGHT,
+                bullet.getPosition().y - BULLET_CIRCLE_RADIUS, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
 
     }
