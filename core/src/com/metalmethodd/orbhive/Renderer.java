@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.metalmethodd.orbhive.gameobjects.background.Background;
+import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
 import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
@@ -17,7 +18,7 @@ import com.metalmethodd.orbhive.gameobjects.Player;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
-public class TextureHandler {
+public class Renderer {
 
     private Texture sprites;
     private OrthographicCamera camera;
@@ -47,8 +48,11 @@ public class TextureHandler {
     /**
      * Game Objects
      */
-    //private Player player;
+    //Background texures
     private TextureRegion bgTexture, halfDownBg;
+    private TextureRegion moonBig;
+    private TextureRegion cloudOne, cloudTwo, cloudThree;
+
     private Animation playerAnimation;
     private TextureRegion playerFull, playerMid, playerLast;
     private TextureRegion engineOne, engineTwo, engineThree;
@@ -68,8 +72,6 @@ public class TextureHandler {
 
     private TextureRegion playerShootOne, playerShootTwo, playerShootThree, playerShootFour;
 
-    private TextureRegion moonBig;
-
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
 
@@ -81,7 +83,7 @@ public class TextureHandler {
     private Animation enemyFirstWaspDeathAnimation;
     private Animation playerShootAnimation;
 
-    public TextureHandler() {
+    public Renderer() {
         AssetLoader.load();
         this.sprites = AssetLoader.getSprites();
 
@@ -122,6 +124,34 @@ public class TextureHandler {
                 80
         );
         moonBig.flip(false, true);
+
+        cloudOne = new TextureRegion(
+                sprites,
+                125,
+                174,
+                95,
+                14
+        );
+
+        cloudTwo = new TextureRegion(
+                sprites,
+                127,
+                152,
+                95,
+                19
+        );
+
+        cloudThree = new TextureRegion(
+                sprites,
+                125,
+                118,
+                97,
+                27
+        );
+
+        cloudOne.flip(false, true);
+        cloudTwo.flip(false, true);
+        cloudThree.flip(false, true);
 
         playerFull = new TextureRegion(
                 sprites,
@@ -325,7 +355,7 @@ public class TextureHandler {
 
     }
 
-    public void drawBgLevelOne(Background background, Moon moon) {
+    public void drawBgLevelOne(Background background) {
 
         //draw dark bg color
         Gdx.gl.glClearColor(0.03f, 0.03f, 0.03f, 1f);
@@ -351,10 +381,6 @@ public class TextureHandler {
         shapeRenderer.setColor(0.75f, 0.75f, 0.75f, 1f);
         shapeRenderer.rect(0, background.getPosition().y + 127, GAME_WIDTH, GAME_HEIGHT);
         shapeRenderer.end();
-
-        //TODO draw the moon
-        //Moon moon = new Moon()
-        drawMoonBig(moon);
     }
 
     private void drawHalfDownBgTexture() {
@@ -366,14 +392,43 @@ public class TextureHandler {
             x += width;
         }
     }
+    public void drawCloudOne(Cloud cloud){
+        if (cloud.draw) {
+            batch.begin();
+            batch.enableBlending();
+            batch.draw(cloudOne, cloud.getPosition().x, cloud.getPosition().y, cloud.getWidth(), cloud.getHeight());
+            batch.disableBlending();
+            batch.end();
+        }
+    }
+
+    public void drawCloudTwo(Cloud cloud){
+        if (cloud.draw) {
+            batch.begin();
+            batch.enableBlending();
+            batch.draw(cloudTwo, cloud.getPosition().x, cloud.getPosition().y, cloud.getWidth(), cloud.getHeight());
+            batch.disableBlending();
+            batch.end();
+        }
+    }
+
+    public void drawCloudThree(Cloud cloud){
+        if (cloud.draw) {
+            batch.begin();
+            batch.enableBlending();
+            batch.draw(cloudThree, cloud.getPosition().x, cloud.getPosition().y, cloud.getWidth(), cloud.getHeight());
+            batch.disableBlending();
+            batch.end();
+        }
+    }
 
     public void drawMoonBig(Moon moon) {
         if (moon.draw) {
-            batch.enableBlending();
             batch.begin();
+            batch.enableBlending();
             batch.draw(moonBig, moon.getPosition().x, moon.getPosition().y, moon.getWidth(), moon.getHeight());
-            batch.end();
             batch.disableBlending();
+            batch.end();
         }
     }
 
@@ -499,7 +554,6 @@ public class TextureHandler {
                 bullet.getPosition().x - BULLET_HEIGHT,
                 bullet.getPosition().y - BULLET_CIRCLE_RADIUS, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
-
     }
 
     public void drawEnemyBoundingRect(Wasp enemy) {

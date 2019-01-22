@@ -1,9 +1,11 @@
 package com.metalmethodd.orbhive.scenes;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
 import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
+import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
 
 import static com.metalmethodd.orbhive.Constants.*;
@@ -14,6 +16,9 @@ public class LevelOne extends BaseLevel {
     private float previousBrainSpawn;
     private Background background;
     private Moon moon;
+    private Cloud cloudOne, cloudTwo, cloudThree;
+    private Cloud cloudOneCopy, cloudTwoCopy, cloudThreeCopy;
+    private Array<Cloud> clouds;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
@@ -22,6 +27,22 @@ public class LevelOne extends BaseLevel {
 
         background = new Background(new Vector2(GAME_WIDTH, 0), 256, 256);
         moon = new Moon(new Vector2(0,0), MOON_BIG_SIZE, MOON_BIG_SIZE);
+        cloudOne = new Cloud(new Vector2(GAME_WIDTH, background.getPosition().y), 95, 14);
+        cloudTwo = new Cloud(new Vector2(GAME_WIDTH, 120), 95, 19);
+        cloudThree = new Cloud(new Vector2(GAME_WIDTH, 140), 97, 27);
+        cloudOne.draw = true;
+        cloudTwo.draw = true;
+        cloudThree.draw = true;
+
+        cloudOneCopy = new Cloud(new Vector2(GAME_WIDTH + 50, background.getPosition().y), 95, 14);
+        cloudTwoCopy = new Cloud(new Vector2(GAME_WIDTH + 60, background.getPosition().y + 20), 95, 19);
+        cloudThreeCopy = new Cloud(new Vector2(GAME_WIDTH + 70, background.getPosition().y + 30), 97, 27);
+        cloudOneCopy.draw = true;
+        cloudTwoCopy.draw = true;
+        cloudThreeCopy.draw = true;
+        clouds = new Array<Cloud>();
+        clouds.add(cloudOne, cloudTwo, cloudThree);
+        clouds.add(cloudOneCopy, cloudTwoCopy, cloudThreeCopy);
     }
 
     /**
@@ -80,6 +101,27 @@ public class LevelOne extends BaseLevel {
         if(background.getPosition().y > 730){
 //            backgroundReset();
         }
+
+        updateClouds();
+    }
+
+    private void updateClouds() {
+        cloudOne.setPosition(cloudOne.getPosition().x - Constants.CLOUD_ONE_SPEED, background.getPosition().y+ 50);
+        cloudTwo.setPosition(cloudTwo.getPosition().x - Constants.CLOUD_TWO_SPEED, background.getPosition().y+ 60);
+        cloudThree.setPosition(cloudThree.getPosition().x - Constants.CLOUD_THREE_SPEED, background.getPosition().y+ 40);
+
+        cloudOneCopy.setPosition(cloudOneCopy.getPosition().x - Constants.CLOUD_THREE_SPEED, background.getPosition().y+ 60);
+        cloudTwoCopy.setPosition(cloudTwoCopy.getPosition().x - Constants.CLOUD_ONE_SPEED, background.getPosition().y+ 70);
+        cloudThreeCopy.setPosition(cloudThreeCopy.getPosition().x - Constants.CLOUD_TWO_SPEED, background.getPosition().y+ 80);
+
+        for(Cloud cloud : clouds){
+            if(cloud.getPosition().x < - GAME_WIDTH/ 2){
+                cloud.setPosition(GAME_WIDTH, cloud.getPosition().y);
+            }
+            if(cloud.getPosition().y > 400){
+                cloud.draw = false;
+            }
+        }
     }
 
     private void backgroundReset() {
@@ -94,7 +136,18 @@ public class LevelOne extends BaseLevel {
     @Override
     protected void drawBackground() {
         drawBackgroundColor();
-        textureHandler.drawBgLevelOne(background, moon);
+        renderer.drawBgLevelOne(background);
+        renderer.drawMoonBig(moon);
+        drawClouds();
+    }
+
+    private void drawClouds() {
+        renderer.drawCloudOne(cloudOne);
+        renderer.drawCloudTwo(cloudTwo);
+        renderer.drawCloudThree(cloudThree);
+        renderer.drawCloudOne(cloudOneCopy);
+        renderer.drawCloudTwo(cloudTwoCopy);
+        renderer.drawCloudThree(cloudThreeCopy);
     }
 
     private void spawnEnemies() {
@@ -133,6 +186,6 @@ public class LevelOne extends BaseLevel {
      */
     public void dispose() {
         batch.dispose();
-        textureHandler.dispose();
+        renderer.dispose();
     }
 }

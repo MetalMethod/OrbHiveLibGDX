@@ -24,7 +24,7 @@ public class BaseLevel implements Screen {
     protected OrthographicCamera camera;
 
     protected GameInputHandler gameInputHandler;
-    protected TextureHandler textureHandler;
+    protected Renderer renderer;
 
     protected float runTime;
 
@@ -44,7 +44,7 @@ public class BaseLevel implements Screen {
         bullets = new Array<Bullet>();
 
         gameInputHandler = new GameInputHandler(player);
-        textureHandler = new TextureHandler();
+        renderer = new Renderer();
     }
 
 
@@ -88,7 +88,7 @@ public class BaseLevel implements Screen {
      * call batch.dispose(); on every level;
      */
     public void dispose() {
-        textureHandler.dispose();
+        renderer.dispose();
     }
 
     protected void updateLevelBasicLogic(float delta) {
@@ -122,8 +122,8 @@ public class BaseLevel implements Screen {
     }
 
     protected void drawPlayer() {
-        textureHandler.drawPlayer(player, runTime);
-        //textureHandler.drawPlayerBoundingRect(player);
+        renderer.drawPlayer(player, runTime);
+        //renderer.drawPlayerBoundingRect(player);
     }
 
     /**
@@ -135,19 +135,19 @@ public class BaseLevel implements Screen {
 
     protected void drawEnemies(Array<Enemy> enemies) {
         for (Enemy enemy : enemies) {
-            //textureHandler.drawEnemyBoundingRect(enemy);
+            //renderer.drawEnemyBoundingRect(enemy);
 
             switch (enemy.getEnemyType()) {
                 case WASP:
-                    textureHandler.drawWasp(runTime, enemy);
+                    renderer.drawWasp(runTime, enemy);
                     break;
 
                 case SIMPLE_ENEMY:
-                    textureHandler.drawSimpleEnemy(runTime, enemy);
+                    renderer.drawSimpleEnemy(runTime, enemy);
                     break;
 
                 case BRAIN_SMALL:
-                    textureHandler.drawBrainSmall(runTime, enemy);
+                    renderer.drawBrainSmall(runTime, enemy);
                     break;
             }
         }
@@ -155,8 +155,8 @@ public class BaseLevel implements Screen {
 
     protected void drawBullets() {
         for (Bullet bullet : bullets) {
-            textureHandler.drawBulletOne(bullet);
-            //textureHandler.drawPlayerBulletRect(bullet);
+            renderer.drawBulletOne(bullet);
+            //renderer.drawPlayerBulletRect(bullet);
         }
     }
 

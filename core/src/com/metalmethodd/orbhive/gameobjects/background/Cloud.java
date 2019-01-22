@@ -8,13 +8,12 @@ public class Cloud extends AbstractGameObject {
     public boolean draw;
 
     public Cloud(Vector2 position, int width, int height) {
+//        super(position, 95, 14);
         super(position, width, height);
-        width = Constants.MOON_BIG_SIZE;
-        height = Constants.MOON_BIG_SIZE;
         draw = false;
     }
 
-    public void setPosition(int x, int y){
+    public void setPosition(float x, float y){
         this.position.set(x, y);
     }
 
