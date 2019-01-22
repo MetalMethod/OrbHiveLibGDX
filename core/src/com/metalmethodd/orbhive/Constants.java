@@ -15,14 +15,14 @@ public class Constants {
     public static final int GAME_HEIGHT = 256;
 
     public static final float BG_LVL_ONE_X_SPEED = 1.5f;
-    //     public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
-    public static final float BG_LVL_ONE_Y_SPEED = 0.6f;
+    public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
+    //public static final float BG_LVL_ONE_Y_SPEED = 0.6f;
 
     public static final int MOON_BIG_SIZE = 80;
 
-    public static final float CLOUD_ONE_SPEED = 1f;
-    public static final float CLOUD_TWO_SPEED = 1.5f;
-    public static final float CLOUD_THREE_SPEED = 2f;
+    public static final float CLOUD_ONE_SPEED = BG_LVL_ONE_Y_SPEED * 4f;
+    public static final float CLOUD_TWO_SPEED = BG_LVL_ONE_Y_SPEED * 2f;
+    public static final float CLOUD_THREE_SPEED = BG_LVL_ONE_Y_SPEED * 2.5f;
 
     public static final int PLAYER_WIDTH = 40;
     public static final int PLAYER_HEIGHT = 25;

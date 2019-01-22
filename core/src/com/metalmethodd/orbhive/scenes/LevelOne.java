@@ -27,16 +27,16 @@ public class LevelOne extends BaseLevel {
 
         background = new Background(new Vector2(GAME_WIDTH, 0), 256, 256);
         moon = new Moon(new Vector2(0,0), MOON_BIG_SIZE, MOON_BIG_SIZE);
-        cloudOne = new Cloud(new Vector2(GAME_WIDTH, background.getPosition().y), 95, 14);
-        cloudTwo = new Cloud(new Vector2(GAME_WIDTH, 120), 95, 19);
-        cloudThree = new Cloud(new Vector2(GAME_WIDTH, 140), 97, 27);
+        cloudOne = new Cloud(new Vector2(GAME_WIDTH , background.getPosition().y + 50), 95, 14);
+        cloudTwo = new Cloud(new Vector2(20, 120), 95, 19);
+        cloudThree = new Cloud(new Vector2(GAME_WIDTH / 2, 140), 97, 27);
         cloudOne.draw = true;
         cloudTwo.draw = true;
         cloudThree.draw = true;
 
-        cloudOneCopy = new Cloud(new Vector2(GAME_WIDTH + 50, background.getPosition().y), 95, 14);
-        cloudTwoCopy = new Cloud(new Vector2(GAME_WIDTH + 60, background.getPosition().y + 20), 95, 19);
-        cloudThreeCopy = new Cloud(new Vector2(GAME_WIDTH + 70, background.getPosition().y + 30), 97, 27);
+        cloudOneCopy = new Cloud(new Vector2(GAME_WIDTH + 100, background.getPosition().y + 40), 95, 14);
+        cloudTwoCopy = new Cloud(new Vector2(GAME_WIDTH / 3 + 60, background.getPosition().y + 20), 95, 19);
+        cloudThreeCopy = new Cloud(new Vector2(GAME_WIDTH, background.getPosition().y + 30), 97, 27);
         cloudOneCopy.draw = true;
         cloudTwoCopy.draw = true;
         cloudThreeCopy.draw = true;
@@ -67,7 +67,7 @@ public class LevelOne extends BaseLevel {
     private void update(float delta) {
         updateBackground();
         updateLevelBasicLogic(delta);
-        // spawnEnemies();
+        spawnEnemies();
     }
 
     private void updateBackground() {
@@ -155,7 +155,8 @@ public class LevelOne extends BaseLevel {
         final float initial = 2.0f;
 
         // interval of time since last spawning
-        final float interval = 0.3f;
+        //final float interval = 0.3f;
+        final float interval = 0.6f;
 
         // amount of time that spawning happens
         final float variation = 0.05f;
