@@ -156,7 +156,7 @@ public class LevelOne extends BaseLevel {
 
         // interval of time since last spawning
         //final float interval = 0.3f;
-        final float interval = 0.6f;
+        final float interval = 0.8f;
 
         // amount of time that spawning happens
         final float variation = 0.05f;
