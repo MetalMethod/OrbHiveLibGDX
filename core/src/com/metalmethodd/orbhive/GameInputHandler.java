@@ -91,17 +91,7 @@ public class GameInputHandler implements InputProcessor {
     public boolean keyTyped(char character) {
         return false;
     }
-
-
-    /**
-     * @Override public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-     * player.shoot();
-     * return true;
-     * }
-     * @Override public boolean touchDragged(int screenX, int screenY, int pointer) {
-     * return false;
-     * }
-     */
+    
 
     @Override
     public boolean touchDown(
@@ -116,26 +106,31 @@ public class GameInputHandler implements InputProcessor {
         return true;
     }
 
+    /**
+     * Try to detect direction
+     if (distance <= touchRadius){
+     //  * gives you a 'natural' angle
+     float angle =
+     MathUtils.atan2(
+     touchPos.x - dragPos.x, dragPos.y - touchPos.y)
+     * MathUtils.radiansToDegrees + 90;
+     if (angle < 0)
+     angle += 360;
+     // move according to distance and angle
+     } else
+     {
+     // keep moving at constant speed
+     }
+     */
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         dragPos.set(screenX, Gdx.graphics.getHeight() - screenY);
         float distance = Math.abs(touchPos.dst(dragPos));
-        //System.out.println(distance);
-        /**
-         if (distance <= touchRadius){
-         //  * gives you a 'natural' angle
-         float angle =
-         MathUtils.atan2(
-         touchPos.x - dragPos.x, dragPos.y - touchPos.y)
-         * MathUtils.radiansToDegrees + 90;
-         if (angle < 0)
-         angle += 360;
-         // move according to distance and angle
-         } else
-         {
-         // keep moving at constant speed
-         }
-         */
+
+        // limit distance so it wont jump around when dragged
+        if(distance > 70){
+            distance = 70;
+        }
 
         if (dragPos.x > touchPos.x) {
             player.moveForwardDrag(distance);

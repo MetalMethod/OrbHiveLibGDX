@@ -42,7 +42,7 @@ public class GameOverScreen implements Screen {
 
         renderer.drawGameOverScreen();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isTouched()){
             game.setScreen(new SplashScreen(game));
         }
 

@@ -43,6 +43,7 @@ public class Player extends AbstractGameObject{
     public void stop() {
         velocity.x = 0;
         velocity.y = 0;
+        isPlayerMoving = false;
     }
 
     /**
