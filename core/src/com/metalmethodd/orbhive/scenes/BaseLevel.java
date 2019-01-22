@@ -201,7 +201,7 @@ public class BaseLevel implements Screen {
     }
 
     protected void killWasp(Enemy wasp) {
-        System.out.println("Enemy HIT");
+        //System.out.println("Enemy HIT");
         enemies.removeValue(wasp, false);
     }
 

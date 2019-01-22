@@ -119,8 +119,8 @@ public class GameInputHandler implements InputProcessor {
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         dragPos.set(screenX, Gdx.graphics.getHeight() - screenY);
-        float distance = touchPos.dst(dragPos);
-
+        float distance = Math.abs(touchPos.dst(dragPos));
+        //System.out.println(distance);
         /**
          if (distance <= touchRadius){
          //  * gives you a 'natural' angle
