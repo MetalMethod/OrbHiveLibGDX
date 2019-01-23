@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
@@ -356,31 +357,31 @@ public class Renderer {
     }
 
     public void drawBgLevelOne(Background background) {
-
-        //draw dark bg color
-        Gdx.gl.glClearColor(0.03f, 0.03f, 0.03f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        batch.disableBlending();
-        batch.begin();
-        int tileWidth = 32;
-        int bgX = (int) background.getPosition().x;
-        int bgY = (int) background.getPosition().y;
-
+        //System.out.println(background.draw);
         if (background.draw) {
+            //draw dark bg color
+
+            batch.begin();
+            batch.disableBlending();
+            int tileWidth = 32;
+            int bgX = (int) background.getPosition().x;
+            int bgY = (int) background.getPosition().y;
+
+
             for (int i = 0; i < GAME_WIDTH; i += tileWidth) {
                 batch.draw(halfDownBg, bgX + i, bgY, tileWidth, GAME_HEIGHT / 2);
                 batch.draw(halfDownBg, bgX + i - GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT / 2);
             }
-        }
-        batch.end();
-        //batch.enableBlending();
 
-        //draw rectangle below half of screen with light bg color
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(0.75f, 0.75f, 0.75f, 1f);
-        shapeRenderer.rect(0, background.getPosition().y + 127, GAME_WIDTH, GAME_HEIGHT);
-        shapeRenderer.end();
+            batch.enableBlending();
+            batch.end();
+
+            //draw rectangle below half of screen with light bg color
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.setColor(0.75f, 0.75f, 0.75f, 1f);
+            shapeRenderer.rect(0, background.getPosition().y + 127, GAME_WIDTH, GAME_HEIGHT);
+            shapeRenderer.end();
+        }
     }
 
     private void drawHalfDownBgTexture() {
@@ -392,7 +393,8 @@ public class Renderer {
             x += width;
         }
     }
-    public void drawCloudOne(Cloud cloud){
+
+    public void drawCloudOne(Cloud cloud) {
         if (cloud.draw) {
             batch.begin();
             batch.enableBlending();
@@ -402,7 +404,7 @@ public class Renderer {
         }
     }
 
-    public void drawCloudTwo(Cloud cloud){
+    public void drawCloudTwo(Cloud cloud) {
         if (cloud.draw) {
             batch.begin();
             batch.enableBlending();
@@ -412,7 +414,7 @@ public class Renderer {
         }
     }
 
-    public void drawCloudThree(Cloud cloud){
+    public void drawCloudThree(Cloud cloud) {
         if (cloud.draw) {
             batch.begin();
             batch.enableBlending();
@@ -539,11 +541,6 @@ public class Renderer {
     }
 
     public void drawBulletOne(Bullet bullet) {
-        //    batch.begin();
-        //   batch.enableBlending();
-        //  batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
-        // batch.disableBlending();
-        //batch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(200, 200, 100, 0.8f);
@@ -554,6 +551,15 @@ public class Renderer {
                 bullet.getPosition().x - BULLET_HEIGHT,
                 bullet.getPosition().y - BULLET_CIRCLE_RADIUS, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
+    }
+
+    public void drawBulletTwo(Bullet bullet) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
+        batch.disableBlending();
+        batch.end();
+
     }
 
     public void drawEnemyBoundingRect(Wasp enemy) {
@@ -640,5 +646,20 @@ public class Renderer {
         batch.end();
 
     }
+
+
+    ///BACKGROUND
+    // STARS
+    public void drawSingleStar(float x, float y, float alpha) {
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(1, 1, 1, alpha);
+        shapeRenderer.rect(
+                x,
+                y,
+                1, 1);
+        shapeRenderer.end();
+
+    }
+
 }
 

@@ -56,7 +56,7 @@ public class BaseLevel implements Screen {
     @Override
     /**
      * in every level , on the render method call
-     * drawBackgroundColor();
+     * clearDrawBackgroundColor();
      */
     public void render(float delta) {
 
@@ -116,8 +116,10 @@ public class BaseLevel implements Screen {
         }
     }
 
-    protected void drawBackgroundColor() {
-        Gdx.gl.glClearColor(0.15f, 0.15f, 0.15f, 1);
+    protected void clearDrawBackgroundColor() {
+//        Gdx.gl.glClearColor(0.15f, 0.15f, 0.15f, 1);
+//        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(0.03f, 0.03f, 0.03f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
@@ -130,7 +132,7 @@ public class BaseLevel implements Screen {
      * All levels must overide drawBackground()
      */
     protected void drawBackground() {
-        drawBackgroundColor();
+        clearDrawBackgroundColor();
     }
 
     protected void drawEnemies(Array<Enemy> enemies) {

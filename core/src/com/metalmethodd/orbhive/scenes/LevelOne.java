@@ -7,6 +7,7 @@ import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
+import com.metalmethodd.orbhive.gameobjects.background.Star;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
@@ -19,6 +20,7 @@ public class LevelOne extends BaseLevel {
     private Cloud cloudOne, cloudTwo, cloudThree;
     private Cloud cloudOneCopy, cloudTwoCopy, cloudThreeCopy;
     private Array<Cloud> clouds;
+    private Array<Star> starsFarLayer;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
@@ -43,15 +45,32 @@ public class LevelOne extends BaseLevel {
         clouds = new Array<Cloud>();
         clouds.add(cloudOne, cloudTwo, cloudThree);
         clouds.add(cloudOneCopy, cloudTwoCopy, cloudThreeCopy);
+
+        starsFarLayer = createStarLayer(40, 0.4f);
+    }
+
+    private Array<Star> createStarLayer(int starCount, float alpha) {
+        Array<Star> stars = new Array<Star>();
+        for(int i = 0; i < starCount; i++) {
+            stars.add(new Star(
+                    EnemyFactory.getRandomInt(0, GAME_WIDTH),
+                    EnemyFactory.getRandomInt(0, GAME_HEIGHT),
+                    alpha)
+            );
+        }
+        return stars;
     }
 
     /**
-     * All levels must call update(delta) on render.
+     * All levels must call update(delta)
+     * before any other method on render.
      *
      * @param delta
      */
     public void render(float delta) {
         update(delta);
+
+        clearDrawBackgroundColor();
         drawBackground();
         drawPlayer();
         drawEnemies(enemies);
@@ -67,7 +86,7 @@ public class LevelOne extends BaseLevel {
     private void update(float delta) {
         updateBackground();
         updateLevelBasicLogic(delta);
-        spawnEnemies();
+        //spawnEnemies();
     }
 
     private void updateBackground() {
@@ -135,10 +154,17 @@ public class LevelOne extends BaseLevel {
      */
     @Override
     protected void drawBackground() {
-        drawBackgroundColor();
+        drawStars(starsFarLayer);
         renderer.drawBgLevelOne(background);
         renderer.drawMoonBig(moon);
         drawClouds();
+    }
+
+    private void drawStars(Array<Star> stars) {
+        for(Star star : stars){
+            System.out.println(star.getAlpha());
+            renderer.drawSingleStar(star.getPosition().x, star.getPosition().y, star.getAlpha());
+        }
     }
 
     private void drawClouds() {
