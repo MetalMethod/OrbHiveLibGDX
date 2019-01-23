@@ -14,9 +14,12 @@ public class Constants {
     public static final int GAME_WIDTH = 256;
     public static final int GAME_HEIGHT = 256;
 
+    //bg scroll speed right to left
     public static final float BG_LVL_ONE_X_SPEED = 1.5f;
-    //public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
-    public static final float BG_LVL_ONE_Y_SPEED = 3f;
+    public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
+
+    // SPEED of animation for debug and dev
+    // public static final float BG_LVL_ONE_Y_SPEED = 3f;
 
     public static final int MOON_BIG_SIZE = 80;
 

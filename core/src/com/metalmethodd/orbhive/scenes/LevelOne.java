@@ -86,7 +86,7 @@ public class LevelOne extends BaseLevel {
     private void update(float delta) {
         updateBackground();
         updateLevelBasicLogic(delta);
-        //spawnEnemies();
+        spawnEnemies();
     }
 
     private void updateBackground() {
@@ -162,7 +162,6 @@ public class LevelOne extends BaseLevel {
 
     private void drawStars(Array<Star> stars) {
         for(Star star : stars){
-            System.out.println(star.getAlpha());
             renderer.drawSingleStar(star.getPosition().x, star.getPosition().y, star.getAlpha());
         }
     }
@@ -182,7 +181,7 @@ public class LevelOne extends BaseLevel {
 
         // interval of time since last spawning
         //final float interval = 0.3f;
-        final float interval = 0.8f;
+        final float interval = 1f;
 
         // amount of time that spawning happens
         final float variation = 0.05f;
