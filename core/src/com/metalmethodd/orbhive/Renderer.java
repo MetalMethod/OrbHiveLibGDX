@@ -75,6 +75,8 @@ public class Renderer {
 
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
+    private float explosionTime;
+    private Animation playerShootAnimation;
 
     private Animation enemyFirstAnimation;
     private Animation enemySecondAnimation;
@@ -82,7 +84,7 @@ public class Renderer {
 
     private Animation enemyFirstWaspAnimation;
     private Animation enemyFirstWaspDeathAnimation;
-    private Animation playerShootAnimation;
+    private float delta;
 
     public Renderer() {
         AssetLoader.load();
@@ -204,7 +206,7 @@ public class Renderer {
         playerExplosionSix.flip(false, true);
         TextureRegion[] playerExplosions = {playerExplosionOne, playerExplosionTwo, playerExplosionThree, playerExplosionFour, playerExplosionFive, playerExplosionSix};
         playerExplosionAnimation = new Animation(0.15f, (Object[]) playerExplosions);
-        playerExplosionAnimation.setPlayMode(Animation.PlayMode.LOOP);
+        playerExplosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 
         playerShootOne = new TextureRegion(sprites, 0, 44, 15, 8);
         playerShootTwo = new TextureRegion(sprites, 30, 44, 15, 8);
@@ -434,7 +436,7 @@ public class Renderer {
         }
     }
 
-    public void drawPlayer(Player player, float runTime) {
+    public void drawPlayer(Player player, float runTime, float delta) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -456,7 +458,11 @@ public class Renderer {
         }
 
         if (player.isPlayerHit()) {
-            drawPlayerExplosion(runTime, player);
+            drawPlayerExplosion(explosionTime, player);
+            explosionTime += delta;
+        }if(playerExplosionAnimation.isAnimationFinished(explosionTime)){
+            explosionTime = 0;
+            player.setPlayerHit(false);
         }
 
         if (player.isPlayerShooting()) {

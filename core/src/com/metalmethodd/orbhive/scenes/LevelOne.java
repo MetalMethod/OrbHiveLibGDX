@@ -72,7 +72,7 @@ public class LevelOne extends BaseLevel {
 
         clearDrawBackgroundColor();
         drawBackground();
-        drawPlayer();
+        drawPlayer(delta);
         drawEnemies(enemies);
         drawBullets();
     }

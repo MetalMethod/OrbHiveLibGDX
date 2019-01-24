@@ -15,6 +15,7 @@ public class Player extends AbstractGameObject{
     private float playerHitTime;
     private int playerShootingTime;
     private boolean isPlayerShooting;
+    private boolean playerHitAnimationState;
 
     public Player(Vector2 position) {
         super(position, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -30,6 +31,7 @@ public class Player extends AbstractGameObject{
         playerHitTime = 0;
         playerShootingTime = 0;
         isPlayerShooting = false;
+        playerHitAnimationState = false;
     }
 
     public enum EntityState {
@@ -149,11 +151,16 @@ public class Player extends AbstractGameObject{
             velocity.set(getVelocity().add(-hitAmount, 0));
             playerHitTime = PLAYER_HIT_ANIMATION_DURATION;
             lifes--;
+            playerHitAnimationState = true;
         }
     }
 
     public boolean isPlayerHit() {
-        return playerHitTime > 0;
+        return playerHitAnimationState;
+    }
+
+    public void setPlayerHit(boolean value){
+        playerHitAnimationState = value;
     }
 
     public boolean isPlayerShooting() {

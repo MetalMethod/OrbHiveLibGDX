@@ -123,8 +123,8 @@ public class BaseLevel implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-    protected void drawPlayer() {
-        renderer.drawPlayer(player, runTime);
+    protected void drawPlayer(float delta) {
+        renderer.drawPlayer(player, runTime, delta);
         //renderer.drawPlayerBoundingRect(player);
     }
 
