@@ -21,6 +21,12 @@ public class SimpleEnemy extends AbstractEnemy{
     public void update() {
         position.x -= speed;
 
+        if (!isHit()) {
+            position.x -= speed;
+        } else {
+            position.add(speed * 2, 0);
+        }
+
         //must call updateBoundingRectangle() after all methods
         updateBoundingRectangle();
     }

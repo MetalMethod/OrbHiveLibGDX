@@ -6,12 +6,15 @@ import static com.metalmethodd.orbhive.Constants.*;
 
 public class Wasp extends AbstractEnemy{
 
+    private int deathDirection;
+
     public Wasp(Vector2 position) {
         super(position, WASP_WIDTH, WASP_HEIGHT);
         init();
         enemyType = EnemyType.WASP;
         speed = getRandomSpeed();
         isHitState = false;
+        deathDirection = EnemyFactory.getRandomInt(0, 1);
     }
 
     /**
@@ -19,24 +22,30 @@ public class Wasp extends AbstractEnemy{
      * in the end after of all  methods calls
      */
     public void update() {
-        int coin = EnemyFactory.getRandomInt(1, 2);
+        int coin = EnemyFactory.getRandomInt(0, 1);
         int y = 1;
 
         // movement if wasp in not hit
         if (!isHitState) {
             position.add(-speed, 0);
 
-            if (coin == 1) {
+            if (coin == 0) {
                 y = 1;
             }
-            if (coin == 2) {
+            if (coin == 1) {
                 y = -1;
             }
             position.add(0, y);
         }
 
         //movement if wasp is hit
-        if (isHitState) {
+        if (isHit()) {
+            if(deathDirection == 0){
+                y = 1;
+            }
+            if(deathDirection == 1){
+                y = -1;
+            }
             position.add(speed, y);
         }
 

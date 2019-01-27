@@ -147,11 +147,11 @@ public class BaseLevel implements Screen {
                     break;
 
                 case SIMPLE_ENEMY:
-                    renderer.drawSimpleEnemy(runTime, enemy);
+                    renderer.drawSimpleEnemy(runTime, delta, enemies, enemy);
                     break;
 
                 case BRAIN_SMALL:
-                    renderer.drawBrainSmall(runTime, enemy);
+                    renderer.drawBrainSmall(runTime, delta, enemies, enemy);
                     break;
             }
         }
@@ -202,10 +202,10 @@ public class BaseLevel implements Screen {
     }
 
     protected void checkCollisionBulletsEnemies(Array<Bullet> bullets, Array<AbstractEnemy> enemies) {
-        for (AbstractEnemy wasp : enemies) {
+        for (AbstractEnemy enemy : enemies) {
             for (Bullet bullet : bullets) {
-                if (wasp.getBoundingRectangle().overlaps(bullet.getBoundingRectangle())) {
-                    killEnemy(wasp);
+                if (enemy.getBoundingRectangle().overlaps(bullet.getBoundingRectangle())) {
+                    killEnemy(enemy);
                     bullets.removeValue(bullet, false);
                 }
             }
@@ -215,11 +215,6 @@ public class BaseLevel implements Screen {
 
     protected void killEnemy(AbstractEnemy enemy) {
         enemy.setHit(true);
-        //System.out.println("Enemy HIT");
-        if (enemy.getEnemyType() == EnemyType.SIMPLE_ENEMY ||
-                enemy.getEnemyType() == EnemyType.BRAIN_SMALL) {
-            enemies.removeValue(enemy, false);
-        }
     }
 
 }

@@ -13,6 +13,7 @@ import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
 import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
+import com.metalmethodd.orbhive.gameobjects.enemies.EnemyType;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
@@ -73,6 +74,8 @@ public class Renderer {
 
     private TextureRegion playerShootOne, playerShootTwo, playerShootThree, playerShootFour;
 
+    private TextureRegion enemyExplosionOne, enemyExplosionTwo, enemyExplosionThree;
+
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
     private float explosionTime;
@@ -82,8 +85,10 @@ public class Renderer {
     private Animation enemySecondAnimation;
     private Animation enemySecondOptionAnimation;
 
+    private Animation enemyExplosionAnimation;
     private Animation waspAnimation;
     private Animation waspDeathAnimation;
+
     private float delta;
     private float waspDeathTime = 0;
 
@@ -239,6 +244,14 @@ public class Renderer {
                 7,
                 4
         );
+
+        enemyExplosionOne = new TextureRegion(sprites, 129, 227, 30, 30);
+        enemyExplosionTwo = new TextureRegion(sprites, 159, 227, 30, 30);
+        enemyExplosionThree = new TextureRegion(sprites, 189, 227, 30, 30);
+        TextureRegion[] enemyExplosions = new TextureRegion[]{enemyExplosionOne, enemyExplosionTwo, enemyExplosionThree};
+        enemyExplosionAnimation = new Animation(0.08f, (Object[]) enemyExplosions);
+        enemyExplosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
+
 
         // ENEMIES
         enemyFirstOne = new TextureRegion(sprites, 0, 133, 16, 14);
@@ -519,6 +532,45 @@ public class Renderer {
         batch.end();
     }
 
+    private void drawEnemyExplosion(float runTime, AbstractEnemy enemy) {
+        batch.begin();
+        batch.enableBlending();
+
+        float x = enemy.getPosition().x;
+        float y = enemy.getPosition().y;
+        float w = 30;
+        float h = 30;
+
+        switch (enemy.getEnemyType()) {
+            case SIMPLE_ENEMY:
+                y -= 5;
+                break;
+
+            case BRAIN_SMALL:
+                x -= 10;
+                y -= 15;
+                w = 60;
+                h = 60;
+                break;
+
+            case WASP:
+                x -= 5;
+                y -= 10;
+                w = 45;
+                h = 45;
+                break;
+        }
+
+        batch.draw(
+                (TextureRegion) enemyExplosionAnimation.getKeyFrame(runTime),
+                x, y,
+                w,
+                h
+        );
+        batch.disableBlending();
+        batch.end();
+    }
+
 
     public void drawPlayerBoundingRect(Player player) {
 //        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -581,53 +633,40 @@ public class Renderer {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, float delta, Array<AbstractEnemy> enemies, AbstractEnemy wasp) {
-        if (!wasp.isHit()) {
+    public void drawWasp(float runTime, float delta, Array<AbstractEnemy> enemies, AbstractEnemy enemy) {
+        if (!enemy.isHit()) {
             batch.begin();
             batch.enableBlending();
             batch.draw(
                     (TextureRegion) waspAnimation.getKeyFrame(runTime),
-                    wasp.getPosition().x,
-                    wasp.getPosition().y,
-                    wasp.getWidth(),
-                    wasp.getHeight()
+                    enemy.getPosition().x,
+                    enemy.getPosition().y,
+                    enemy.getWidth(),
+                    enemy.getHeight()
             );
             batch.disableBlending();
             batch.end();
         }
-        else if(wasp.isHit()) {
-            drawWaspDeath(wasp.getDeathAnimationTime(), wasp);
-            wasp.setDeathAnimationTime(wasp.getDeathAnimationTime() + delta);
-        }
+        /**
+         else if (enemy.isHit()) {
+         drawWaspDeath(enemy.getDeathAnimationTime(), enemy);
+         enemy.setDeathAnimationTime(enemy.getDeathAnimationTime() + delta);
+         }
 
-        if (waspDeathAnimation.isAnimationFinished(wasp.getDeathAnimationTime())) {
-            wasp.setDeathAnimationTime(0);
-            enemies.removeValue(wasp, false);
-        }
+         if (waspDeathAnimation.isAnimationFinished(enemy.getDeathAnimationTime())) {
+         enemy.setDeathAnimationTime(0);
+         enemies.removeValue(enemy, false);
+         }
 
+         */
+        enemyKillCondition(delta, enemies, enemy);
     }
 
-    public void drawWaspDeath(float runTime, AbstractEnemy wasp) {
+    public void drawWaspDeath(float runTime, AbstractEnemy enemy) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) waspDeathAnimation.getKeyFrame(runTime),
-                wasp.getPosition().x,
-                wasp.getPosition().y,
-                wasp.getWidth(),
-                wasp.getHeight()
-        );
-        batch.disableBlending();
-        batch.end();
-
-    }
-
-
-    public void drawSimpleEnemy(float runTime, AbstractEnemy enemy) {
-        batch.begin();
-        batch.enableBlending();
-        batch.draw(
-                (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
                 enemy.getPosition().x,
                 enemy.getPosition().y,
                 enemy.getWidth(),
@@ -635,20 +674,55 @@ public class Renderer {
         );
         batch.disableBlending();
         batch.end();
+
+        drawEnemyExplosion(runTime, enemy);
     }
 
-    public void drawBrainSmall(float runTime, AbstractEnemy enemy) {
-        batch.begin();
-        batch.enableBlending();
-        batch.draw(
-                (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
-                enemy.getPosition().x,
-                enemy.getPosition().y,
-                enemy.getWidth(),
-                enemy.getHeight()
-        );
-        batch.disableBlending();
-        batch.end();
+
+    public void drawSimpleEnemy(float runTime, float delta, Array<AbstractEnemy> enemies, AbstractEnemy enemy) {
+        if (!enemy.isHit()) {
+            batch.begin();
+            batch.enableBlending();
+            batch.draw(
+                    (TextureRegion) enemyFirstAnimation.getKeyFrame(runTime),
+                    enemy.getPosition().x,
+                    enemy.getPosition().y,
+                    enemy.getWidth(),
+                    enemy.getHeight()
+            );
+            batch.disableBlending();
+            batch.end();
+        }
+        enemyKillCondition(delta, enemies, enemy);
+    }
+
+    public void drawBrainSmall(float runTime, float delta, Array<AbstractEnemy> enemies, AbstractEnemy enemy) {
+        if (!enemy.isHit()) {
+            batch.begin();
+            batch.enableBlending();
+            batch.draw(
+                    (TextureRegion) enemySecondAnimation.getKeyFrame(runTime),
+                    enemy.getPosition().x,
+                    enemy.getPosition().y,
+                    enemy.getWidth(),
+                    enemy.getHeight()
+            );
+            batch.disableBlending();
+            batch.end();
+        }
+        enemyKillCondition(delta, enemies, enemy);
+    }
+
+    private void enemyKillCondition(float delta, Array<AbstractEnemy> enemies, AbstractEnemy enemy) {
+        if (enemy.isHit()) {
+            drawEnemyExplosion(enemy.getDeathAnimationTime(), enemy);
+            enemy.setDeathAnimationTime(enemy.getDeathAnimationTime() + delta);
+        }
+
+        if (enemyExplosionAnimation.isAnimationFinished(enemy.getDeathAnimationTime())) {
+            enemy.setDeathAnimationTime(0);
+            enemies.removeValue(enemy, false);
+        }
     }
 
     public void drawSplashScreen() {
