@@ -5,9 +5,6 @@ import com.metalmethodd.orbhive.Constants;
 import com.metalmethodd.orbhive.gameobjects.AbstractGameObject;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 
-import static com.metalmethodd.orbhive.Constants.WASP_HEIGHT;
-import static com.metalmethodd.orbhive.Constants.WASP_WIDTH;
-
 public class AbstractEnemy extends AbstractGameObject implements Enemy {
 
     protected EnemyType enemyType;
@@ -20,7 +17,6 @@ public class AbstractEnemy extends AbstractGameObject implements Enemy {
         isHitState = false;
         deathAnimationTime = 0;
     }
-
 
     @Override
     public void update() {
@@ -40,6 +36,10 @@ public class AbstractEnemy extends AbstractGameObject implements Enemy {
     @Override
     public void setHit(boolean state) {
         isHitState = state;
+    }
+
+    public float getDeathAnimationTime() {
+        return deathAnimationTime;
     }
 
     public void setDeathAnimationTime(float deathAnimationTime) {

@@ -25,5 +25,7 @@ public interface Enemy {
     boolean isHit();
 
     void setHit(boolean state);
+
+    float getDeathAnimationTime();
 }
 

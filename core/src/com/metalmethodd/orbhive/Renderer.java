@@ -583,7 +583,7 @@ public class Renderer {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, float delta, Array<Enemy> enemies, Enemy wasp) {
+    public void drawWasp(float runTime, float delta, Array<AbstractEnemy> enemies, AbstractEnemy wasp) {
         if (!wasp.isHit()) {
             batch.begin();
             batch.enableBlending();
@@ -598,18 +598,18 @@ public class Renderer {
             batch.end();
         }
         else if(wasp.isHit()) {
-            drawWaspDeath(waspDeathTime, wasp);
-            waspDeathTime += delta;
+            drawWaspDeath(wasp.getDeathAnimationTime(), wasp);
+            wasp.setDeathAnimationTime(wasp.getDeathAnimationTime() + delta);
         }
 
-        if (enemyFirstWaspDeathAnimation.isAnimationFinished(waspDeathTime)) {
-            waspDeathTime = 0;
+        if (enemyFirstWaspDeathAnimation.isAnimationFinished(wasp.getDeathAnimationTime())) {
+            wasp.setDeathAnimationTime(0);
             enemies.removeValue(wasp, false);
         }
 
     }
 
-    public void drawWaspDeath(float runTime, Enemy wasp) {
+    public void drawWaspDeath(float runTime, AbstractEnemy wasp) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
