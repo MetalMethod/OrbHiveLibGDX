@@ -66,16 +66,12 @@ public class Constants {
     public static final int PLAYER_GRAVITY = 5;
     public static final int PLAYER_WIND = -3;
 
-    public static final int movementAcceleration = 50;
-
-    public static final int enemyHitAcceleration = -100;
-
-
     // GAME LOGIC
     public static final int INITIAL_GAMEOBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
-//    public static final float INITIAL_PLAYER_X = 50f;
-    public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH-10;
+//inital value
+    //    public static final float INITIAL_PLAYER_X = 50f;
+    public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH-20 ;
     public static final float INITIAL_PLAYER_Y = 100f;
 
     // TOUCH

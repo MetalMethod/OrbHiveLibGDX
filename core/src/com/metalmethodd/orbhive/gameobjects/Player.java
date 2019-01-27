@@ -60,7 +60,7 @@ public class Player extends AbstractGameObject {
 
         startGameAnimation();
         if (gameStarted) {
-            //detectWalls();
+            detectWalls();
         }
         updateHitAnimation();
 
