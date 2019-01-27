@@ -6,7 +6,7 @@ import com.metalmethodd.orbhive.Constants;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
-public class Player extends AbstractGameObject{
+public class Player extends AbstractGameObject {
     private Array<Bullet> bullets;
     private EntityState currentState;
     private int lifes;
@@ -16,6 +16,7 @@ public class Player extends AbstractGameObject{
     private int playerShootingTime;
     private boolean isPlayerShooting;
     private boolean playerHitAnimationState;
+    private boolean gameStarted;
 
     public Player(Vector2 position) {
         super(position, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -32,6 +33,7 @@ public class Player extends AbstractGameObject{
         playerShootingTime = 0;
         isPlayerShooting = false;
         playerHitAnimationState = false;
+        gameStarted = false;
     }
 
     public enum EntityState {
@@ -55,12 +57,31 @@ public class Player extends AbstractGameObject{
     public void update(float delta) {
         velocity.add(acceleration.cpy().scl(delta));
         position.add(velocity.cpy().scl(delta));
-        detectWalls();
+
+        startGameAnimation();
+        if (gameStarted) {
+            //detectWalls();
+        }
         updateHitAnimation();
 
         //must call updateBoundingRectangle() after all methods
         updateBoundingRectangle();
         updatePlayerShootingAnimation();
+    }
+
+    private void startGameAnimation() {
+        if (position.x < 20) {
+            position.x += 1;
+        } else {
+            gameStarted = true;
+        }
+
+    }
+
+    public void reset(){
+        stop();
+        gameStarted = false;
+        startGameAnimation();
     }
 
     private void updateLifes() {
@@ -101,9 +122,9 @@ public class Player extends AbstractGameObject{
         isPlayerMoving = true;
     }
 
-///// TOUCH
+    ///// TOUCH
     public void moveUpDrag(float distance) {
-        setVelocity(getVelocity().add(0, - PLAYER_DRAG_VELOCITY * distance));
+        setVelocity(getVelocity().add(0, -PLAYER_DRAG_VELOCITY * distance));
         isPlayerMoving = true;
     }
 
@@ -159,7 +180,7 @@ public class Player extends AbstractGameObject{
         return playerHitAnimationState;
     }
 
-    public void setPlayerHit(boolean value){
+    public void setPlayerHit(boolean value) {
         playerHitAnimationState = value;
     }
 
@@ -169,12 +190,12 @@ public class Player extends AbstractGameObject{
 
     private void updateHitAnimation() {
         playerHitTime--;
-        if(playerHitTime < 0) playerHitTime = 0;
+        if (playerHitTime < 0) playerHitTime = 0;
     }
 
     private void updatePlayerShootingAnimation() {
         playerShootingTime--;
-        if(playerShootingTime < 0) playerShootingTime = 0;
+        if (playerShootingTime < 0) playerShootingTime = 0;
     }
 
     public EntityState getState() {

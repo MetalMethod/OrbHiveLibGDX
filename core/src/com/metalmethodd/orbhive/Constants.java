@@ -74,7 +74,8 @@ public class Constants {
     // GAME LOGIC
     public static final int INITIAL_GAMEOBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
-    public static final float INITIAL_PLAYER_X = 50f;
+//    public static final float INITIAL_PLAYER_X = 50f;
+    public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH-10;
     public static final float INITIAL_PLAYER_Y = 100f;
 
     // TOUCH
