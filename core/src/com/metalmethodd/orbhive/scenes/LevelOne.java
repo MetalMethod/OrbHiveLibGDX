@@ -73,7 +73,7 @@ public class LevelOne extends BaseLevel {
         clearDrawBackgroundColor();
         drawBackground();
         drawPlayer(delta);
-        drawEnemies(enemies);
+        drawEnemies(enemies, delta);
         drawBullets();
     }
 
@@ -195,13 +195,16 @@ public class LevelOne extends BaseLevel {
         // spawn by interval
         if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation * 4) {
             enemies.add(EnemyFactory.createWasp());
-            enemies.add(EnemyFactory.createSimpleEnemy());
+            enemies.add(EnemyFactory.createWasp());
+            //TODO
+            //enemies.add(EnemyFactory.createSimpleEnemy());
             previousSpawn = runTime;
         }
 
         // Brain spawn by interval
         if (runTime > previousBrainSpawn + 2 && runTime < previousBrainSpawn + 2 + variation * 4) {
-            enemies.add(EnemyFactory.createBrainSmall());
+            //TODO
+            //enemies.add(EnemyFactory.createBrainSmall());
             previousBrainSpawn = runTime;
         }
     }

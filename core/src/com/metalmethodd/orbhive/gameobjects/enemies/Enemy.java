@@ -22,5 +22,8 @@ public interface Enemy {
 
     float getHeight();
 
+    boolean isHit();
+
+    void setHit(boolean state);
 }
 

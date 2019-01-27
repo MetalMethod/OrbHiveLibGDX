@@ -34,4 +34,14 @@ public class SimpleEnemy extends AbstractGameObject implements Enemy {
         updateBoundingRectangle();
     }
 
+    @Override
+    public boolean isHit() {
+        return false;
+    }
+
+    @Override
+    public void setHit(boolean state) {
+
+    }
+
 }

@@ -85,6 +85,7 @@ public class Renderer {
     private Animation enemyFirstWaspAnimation;
     private Animation enemyFirstWaspDeathAnimation;
     private float delta;
+    private float waspDeathTime = 0;
 
     public Renderer() {
         AssetLoader.load();
@@ -310,7 +311,7 @@ public class Renderer {
         enemyFirstWaspDeathSeven.flip(false, true);
 
         TextureRegion[] enemyFirstWaspDeaths = {enemyFirstWaspDeathOne, enemyFirstWaspDeathTwo, enemyFirstWaspDeathThree, enemyFirstWaspDeathFour, enemyFirstWaspDeathFive, enemyFirstWaspDeathSix, enemyFirstWaspDeathSeven};
-        enemyFirstWaspDeathAnimation = new Animation(0.1f, (Object[]) enemyFirstWaspDeaths);
+        enemyFirstWaspDeathAnimation = new Animation(0.23f, (Object[]) enemyFirstWaspDeaths);
         enemyFirstWaspDeathAnimation.setPlayMode(Animation.PlayMode.NORMAL);
     }
 
@@ -460,7 +461,9 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
-        }if(playerExplosionAnimation.isAnimationFinished(explosionTime)){
+        }
+
+        if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
             explosionTime = 0;
             player.setPlayerHit(false);
         }
@@ -578,21 +581,33 @@ public class Renderer {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, Enemy wasp) {
-        batch.begin();
-        batch.enableBlending();
-        batch.draw(
-                (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
-                wasp.getPosition().x,
-                wasp.getPosition().y,
-                wasp.getWidth(),
-                wasp.getHeight()
-        );
-        batch.disableBlending();
-        batch.end();
+    public void drawWasp(float runTime, float delta, Enemy wasp) {
+        if (!wasp.isHit()) {
+            batch.begin();
+            batch.enableBlending();
+            batch.draw(
+                    (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
+                    wasp.getPosition().x,
+                    wasp.getPosition().y,
+                    wasp.getWidth(),
+                    wasp.getHeight()
+            );
+            batch.disableBlending();
+            batch.end();
+        }
+        if (wasp.isHit()) {
+            //   if (true) {
+            drawWaspDeath(waspDeathTime, wasp);
+            waspDeathTime += delta;
+        }
+
+        if (enemyFirstWaspDeathAnimation.isAnimationFinished(waspDeathTime)) {
+            waspDeathTime = 0;
+        }
+
     }
 
-    public void drawWaspDeath(float runTime, Wasp wasp) {
+    public void drawWaspDeath(float runTime, Enemy wasp) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -604,6 +619,20 @@ public class Renderer {
         );
         batch.disableBlending();
         batch.end();
+
+        /**
+         batch.begin();
+         batch.enableBlending();
+         batch.draw(enemyFirstWaspDeathOne, 100,50);
+         batch.draw(enemyFirstWaspDeathTwo, 100,70);
+         batch.draw(enemyFirstWaspDeathThree, 100,90);
+         batch.draw(enemyFirstWaspDeathFour, 100,110);
+         batch.draw(enemyFirstWaspDeathFive, 100,130);
+         batch.draw(enemyFirstWaspDeathSix, 100,150);
+         batch.draw(enemyFirstWaspDeathSeven, 100,170);
+         batch.disableBlending();
+         batch.end();
+         */
     }
 
 

@@ -33,4 +33,14 @@ public class BrainSmall extends AbstractGameObject implements Enemy {
         updateBoundingRectangle();
     }
 
+    @Override
+    public boolean isHit() {
+        return false;
+    }
+
+    @Override
+    public void setHit(boolean state) {
+
+    }
+
 }

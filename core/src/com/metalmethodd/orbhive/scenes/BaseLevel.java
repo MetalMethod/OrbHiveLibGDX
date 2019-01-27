@@ -135,13 +135,13 @@ public class BaseLevel implements Screen {
         clearDrawBackgroundColor();
     }
 
-    protected void drawEnemies(Array<Enemy> enemies) {
+    protected void drawEnemies(Array<Enemy> enemies, float delta) {
         for (Enemy enemy : enemies) {
             //renderer.drawEnemyBoundingRect(enemy);
 
             switch (enemy.getEnemyType()) {
                 case WASP:
-                    renderer.drawWasp(runTime, enemy);
+                    renderer.drawWasp(runTime, delta, enemy);
                     break;
 
                 case SIMPLE_ENEMY:
@@ -171,10 +171,18 @@ public class BaseLevel implements Screen {
                 continue;
             }
 
-            if (wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
+            if (wasp.getBoundingRectangle().x > GAME_WIDTH + 10) {
                 enemies.removeValue(wasp, false);
-                player.takeHit(Constants.PLAYER_HIT_ACCELERATION);
-                enemies.add(EnemyFactory.createWasp());
+                continue;
+            }
+
+
+            if (wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
+                if (!wasp.isHit()) {
+                    enemies.removeValue(wasp, false);
+                    player.takeHit(Constants.PLAYER_HIT_ACCELERATION);
+                    enemies.add(EnemyFactory.createWasp());
+                }
             }
         }
     }
@@ -199,12 +207,14 @@ public class BaseLevel implements Screen {
                     bullets.removeValue(bullet, false);
                 }
             }
+
         }
     }
 
     protected void killWasp(Enemy wasp) {
+        wasp.setHit(true);
         //System.out.println("Enemy HIT");
-        enemies.removeValue(wasp, false);
+        // enemies.removeValue(wasp, false);
     }
 
 }

@@ -7,15 +7,17 @@ import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
-public class Wasp extends AbstractGameObject implements Enemy{
+public class Wasp extends AbstractGameObject implements Enemy {
 
     private EnemyType enemyType;
+    private boolean isHitState;
 
     public Wasp(Vector2 position) {
         super(position, WASP_WIDTH, WASP_HEIGHT);
         init();
         enemyType = EnemyType.WASP;
         speed = getRandomSpeed();
+        isHitState = false;
     }
 
     @Override
@@ -28,13 +30,52 @@ public class Wasp extends AbstractGameObject implements Enemy{
      * in the end after of all  methods calls
      */
     public void update() {
-        position.x -= speed;
+        int coin = EnemyFactory.getRandomInt(1, 2);
+        System.out.println(coin);
+        int x = 2;
+        int y = 1;
+
+        // movement if wasp in not hit
+        if (!isHitState) {
+            position.add(-speed, 0);
+        }
+
+        if (coin == 1) {
+            y = 1;
+        }
+        if (coin == 2) {
+            y = -1;
+        }
+        position.add(x, y);
+
+        //movement if wasp is hit
+        if (isHitState) {
+            if (coin == 1) {
+                y = 2;
+            }
+            if (coin == 2) {
+                y = -2;
+            }
+                position.add(speed, y);
+
+        }
 
         //must call updateBoundingRectangle() after all methods
         updateBoundingRectangle();
     }
 
-    private int getRandomSpeed(){
+    @Override
+    public boolean isHit() {
+        return isHitState;
+
+    }
+
+    @Override
+    public void setHit(boolean state) {
+        isHitState = state;
+    }
+
+    private int getRandomSpeed() {
         return EnemyFactory.getRandomInt(Constants.WASP_MINIMUM_SPEED, Constants.WASP_MAXIMUM_SPEED);
     }
 
