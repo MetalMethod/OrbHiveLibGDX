@@ -9,12 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
-import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
 import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
-import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
@@ -68,8 +66,8 @@ public class Renderer {
     private TextureRegion enemySecondOne, enemySecondTwo, enemySecondThree;
     private TextureRegion enemySecondFour, enemySecondFive, enemySecondSix, enemySecondSeven;
 
-    private TextureRegion enemyFirstWaspOne, enemyFirstWaspTwo, enemyFirstWaspThree, enemyFirstWaspFour;
-    private TextureRegion enemyFirstWaspDeathOne, enemyFirstWaspDeathTwo, enemyFirstWaspDeathThree, enemyFirstWaspDeathFour, enemyFirstWaspDeathFive, enemyFirstWaspDeathSix, enemyFirstWaspDeathSeven;
+    private TextureRegion waspOne, waspTwo, waspThree, waspFour;
+    private TextureRegion waspDeathOne, waspDeathTwo, waspDeathThree, waspDeathFour, waspDeathFive, waspDeathSix, waspDeathSeven;
 
     private TextureRegion bulletOne, bulletTwo;
 
@@ -84,8 +82,8 @@ public class Renderer {
     private Animation enemySecondAnimation;
     private Animation enemySecondOptionAnimation;
 
-    private Animation enemyFirstWaspAnimation;
-    private Animation enemyFirstWaspDeathAnimation;
+    private Animation waspAnimation;
+    private Animation waspDeathAnimation;
     private float delta;
     private float waspDeathTime = 0;
 
@@ -284,37 +282,37 @@ public class Renderer {
         enemySecondOptionAnimation = new Animation(0.15f, (Object[]) enemySecondsOptionTwo);
         enemySecondOptionAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
-        enemyFirstWaspOne = new TextureRegion(sprites, 0, 55, 16, 16);
-        enemyFirstWaspTwo = new TextureRegion(sprites, 16, 55, 16, 16);
-        enemyFirstWaspThree = new TextureRegion(sprites, 32, 56, 16, 16);
-        enemyFirstWaspFour = new TextureRegion(sprites, 48, 55, 16, 16);
-        enemyFirstWaspOne.flip(false, true);
-        enemyFirstWaspTwo.flip(false, true);
-        enemyFirstWaspThree.flip(false, true);
-        enemyFirstWaspFour.flip(false, true);
+        waspOne = new TextureRegion(sprites, 0, 55, 16, 16);
+        waspTwo = new TextureRegion(sprites, 16, 55, 16, 16);
+        waspThree = new TextureRegion(sprites, 32, 56, 16, 16);
+        waspFour = new TextureRegion(sprites, 48, 55, 16, 16);
+        waspOne.flip(false, true);
+        waspTwo.flip(false, true);
+        waspThree.flip(false, true);
+        waspFour.flip(false, true);
 
-        TextureRegion[] enemyFirstWasps = {enemyFirstWaspOne, enemyFirstWaspTwo, enemyFirstWaspThree};
-        enemyFirstWaspAnimation = new Animation(0.08f, (Object[]) enemyFirstWasps);
-        enemyFirstWaspAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+        TextureRegion[] enemyFirstWasps = {waspOne, waspTwo, waspThree};
+        waspAnimation = new Animation(0.08f, (Object[]) enemyFirstWasps);
+        waspAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
-        enemyFirstWaspDeathOne = new TextureRegion(sprites, 1, 117, 16, 16);
-        enemyFirstWaspDeathTwo = new TextureRegion(sprites, 17, 117, 16, 16);
-        enemyFirstWaspDeathThree = new TextureRegion(sprites, 32, 117, 14, 16);
-        enemyFirstWaspDeathFour = new TextureRegion(sprites, 47, 117, 14, 16);
-        enemyFirstWaspDeathFive = new TextureRegion(sprites, 62, 117, 14, 16);
-        enemyFirstWaspDeathSix = new TextureRegion(sprites, 76, 117, 14, 16);
-        enemyFirstWaspDeathSeven = new TextureRegion(sprites, 92, 117, 14, 16);
-        enemyFirstWaspDeathOne.flip(false, true);
-        enemyFirstWaspDeathTwo.flip(false, true);
-        enemyFirstWaspDeathThree.flip(false, true);
-        enemyFirstWaspDeathFour.flip(false, true);
-        enemyFirstWaspDeathFive.flip(false, true);
-        enemyFirstWaspDeathSix.flip(false, true);
-        enemyFirstWaspDeathSeven.flip(false, true);
+        waspDeathOne = new TextureRegion(sprites, 1, 117, 16, 16);
+        waspDeathTwo = new TextureRegion(sprites, 17, 117, 16, 16);
+        waspDeathThree = new TextureRegion(sprites, 32, 117, 14, 16);
+        waspDeathFour = new TextureRegion(sprites, 47, 117, 14, 16);
+        waspDeathFive = new TextureRegion(sprites, 62, 117, 14, 16);
+        waspDeathSix = new TextureRegion(sprites, 76, 117, 14, 16);
+        waspDeathSeven = new TextureRegion(sprites, 92, 117, 14, 16);
+        waspDeathOne.flip(false, true);
+        waspDeathTwo.flip(false, true);
+        waspDeathThree.flip(false, true);
+        waspDeathFour.flip(false, true);
+        waspDeathFive.flip(false, true);
+        waspDeathSix.flip(false, true);
+        waspDeathSeven.flip(false, true);
 
-        TextureRegion[] enemyFirstWaspDeaths = {enemyFirstWaspDeathOne, enemyFirstWaspDeathTwo, enemyFirstWaspDeathThree, enemyFirstWaspDeathFour, enemyFirstWaspDeathFive, enemyFirstWaspDeathSix, enemyFirstWaspDeathSeven};
-        enemyFirstWaspDeathAnimation = new Animation(0.12f, (Object[]) enemyFirstWaspDeaths);
-        enemyFirstWaspDeathAnimation.setPlayMode(Animation.PlayMode.NORMAL);
+        TextureRegion[] enemyFirstWaspDeaths = {waspDeathOne, waspDeathTwo, waspDeathThree, waspDeathFour, waspDeathFive, waspDeathSix, waspDeathSeven};
+        waspDeathAnimation = new Animation(0.12f, (Object[]) enemyFirstWaspDeaths);
+        waspDeathAnimation.setPlayMode(Animation.PlayMode.NORMAL);
     }
 
     public void dispose() {
@@ -588,7 +586,7 @@ public class Renderer {
             batch.begin();
             batch.enableBlending();
             batch.draw(
-                    (TextureRegion) enemyFirstWaspAnimation.getKeyFrame(runTime),
+                    (TextureRegion) waspAnimation.getKeyFrame(runTime),
                     wasp.getPosition().x,
                     wasp.getPosition().y,
                     wasp.getWidth(),
@@ -602,7 +600,7 @@ public class Renderer {
             wasp.setDeathAnimationTime(wasp.getDeathAnimationTime() + delta);
         }
 
-        if (enemyFirstWaspDeathAnimation.isAnimationFinished(wasp.getDeathAnimationTime())) {
+        if (waspDeathAnimation.isAnimationFinished(wasp.getDeathAnimationTime())) {
             wasp.setDeathAnimationTime(0);
             enemies.removeValue(wasp, false);
         }
@@ -613,7 +611,7 @@ public class Renderer {
         batch.begin();
         batch.enableBlending();
         batch.draw(
-                (TextureRegion) enemyFirstWaspDeathAnimation.getKeyFrame(runTime),
+                (TextureRegion) waspDeathAnimation.getKeyFrame(runTime),
                 wasp.getPosition().x,
                 wasp.getPosition().y,
                 wasp.getWidth(),
@@ -622,23 +620,10 @@ public class Renderer {
         batch.disableBlending();
         batch.end();
 
-        /**
-         batch.begin();
-         batch.enableBlending();
-         batch.draw(enemyFirstWaspDeathOne, 100,50);
-         batch.draw(enemyFirstWaspDeathTwo, 100,70);
-         batch.draw(enemyFirstWaspDeathThree, 100,90);
-         batch.draw(enemyFirstWaspDeathFour, 100,110);
-         batch.draw(enemyFirstWaspDeathFive, 100,130);
-         batch.draw(enemyFirstWaspDeathSix, 100,150);
-         batch.draw(enemyFirstWaspDeathSeven, 100,170);
-         batch.disableBlending();
-         batch.end();
-         */
     }
 
 
-    public void drawSimpleEnemy(float runTime, Enemy enemy) {
+    public void drawSimpleEnemy(float runTime, AbstractEnemy enemy) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
@@ -652,7 +637,7 @@ public class Renderer {
         batch.end();
     }
 
-    public void drawBrainSmall(float runTime, Enemy enemy) {
+    public void drawBrainSmall(float runTime, AbstractEnemy enemy) {
         batch.begin();
         batch.enableBlending();
         batch.draw(
