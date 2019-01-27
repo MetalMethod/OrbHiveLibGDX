@@ -12,11 +12,13 @@ public class AbstractEnemy extends AbstractGameObject implements Enemy {
 
     protected EnemyType enemyType;
     protected boolean isHitState;
+    protected float deathAnimationTime;
 
     public AbstractEnemy(Vector2 position, int width, int height) {
         super(position, width, height);
         init();
         isHitState = false;
+        deathAnimationTime = 0;
     }
 
 
@@ -38,6 +40,10 @@ public class AbstractEnemy extends AbstractGameObject implements Enemy {
     @Override
     public void setHit(boolean state) {
         isHitState = state;
+    }
+
+    public void setDeathAnimationTime(float deathAnimationTime) {
+        this.deathAnimationTime = deathAnimationTime;
     }
 
     protected int getRandomSpeed() {

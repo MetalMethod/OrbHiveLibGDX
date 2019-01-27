@@ -2,13 +2,9 @@ package com.metalmethodd.orbhive.gameobjects.enemies;
 
 import com.badlogic.gdx.math.Vector2;
 import com.metalmethodd.orbhive.Constants;
-import com.metalmethodd.orbhive.gameobjects.AbstractGameObject;
-
 import static com.metalmethodd.orbhive.Constants.*;
 
-public class BrainSmall extends AbstractGameObject implements Enemy {
-
-    private final EnemyType enemyType;
+public class BrainSmall extends AbstractEnemy {
 
     public BrainSmall(Vector2 position) {
         super(position,BRAIN_SMALL_WIDTH, BRAIN_SMALL_HEIGHT );
@@ -17,10 +13,6 @@ public class BrainSmall extends AbstractGameObject implements Enemy {
         speed = Constants.BRAIN_SMALL_SPEED;
     }
 
-    @Override
-    public EnemyType getEnemyType() {
-        return enemyType;
-    }
 
     /**
      * Must always call updateBoundingRectangle()
