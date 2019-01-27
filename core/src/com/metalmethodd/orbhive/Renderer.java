@@ -8,10 +8,12 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
+import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
@@ -311,7 +313,7 @@ public class Renderer {
         enemyFirstWaspDeathSeven.flip(false, true);
 
         TextureRegion[] enemyFirstWaspDeaths = {enemyFirstWaspDeathOne, enemyFirstWaspDeathTwo, enemyFirstWaspDeathThree, enemyFirstWaspDeathFour, enemyFirstWaspDeathFive, enemyFirstWaspDeathSix, enemyFirstWaspDeathSeven};
-        enemyFirstWaspDeathAnimation = new Animation(0.23f, (Object[]) enemyFirstWaspDeaths);
+        enemyFirstWaspDeathAnimation = new Animation(0.12f, (Object[]) enemyFirstWaspDeaths);
         enemyFirstWaspDeathAnimation.setPlayMode(Animation.PlayMode.NORMAL);
     }
 
@@ -581,7 +583,7 @@ public class Renderer {
         shapeRenderer.end();
     }
 
-    public void drawWasp(float runTime, float delta, Enemy wasp) {
+    public void drawWasp(float runTime, float delta, Array<Enemy> enemies, Enemy wasp) {
         if (!wasp.isHit()) {
             batch.begin();
             batch.enableBlending();
@@ -595,14 +597,14 @@ public class Renderer {
             batch.disableBlending();
             batch.end();
         }
-        if (wasp.isHit()) {
-            //   if (true) {
+        else if(wasp.isHit()) {
             drawWaspDeath(waspDeathTime, wasp);
             waspDeathTime += delta;
         }
 
         if (enemyFirstWaspDeathAnimation.isAnimationFinished(waspDeathTime)) {
             waspDeathTime = 0;
+            enemies.removeValue(wasp, false);
         }
 
     }

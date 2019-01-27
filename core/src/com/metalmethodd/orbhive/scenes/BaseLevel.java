@@ -141,7 +141,7 @@ public class BaseLevel implements Screen {
 
             switch (enemy.getEnemyType()) {
                 case WASP:
-                    renderer.drawWasp(runTime, delta, enemy);
+                    renderer.drawWasp(runTime, delta, enemies, enemy);
                     break;
 
                 case SIMPLE_ENEMY:

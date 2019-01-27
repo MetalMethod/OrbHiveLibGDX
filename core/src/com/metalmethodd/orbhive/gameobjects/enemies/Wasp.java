@@ -31,7 +31,6 @@ public class Wasp extends AbstractGameObject implements Enemy {
      */
     public void update() {
         int coin = EnemyFactory.getRandomInt(1, 2);
-        System.out.println(coin);
         int x = 2;
         int y = 1;
 
@@ -46,15 +45,15 @@ public class Wasp extends AbstractGameObject implements Enemy {
         if (coin == 2) {
             y = -1;
         }
-        position.add(x, y);
+        position.add(0, y);
 
         //movement if wasp is hit
         if (isHitState) {
             if (coin == 1) {
-                y = 2;
+                y = 1;
             }
             if (coin == 2) {
-                y = -2;
+                y = -1;
             }
                 position.add(speed, y);
 
