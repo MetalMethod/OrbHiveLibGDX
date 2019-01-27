@@ -31,32 +31,24 @@ public class Wasp extends AbstractGameObject implements Enemy {
      */
     public void update() {
         int coin = EnemyFactory.getRandomInt(1, 2);
-        int x = 2;
         int y = 1;
 
         // movement if wasp in not hit
         if (!isHitState) {
             position.add(-speed, 0);
-        }
 
-        if (coin == 1) {
-            y = 1;
-        }
-        if (coin == 2) {
-            y = -1;
-        }
-        position.add(0, y);
-
-        //movement if wasp is hit
-        if (isHitState) {
             if (coin == 1) {
                 y = 1;
             }
             if (coin == 2) {
                 y = -1;
             }
-                position.add(speed, y);
+            position.add(0, y);
+        }
 
+        //movement if wasp is hit
+        if (isHitState) {
+            position.add(speed, y);
         }
 
         //must call updateBoundingRectangle() after all methods

@@ -13,6 +13,7 @@ import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.Player;
+import com.metalmethodd.orbhive.gameobjects.enemies.EnemyType;
 
 import static com.metalmethodd.orbhive.Constants.*;
 
@@ -203,7 +204,7 @@ public class BaseLevel implements Screen {
         for (Enemy wasp : enemies) {
             for (Bullet bullet : bullets) {
                 if (wasp.getBoundingRectangle().overlaps(bullet.getBoundingRectangle())) {
-                    killWasp(wasp);
+                    killEnemy(wasp);
                     bullets.removeValue(bullet, false);
                 }
             }
@@ -211,10 +212,13 @@ public class BaseLevel implements Screen {
         }
     }
 
-    protected void killWasp(Enemy wasp) {
-        wasp.setHit(true);
+    protected void killEnemy(Enemy enemy) {
+        enemy.setHit(true);
         //System.out.println("Enemy HIT");
-        // enemies.removeValue(wasp, false);
+        if (enemy.getEnemyType() == EnemyType.SIMPLE_ENEMY ||
+                enemy.getEnemyType() == EnemyType.BRAIN_SMALL) {
+            enemies.removeValue(enemy, false);
+        }
     }
 
 }
