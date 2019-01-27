@@ -70,11 +70,13 @@ public class LevelOne extends BaseLevel {
     public void render(float delta) {
         update(delta);
 
+        renderer.updateCameraShake(delta);
         clearDrawBackgroundColor();
         drawBackground();
         drawPlayer(delta);
         drawEnemies(enemies, delta);
         drawBullets();
+
     }
 
     /**
@@ -87,6 +89,7 @@ public class LevelOne extends BaseLevel {
         updateBackground();
         updateLevelBasicLogic(delta);
         spawnEnemies();
+
     }
 
     private void updateBackground() {

@@ -18,12 +18,14 @@ import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
 
+import static com.badlogic.gdx.math.MathUtils.random;
 import static com.metalmethodd.orbhive.Constants.*;
 
 public class Renderer {
 
+    protected OrthographicCamera camera;
+
     private Texture sprites;
-    private OrthographicCamera camera;
 
     /**
      * Responsible for rendering shapes
@@ -89,8 +91,13 @@ public class Renderer {
     private Animation waspAnimation;
     private Animation waspDeathAnimation;
 
-    private float delta;
-    private float waspDeathTime = 0;
+    //camera shake
+    private int shakeElapsed;
+    private float shakeDuration;
+    private float shakeRadius;
+    private float shakeRandomAngle;
+    private float shakeBaseX;
+    private float shakeBaseY;
 
     public Renderer() {
         AssetLoader.load();
@@ -106,6 +113,9 @@ public class Renderer {
         camera = new OrthographicCamera();
         camera.setToOrtho(true, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
 
+        shakeBaseX = camera.position.x;
+        shakeBaseY = camera.position.y;
+
         batch = new SpriteBatch();
         //Attatch Batch to camera
         batch.setProjectionMatrix(camera.combined);
@@ -114,6 +124,10 @@ public class Renderer {
         shapeRenderer.setProjectionMatrix(camera.combined);
 
         initAssets();
+    }
+
+    public OrthographicCamera getCamera() {
+        return camera;
     }
 
     private void initAssets() {
@@ -474,6 +488,7 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
+            cameraShake(10, 2);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -755,6 +770,47 @@ public class Renderer {
                 1, 1);
         shapeRenderer.end();
 
+    }
+
+    /**
+     * Updates the shake and the camera.
+     * This must be called prior to camera.update()
+     */
+    public void updateCameraShake(float delta) {
+        // Return back to the original position each time before calling shake update.
+// We don't update the batch here since we're only using the position for calculating shake.
+        camera.position.x = shakeBaseX;
+        camera.position.y = shakeBaseY;
+
+        // Only shake when required.
+        if (shakeElapsed < shakeDuration) {
+
+            // Calculate the shake based on the remaining radius.
+            shakeRadius *= 0.9f; // diminish radius each frame
+            shakeRandomAngle += (150 + random.nextFloat() % 60f);
+            float x = (float) (Math.sin(shakeRandomAngle) * shakeRadius);
+            float y = (float) (Math.cos(shakeRandomAngle) * shakeRadius);
+            camera.translate(-x, -y);
+
+            // Increase the elapsed time by the delta provided.
+            shakeElapsed += delta;
+        }
+    }
+
+    /**
+     * Start the screen shaking with a given power and duration
+     *
+     * @param radius   The starting radius for the shake. The larger the radius, the large the shaking effect.
+     * @param duration Time in milliseconds the screen should shake.
+     */
+    public void cameraShake(float radius, float duration) {
+        shakeElapsed = 0;
+        shakeDuration = duration / 1000f;
+        shakeRadius = radius;
+        shakeRandomAngle = random.nextFloat() % 360f;
+
+        batch.setProjectionMatrix(camera.combined);
+        camera.update();
     }
 
 }

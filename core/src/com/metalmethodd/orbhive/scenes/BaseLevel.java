@@ -10,12 +10,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
 import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
-import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.Player;
-import com.metalmethodd.orbhive.gameobjects.enemies.EnemyType;
-
 import static com.metalmethodd.orbhive.Constants.*;
 
 
@@ -34,12 +31,9 @@ public class BaseLevel implements Screen {
     protected Array<AbstractEnemy> enemies;
     protected Array<Bullet> bullets;
 
-
     public BaseLevel(OrbHiveGame game) {
         this.game = game;
         this.batch = game.batch;
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
 
         player = new Player(new Vector2(INITIAL_PLAYER_X, INITIAL_PLAYER_Y));
         enemies = new Array<AbstractEnemy>();
@@ -47,8 +41,8 @@ public class BaseLevel implements Screen {
 
         gameInputHandler = new GameInputHandler(player);
         renderer = new Renderer();
+        camera = renderer.getCamera();
     }
-
 
     @Override
     public void show() {
@@ -66,7 +60,6 @@ public class BaseLevel implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
     }
 
     @Override
@@ -178,7 +171,7 @@ public class BaseLevel implements Screen {
                 continue;
             }
 
-
+            //ENEMY HITS PLAYER
             if (wasp.getBoundingRectangle().overlaps(player.getBoundingRectangle())) {
                 if (!wasp.isHit()) {
                     enemies.removeValue(wasp, false);
@@ -216,5 +209,4 @@ public class BaseLevel implements Screen {
     protected void killEnemy(AbstractEnemy enemy) {
         enemy.setHit(true);
     }
-
 }
