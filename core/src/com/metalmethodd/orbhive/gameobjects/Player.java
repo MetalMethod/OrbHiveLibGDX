@@ -12,11 +12,12 @@ public class Player extends AbstractGameObject {
     private int lifes;
     private boolean isPlayerMoving;
 
-    private float playerHitTime;
+    private boolean gameStarted;
+    private boolean playerHitAnimationState;
+
     private int playerShootingTime;
     private boolean isPlayerShooting;
-    private boolean playerHitAnimationState;
-    private boolean gameStarted;
+
 
     public Player(Vector2 position) {
         super(position, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -29,7 +30,6 @@ public class Player extends AbstractGameObject {
         currentState = EntityState.FULL;
         lifes = Constants.INITIAL_PLAYER_LIVES;
 
-        playerHitTime = 0;
         playerShootingTime = 0;
         isPlayerShooting = false;
         playerHitAnimationState = false;
@@ -62,7 +62,6 @@ public class Player extends AbstractGameObject {
         if (gameStarted) {
             detectWalls();
         }
-        updateHitAnimation();
 
         //must call updateBoundingRectangle() after all methods
         updateBoundingRectangle();
@@ -170,7 +169,6 @@ public class Player extends AbstractGameObject {
          */
         if (!isPlayerHit()) {
             velocity.set(getVelocity().add(-hitAmount, 0));
-            playerHitTime = PLAYER_HIT_ANIMATION_DURATION;
             lifes--;
             playerHitAnimationState = true;
         }
@@ -186,11 +184,6 @@ public class Player extends AbstractGameObject {
 
     public boolean isPlayerShooting() {
         return playerShootingTime > 0;
-    }
-
-    private void updateHitAnimation() {
-        playerHitTime--;
-        if (playerHitTime < 0) playerHitTime = 0;
     }
 
     private void updatePlayerShootingAnimation() {

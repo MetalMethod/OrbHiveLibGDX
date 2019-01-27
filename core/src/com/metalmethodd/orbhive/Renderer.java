@@ -211,7 +211,7 @@ public class Renderer {
         playerExplosionFive.flip(false, true);
         playerExplosionSix.flip(false, true);
         TextureRegion[] playerExplosions = {playerExplosionOne, playerExplosionTwo, playerExplosionThree, playerExplosionFour, playerExplosionFive, playerExplosionSix};
-        playerExplosionAnimation = new Animation(0.15f, (Object[]) playerExplosions);
+        playerExplosionAnimation = new Animation(0.08f, (Object[]) playerExplosions);
         playerExplosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 
         playerShootOne = new TextureRegion(sprites, 0, 44, 15, 8);
@@ -523,10 +523,10 @@ public class Renderer {
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) playerExplosionAnimation.getKeyFrame(runTime),
-                player.getPosition().x,
-                player.getPosition().y,
-                48,
-                48
+                player.getPosition().x - 40,
+                player.getPosition().y - 50,
+                128,
+                128
         );
         batch.disableBlending();
         batch.end();
