@@ -485,7 +485,7 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
-            cameraShake(15, 2);
+            cameraShake(20, 2);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
