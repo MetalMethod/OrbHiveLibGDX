@@ -13,7 +13,6 @@ import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
 import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
-import com.metalmethodd.orbhive.gameobjects.enemies.EnemyType;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
@@ -112,12 +111,10 @@ public class Renderer {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(true, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
-
         shakeBaseX = camera.position.x;
         shakeBaseY = camera.position.y;
 
         batch = new SpriteBatch();
-        //Attatch Batch to camera
         batch.setProjectionMatrix(camera.combined);
 
         shapeRenderer = new ShapeRenderer();
@@ -398,9 +395,9 @@ public class Renderer {
             int bgY = (int) background.getPosition().y;
 
 
-            for (int i = 0; i < GAME_WIDTH; i += tileWidth) {
-                batch.draw(halfDownBg, bgX + i, bgY, tileWidth, GAME_HEIGHT / 2);
-                batch.draw(halfDownBg, bgX + i - GAME_WIDTH, bgY, tileWidth, GAME_HEIGHT / 2);
+            for (int i = 0; i < GAME_WIDTH + 100; i += tileWidth) {
+                batch.draw(halfDownBg, bgX + i -100, bgY, tileWidth, GAME_HEIGHT / 2);
+                batch.draw(halfDownBg, bgX + i - GAME_WIDTH -100, bgY, tileWidth, GAME_HEIGHT / 2);
             }
 
             batch.enableBlending();
@@ -409,7 +406,7 @@ public class Renderer {
             //draw rectangle below half of screen with light bg color
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             shapeRenderer.setColor(0.75f, 0.75f, 0.75f, 1f);
-            shapeRenderer.rect(0, background.getPosition().y + 127, GAME_WIDTH, GAME_HEIGHT);
+            shapeRenderer.rect(-100, background.getPosition().y + 127, GAME_WIDTH + 200, GAME_HEIGHT);
             shapeRenderer.end();
         }
     }
@@ -488,7 +485,7 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
-            // cameraShake(15, 2);
+            cameraShake(15, 2);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -499,6 +496,8 @@ public class Renderer {
         if (player.isPlayerShooting()) {
             drawPlayerShot(runTime, player);
         }
+
+
 
     }
 
@@ -777,6 +776,7 @@ public class Renderer {
      * This must be called prior to camera.update()
      */
     public void updateCameraShake(float delta) {
+        // Return back to the original position each time before shake update.
         camera.position.x = shakeBaseX;
         camera.position.y = shakeBaseY;
 
@@ -793,9 +793,6 @@ public class Renderer {
             // Increase the elapsed time by the delta provided.
             shakeElapsed += delta;
         }
-
-        // Return back to the original position each time before shake update.
-
     }
 
     /**
@@ -810,6 +807,7 @@ public class Renderer {
         shakeRadius = radius;
         shakeRandomAngle = random.nextFloat() % 360f;
 
+        shapeRenderer.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
         camera.update();
     }

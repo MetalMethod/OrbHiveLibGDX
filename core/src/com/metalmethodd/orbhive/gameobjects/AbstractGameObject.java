@@ -23,7 +23,7 @@ public abstract class AbstractGameObject {
         this.position = position;
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 0);
-        speed = Constants.INITIAL_GAMEOBJECT_SPEED;
+        speed = Constants.INITIAL_GAME_OBJECT_SPEED;
         boundingRectangle = new Rectangle();
     }
 

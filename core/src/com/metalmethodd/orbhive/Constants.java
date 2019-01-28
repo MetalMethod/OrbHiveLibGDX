@@ -1,7 +1,5 @@
 package com.metalmethodd.orbhive;
 
-import com.badlogic.gdx.math.Affine2;
-
 public class Constants {
 
 
@@ -31,7 +29,6 @@ public class Constants {
     public static final int PLAYER_HEIGHT = 25;
     public static final int PLAYER_SIZE = 40;
     public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
-    public static final float PLAYER_HIT_ANIMATION_DURATION = 50;
     public static final int PLAYER_HIT_ACCELERATION = 70;
     public static final int PLAYER_SHOOT_ANIMATION_DURATION = 10;
 
@@ -67,7 +64,7 @@ public class Constants {
     public static final int PLAYER_WIND = -3;
 
     // GAME LOGIC
-    public static final int INITIAL_GAMEOBJECT_SPEED = 0;
+    public static final int INITIAL_GAME_OBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
         //inital value
     //    public static final float INITIAL_PLAYER_X = 50f;
