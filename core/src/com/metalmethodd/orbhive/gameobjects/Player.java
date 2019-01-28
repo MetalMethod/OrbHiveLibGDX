@@ -69,7 +69,10 @@ public class Player extends AbstractGameObject {
     }
 
     private void startGameAnimation() {
-        if (position.x < 20) {
+        // the condition && gameStarted == false
+        // means only run animation if it hasn't run before
+        // fixed bug that animation kept running when player reached left wall
+        if (position.x < 20 && gameStarted == false) {
             position.x += 1;
         } else {
             gameStarted = true;

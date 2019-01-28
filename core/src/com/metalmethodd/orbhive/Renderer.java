@@ -488,7 +488,7 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
-            cameraShake(10, 2);
+            cameraShake(15, 2);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -777,8 +777,7 @@ public class Renderer {
      * This must be called prior to camera.update()
      */
     public void updateCameraShake(float delta) {
-        // Return back to the original position each time before calling shake update.
-// We don't update the batch here since we're only using the position for calculating shake.
+
         camera.position.x = shakeBaseX;
         camera.position.y = shakeBaseY;
 
@@ -795,6 +794,9 @@ public class Renderer {
             // Increase the elapsed time by the delta provided.
             shakeElapsed += delta;
         }
+
+        // Return back to the original position each time before shake update.
+
     }
 
     /**
