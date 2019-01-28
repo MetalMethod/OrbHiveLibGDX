@@ -69,7 +69,7 @@ public class Constants {
     // GAME LOGIC
     public static final int INITIAL_GAMEOBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
-//inital value
+        //inital value
     //    public static final float INITIAL_PLAYER_X = 50f;
     public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH-20 ;
     public static final float INITIAL_PLAYER_Y = 100f;
@@ -77,4 +77,6 @@ public class Constants {
     // TOUCH
     public static final float PLAYER_DRAG_VELOCITY = 0.3f;
 
+    public static final float SPEED_PLAYER_ANIM_START = 2;
+    public static final float PLAYER_INITIAL_X = 18;
 }
