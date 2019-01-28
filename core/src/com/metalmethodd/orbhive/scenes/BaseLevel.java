@@ -91,6 +91,13 @@ public class BaseLevel implements Screen {
         checkExitGame();
         player.update(delta);
 
+        //disable input if player is not ready (on animation)
+        if(player.getGameStarted()){
+            gameInputHandler.init();
+        }
+        // ////////////////////////////////
+        // ////////////////////////////////
+
         gameOverCondition();
 
         updateEnemies();

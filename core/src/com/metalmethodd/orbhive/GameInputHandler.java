@@ -16,9 +16,11 @@ public class GameInputHandler implements InputProcessor {
 
 
     public GameInputHandler(Player player) {
-
-        Gdx.input.setInputProcessor(this);
         this.player = player;
+    }
+
+    public void init(){
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override

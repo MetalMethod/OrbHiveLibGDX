@@ -69,8 +69,11 @@ public class Player extends AbstractGameObject {
     }
 
     private void startGameAnimation() {
-        if (position.x < 20) {
-            position.x += 1;
+        // the condition && gameStarted == false
+        // means only run animation if it hasn't run before
+        // fixed bug that animation kept running when player reached left wall
+        if (position.x < Constants.PLAYER_INITIAL_X && gameStarted == false) {
+            position.x += Constants.SPEED_PLAYER_ANIM_START;
         } else {
             gameStarted = true;
         }
@@ -234,6 +237,10 @@ public class Player extends AbstractGameObject {
 
         bullets.add(new Bullet(new Vector2(getPosition().x + x, getPosition().y + y)));
         playerShootingTime = Constants.PLAYER_SHOOT_ANIMATION_DURATION;
+    }
+
+    public boolean getGameStarted(){
+        return gameStarted;
     }
 
 }
