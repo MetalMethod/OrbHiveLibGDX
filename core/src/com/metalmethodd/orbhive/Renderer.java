@@ -488,7 +488,7 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
-            cameraShake(15, 2);
+            // cameraShake(15, 2);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -777,7 +777,6 @@ public class Renderer {
      * This must be called prior to camera.update()
      */
     public void updateCameraShake(float delta) {
-
         camera.position.x = shakeBaseX;
         camera.position.y = shakeBaseY;
 
