@@ -53,7 +53,7 @@ public class GameInputHandler implements InputProcessor {
 
             case Input.Keys.SPACE:
             case Input.Keys.M: {
-                player.shoot();
+        //        player.shoot();
                 break;
             }
         }
@@ -103,7 +103,7 @@ public class GameInputHandler implements InputProcessor {
             int button) {
         touchPos.set(screenX, Gdx.graphics.getHeight() - screenY);
 
-        player.shoot();
+        // player.shoot();
 
         return true;
     }
