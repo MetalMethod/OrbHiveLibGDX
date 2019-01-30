@@ -98,6 +98,9 @@ public class Renderer {
     private float shakeBaseX;
     private float shakeBaseY;
 
+    private float flashElapsed;
+    private float flashDuration;
+
     public Renderer() {
         AssetLoader.load();
         this.sprites = AssetLoader.getSprites();
@@ -486,6 +489,7 @@ public class Renderer {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
             cameraShake(20, 2);
+            screenFlash(0.03f);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -813,5 +817,26 @@ public class Renderer {
         camera.update();
     }
 
+    public void updateScreenFlash(float delta) {
+        // Only shake when required.
+        if (flashElapsed < 0.02f) {
+
+            shapeRenderer.setAutoShapeType(true);
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.setColor(1f, 1f, 1f, 1f);
+            shapeRenderer.rect(-200, -200, GAME_WIDTH + 400, GAME_HEIGHT + 400);
+            shapeRenderer.end();
+
+            flashElapsed += delta;
+            System.out.println(flashElapsed);
+        }
+    }
+
+    public void screenFlash(float duration){
+        flashElapsed = 0;
+    }
+
 }
+
+
 
