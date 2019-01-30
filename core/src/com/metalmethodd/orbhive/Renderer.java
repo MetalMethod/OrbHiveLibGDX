@@ -583,6 +583,7 @@ public class Renderer {
         );
         batch.disableBlending();
         batch.end();
+        cameraShake(3, 0.8f);
     }
 
 
