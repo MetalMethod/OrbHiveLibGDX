@@ -127,7 +127,7 @@ public class BaseLevel implements Screen {
 
     protected void drawPlayer(float delta) {
         renderer.drawPlayer(player, runTime, delta);
-        renderer.drawPlayerBoundingRect(player);
+        //renderer.drawPlayerBoundingRect(player);
     }
 
     /**

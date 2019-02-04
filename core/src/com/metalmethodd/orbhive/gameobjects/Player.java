@@ -250,8 +250,11 @@ public class Player extends AbstractGameObject {
     }
 
     public void shoot() {
-        int x = PLAYER_WIDTH + 1;
-        int y = PLAYER_HEIGHT - 5;
+        //int x = PLAYER_WIDTH + 1;
+        //int y = PLAYER_HEIGHT - 5;
+        int x = PLAYER_WIDTH;
+        int y = PLAYER_HEIGHT -4;
+
 
         bullets.add(new Bullet(new Vector2(getPosition().x + x, getPosition().y + y)));
         playerShootingTime = Constants.PLAYER_SHOOT_ANIMATION_DURATION;

@@ -518,12 +518,19 @@ public class Renderer {
 
 
     private void drawPlayerEngine(float runTime, Player player) {
+        //big player size
+        //float x = player.getPosition().x - 7;
+        //float y = player.getPosition().y + 15;
+
+        //small player size
+        float x = player.getPosition().x -15 ;
+        float y = player.getPosition().y + 5;
+
         batch.begin();
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) engineAnimation.getKeyFrame(runTime),
-                player.getPosition().x - 7,
-                player.getPosition().y + 15,
+                x,y,
                 10 * 2,
                 10
         );
