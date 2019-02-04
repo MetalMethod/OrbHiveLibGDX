@@ -66,7 +66,9 @@ public class Constants {
     // GAME LOGIC
     public static final int INITIAL_GAME_OBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
-        //inital value
+    public static final float AUTOFIRE_INTERVAL = 0.5f;
+
+    //inital value
     //    public static final float INITIAL_PLAYER_X = 50f;
     public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH-20 ;
     public static final float INITIAL_PLAYER_Y = 100f;

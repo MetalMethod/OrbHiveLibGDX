@@ -18,6 +18,10 @@ public class Player extends AbstractGameObject {
     private int playerShootingTime;
     private boolean isPlayerShooting;
 
+    //auto shooting in intervals
+    private float elapsedTimeLastShot;
+    private float intervalShooting;
+
 
     public Player(Vector2 position) {
         super(position, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -34,6 +38,9 @@ public class Player extends AbstractGameObject {
         isPlayerShooting = false;
         playerHitAnimationState = false;
         gameStarted = false;
+
+        elapsedTimeLastShot = 0;
+        intervalShooting = Constants.AUTOFIRE_INTERVAL;
     }
 
     public enum EntityState {
@@ -63,16 +70,27 @@ public class Player extends AbstractGameObject {
             detectWalls();
         }
 
+        updatePlayerShootingAnimation();
+        updateAutoFire(delta);
+
         //must call updateBoundingRectangle() after all methods
         updateBoundingRectangle();
-        updatePlayerShootingAnimation();
+    }
+
+    private void updateAutoFire(float delta) {
+        if(elapsedTimeLastShot > intervalShooting){
+            shoot();
+            elapsedTimeLastShot = 0;
+            return;
+        }
+        elapsedTimeLastShot += delta;
     }
 
     private void startGameAnimation() {
         // the condition && gameStarted == false
         // means only run animation if it hasn't run before
         // fixed bug that animation kept running when player reached left wall
-        if (position.x < Constants.PLAYER_INITIAL_X && gameStarted == false) {
+        if (position.x < Constants.PLAYER_INITIAL_X && !gameStarted) {
             position.x += Constants.SPEED_PLAYER_ANIM_START;
         } else {
             gameStarted = true;
