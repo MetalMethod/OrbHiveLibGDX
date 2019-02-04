@@ -25,10 +25,16 @@ public class Constants {
     public static final float CLOUD_TWO_SPEED = BG_LVL_ONE_Y_SPEED * 2f;
     public static final float CLOUD_THREE_SPEED = BG_LVL_ONE_Y_SPEED * 2.5f;
 
-    public static final int PLAYER_WIDTH = 40;
-    public static final int PLAYER_HEIGHT = 25;
-    public static final int PLAYER_SIZE = 40;
-    public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
+    //    public static final int PLAYER_SIZE = 40;
+    // public static final int PLAYER_WIDTH = 40;
+    // public static final int PLAYER_HEIGHT = 25;
+    public static final int PLAYER_SIZE = 20;
+    public static final int PLAYER_WIDTH = 20;
+    public static final int PLAYER_HEIGHT = 13;
+
+//    public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
+    public static final int DRAW_PLAYER_HEIGHT_FIX = 3;
+
     public static final int PLAYER_HIT_ACCELERATION = 70;
     public static final int PLAYER_SHOOT_ANIMATION_DURATION = 10;
 
