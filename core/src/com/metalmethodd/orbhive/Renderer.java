@@ -396,8 +396,8 @@ public class Renderer {
 
 
             for (int i = 0; i < GAME_WIDTH + 100; i += tileWidth) {
-                batch.draw(halfDownBg, bgX + i -100, bgY, tileWidth, GAME_HEIGHT / 2);
-                batch.draw(halfDownBg, bgX + i - GAME_WIDTH -100, bgY, tileWidth, GAME_HEIGHT / 2);
+                batch.draw(halfDownBg, bgX + i - 100, bgY, tileWidth, GAME_HEIGHT / 2);
+                batch.draw(halfDownBg, bgX + i - GAME_WIDTH - 100, bgY, tileWidth, GAME_HEIGHT / 2);
             }
 
             batch.enableBlending();
@@ -498,17 +498,23 @@ public class Renderer {
         }
 
 
-
     }
 
 
     private void drawPlayerShot(float runTime, Player player) {
+        //big player
+        //float x = player.getPosition().x + 40;
+        //float y = player.getPosition().y + 14;
+
+        //small player
+        float x = player.getPosition().x + 20;
+        float y = player.getPosition().y + 5;
+
         batch.begin();
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) playerShootAnimation.getKeyFrame(runTime),
-                player.getPosition().x + 40,
-                player.getPosition().y + 14,
+                x, y,
                 15 * 2,
                 8 + 4
         );
@@ -523,14 +529,14 @@ public class Renderer {
         //float y = player.getPosition().y + 15;
 
         //small player size
-        float x = player.getPosition().x -15 ;
+        float x = player.getPosition().x - 15;
         float y = player.getPosition().y + 5;
 
         batch.begin();
         batch.enableBlending();
         batch.draw(
                 (TextureRegion) engineAnimation.getKeyFrame(runTime),
-                x,y,
+                x, y,
                 10 * 2,
                 10
         );
