@@ -1,6 +1,7 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -100,6 +101,7 @@ public class Renderer {
 
     private float flashElapsed;
     private float flashDuration;
+    private boolean screenFlash;
 
     public Renderer() {
         AssetLoader.load();
@@ -122,6 +124,9 @@ public class Renderer {
 
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
+
+        screenFlash= false;
+        flashDuration = 0;
 
         initAssets();
     }
@@ -489,7 +494,8 @@ public class Renderer {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
             cameraShake(20, 2);
-            screenFlash(0.03f);
+            //screenFlash(0.03f);
+            screenFlash();
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -819,7 +825,7 @@ public class Renderer {
 
     public void updateScreenFlash(float delta) {
         // Only shake when required.
-        if (flashElapsed < 0.02f) {
+       /** if (flashElapsed < 0.02f) {
 
             shapeRenderer.setAutoShapeType(true);
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -830,11 +836,32 @@ public class Renderer {
             flashElapsed += delta;
             System.out.println(flashElapsed);
         }
+        */
+        if (screenFlash) {
+
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.setColor(Color.WHITE);
+            int padding = 200;
+            shapeRenderer.rect(-padding, -padding, Gdx.graphics.getWidth()+padding*2, Gdx.graphics.getHeight()+ padding *2);
+            shapeRenderer.end();
+
+            if (flashDuration > 0.05f) {
+                screenFlash = false;
+                flashDuration = 0;
+            }
+            flashDuration++;
+        }
+    }
+
+    public void screenFlash(){
+        screenFlash = true;
     }
 
     public void screenFlash(float duration){
         flashElapsed = 0;
+        screenFlash = true;
     }
+
 
 }
 
