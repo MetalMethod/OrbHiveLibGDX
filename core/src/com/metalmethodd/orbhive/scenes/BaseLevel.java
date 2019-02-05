@@ -31,6 +31,12 @@ public class BaseLevel implements Screen {
     protected Array<AbstractEnemy> enemies;
     protected Array<Bullet> bullets;
 
+    private UserInterface ui;
+    private int score = 0;
+
+    //progress MUST BE A FLOAT FROM 0 TO 100
+    private float progress = 0;
+
     public BaseLevel(OrbHiveGame game) {
         this.game = game;
         this.batch = game.batch;
@@ -42,6 +48,8 @@ public class BaseLevel implements Screen {
         gameInputHandler = new GameInputHandler(player);
         renderer = new Renderer();
         camera = renderer.getCamera();
+
+        ui = new UserInterface();
     }
 
     @Override
@@ -95,15 +103,24 @@ public class BaseLevel implements Screen {
         if(player.getGameStarted()){
             gameInputHandler.init();
         }
-        // ////////////////////////////////
-        // ////////////////////////////////
 
         gameOverCondition();
 
         updateEnemies();
         updateBullets();
-
         checkCollisionBulletsEnemies(bullets, enemies);
+
+        updateUi();
+    }
+
+    private void updateUi() {
+        if(progress > 100) progress = 100;
+
+        progress += Constants.GAME_PROGRESS_SPEED/10;
+        
+        ui.setScore(score);
+        System.out.println(progress);
+        ui.setProgress(progress);
     }
 
     public void checkExitGame() {
@@ -114,7 +131,7 @@ public class BaseLevel implements Screen {
 
     protected void gameOverCondition() {
         if (player.getState() == Player.EntityState.DEAD) {
-            game.setScreen(new GameOverScreen(game));
+            game.setScreen(new GameOverScreen(game, score));
         }
     }
 
@@ -215,5 +232,10 @@ public class BaseLevel implements Screen {
 
     protected void killEnemy(AbstractEnemy enemy) {
         enemy.setHit(true);
+        score++;
+    }
+
+    protected void drawUi(){
+        renderer.drawUi(ui);
     }
 }

@@ -20,7 +20,7 @@ public class GameOverScreen implements Screen {
     private OrthographicCamera camera;
     private Renderer renderer;
 
-    public GameOverScreen(OrbHiveGame game){
+    public GameOverScreen(OrbHiveGame game, int score){
         this.game = game;
         this.batch = game.batch;
 

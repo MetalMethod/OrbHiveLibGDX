@@ -16,6 +16,11 @@ public class Constants {
     public static final float BG_LVL_ONE_X_SPEED = 1.5f;
     public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
 
+    //    public static final float GAME_PROGRESS_SPEED = 0.0002f;
+    public static final float GAME_PROGRESS_SPEED = 0.03f;
+
+
+
     // SPEED of animation for debug and dev
     // public static final float BG_LVL_ONE_Y_SPEED = 3f;
 
@@ -73,6 +78,7 @@ public class Constants {
     public static final int INITIAL_GAME_OBJECT_SPEED = 0;
     public static final int INITIAL_PLAYER_LIVES = 3;
     public static final float AUTOFIRE_INTERVAL = 0.5f;
+
 
     //inital value
     //    public static final float INITIAL_PLAYER_X = 50f;
