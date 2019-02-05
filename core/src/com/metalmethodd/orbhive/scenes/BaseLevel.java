@@ -117,7 +117,7 @@ public class BaseLevel implements Screen {
         if(progress > 100) progress = 100;
 
         progress += Constants.GAME_PROGRESS_SPEED/10;
-        
+
         ui.setScore(score);
         System.out.println(progress);
         ui.setProgress(progress);
