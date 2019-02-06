@@ -1,6 +1,7 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,6 +17,7 @@ import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
+import com.metalmethodd.orbhive.scenes.UserInterface;
 
 import static com.badlogic.gdx.math.MathUtils.random;
 import static com.metalmethodd.orbhive.Constants.*;
@@ -596,6 +598,8 @@ public class Renderer {
         );
         batch.disableBlending();
         batch.end();
+
+        //camera shake on enemy kill
         cameraShake(3, 0.8f);
     }
 
@@ -826,5 +830,49 @@ public class Renderer {
         camera.update();
     }
 
+    public void drawUi(UserInterface ui) {
+
+
+        float barFull = GAME_WIDTH-67;
+        float progress = ui.getProgress();
+        //float progress = 5;
+        float barWidth = barFull * progress / 100;
+
+        //BAR BG
+        // border rectangle
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(1f,1f,1f, 0.5f);
+        shapeRenderer.rect(
+                60,
+                GAME_HEIGHT -15,
+                GAME_WIDTH-65, 10);
+        shapeRenderer.end();
+
+
+        //progress bar
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(0f,0f,0,0.5f);
+        shapeRenderer.rect(
+                61,
+                GAME_HEIGHT -14,
+                barWidth, 8);
+
+        shapeRenderer.end();
+
+
+        // score
+        //border
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+//        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.setColor(1f,1f,1f, 0.5f);
+
+        shapeRenderer.rect(5,GAME_HEIGHT -15,10, 10);
+        shapeRenderer.rect(5 + 10,GAME_HEIGHT -15,10, 10);
+        shapeRenderer.rect(5+ 20,GAME_HEIGHT -15,10, 10);
+        shapeRenderer.rect(5+ 30,GAME_HEIGHT -15,10, 10);
+        shapeRenderer.rect(5+ 40,GAME_HEIGHT -15,10, 10);
+
+        shapeRenderer.end();
+    }
 }
 
