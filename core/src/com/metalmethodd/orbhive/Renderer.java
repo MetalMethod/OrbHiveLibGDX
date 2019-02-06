@@ -841,7 +841,7 @@ public class Renderer {
         //BAR BG
         // border rectangle
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.setColor(1f,1f,1f, 0.5f);
         shapeRenderer.rect(
                 60,
                 GAME_HEIGHT -15,
@@ -851,7 +851,7 @@ public class Renderer {
 
         //progress bar
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.BLACK);
+        shapeRenderer.setColor(0f,0f,0,0.5f);
         shapeRenderer.rect(
                 61,
                 GAME_HEIGHT -14,
@@ -863,7 +863,9 @@ public class Renderer {
         // score
         //border
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Color.WHITE);
+//        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.setColor(1f,1f,1f, 0.5f);
+
         shapeRenderer.rect(5,GAME_HEIGHT -15,10, 10);
         shapeRenderer.rect(5 + 10,GAME_HEIGHT -15,10, 10);
         shapeRenderer.rect(5+ 20,GAME_HEIGHT -15,10, 10);
