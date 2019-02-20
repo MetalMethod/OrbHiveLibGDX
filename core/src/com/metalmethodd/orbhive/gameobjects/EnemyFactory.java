@@ -20,21 +20,21 @@ public class EnemyFactory {
     }
 
     public static Wasp createWasp() {
-        float randomY = (float) (getRandomInt(1, Constants.GAME_HEIGHT));
+        float randomY = (float) (getRandomInt(10, Constants.GAME_HEIGHT-10));
         Vector2 position = new Vector2(Constants.GAME_WIDTH, randomY);
 
         return new Wasp(position);
     }
 
     public static SimpleEnemy createSimpleEnemy() {
-        float randomY = (float) (getRandomInt(1, Constants.GAME_HEIGHT));
+        float randomY = (float) (getRandomInt(20, Constants.GAME_HEIGHT-20));
         Vector2 position = new Vector2(Constants.GAME_WIDTH, randomY);
 
         return new SimpleEnemy(position);
     }
 
-    public static BrainSmall createBrainSmall() {
-        float randomY = (float) (getRandomInt(1, Constants.GAME_HEIGHT));
+    public static BrainSmall createBrain() {
+        float randomY = (float) (getRandomInt(20, Constants.GAME_HEIGHT-20));
         Vector2 position = new Vector2(Constants.GAME_WIDTH, randomY);
 
         return new BrainSmall(position);

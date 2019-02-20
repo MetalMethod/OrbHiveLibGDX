@@ -123,6 +123,10 @@ public class BaseLevel implements Screen {
         ui.setProgress(progress);
     }
 
+    public float getProgress() {
+        return progress;
+    }
+
     public void checkExitGame() {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
