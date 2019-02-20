@@ -186,64 +186,8 @@ public class LevelOne extends BaseLevel {
     }
 
     private void spawnEnemies() {
+        enemyFactory.spawnEnemies(getProgress(), enemies);
 
-        //wait a bit for intro
-        if (getProgress() > 0.3) {
-
-            //regular wasp creation
-            waspCount++;
-            if (waspCount > 35) {
-                enemies.add(EnemyFactory.createWasp());
-                waspCount = 0;
-            }
-
-        }
-
-        //regular Simple creation
-        enemySimpleCount++;
-        if (enemySimpleCount > 40) {
-            enemies.add(EnemyFactory.createSimpleEnemy());
-            enemySimpleCount = 0;
-        }
-
-        //regular brain creation
-        brainCount++;
-        if (getProgress() > 0.8 && brainCount > 85) {
-            enemies.add(EnemyFactory.createBrain());
-            brainCount = 0;
-        }
-
-        /**
-         // time to start first spawns
-         final float initial = 2.0f;
-
-         // interval of time since last spawning
-         //final float interval = 0.3f;
-         final float interval = 1f;
-
-         // amount of time that spawning happens
-         final float variation = 0.05f;
-
-
-         //first spawn. waits for initial time pass
-         if (runTime > initial && runTime < initial + variation) {
-         enemies.add(EnemyFactory.createWasp());
-         previousSpawn = runTime;
-         }
-
-         // spawn by interval
-         if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation * 4) {
-         enemies.add(EnemyFactory.createWasp());
-         enemies.add(EnemyFactory.createSimpleEnemy());
-         previousSpawn = runTime;
-         }
-
-         // Brain spawn by interval
-         if (runTime > previousBrainSpawn + 2 && runTime < previousBrainSpawn + 2 + variation * 4) {
-         enemies.add(EnemyFactory.createBrain());
-         previousBrainSpawn = runTime;
-         }
-         */
     }
 
     @Override
