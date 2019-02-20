@@ -239,6 +239,7 @@ public class Player extends AbstractGameObject {
         if (getPosition().x > GAME_WIDTH - SCREEN_PADDING_RIGHT) {
             setPosition(getPosition().set(GAME_WIDTH - SCREEN_PADDING_RIGHT, getPosition().y));
         }
+
         //top
         if (getPosition().y < SCREEN_PADDING_TOP) {
             setPosition(getPosition().set(getPosition().x, SCREEN_PADDING_TOP));
@@ -247,15 +248,17 @@ public class Player extends AbstractGameObject {
         if (getPosition().y > GAME_HEIGHT - SCREEN_PADDING_BOTTOM) {
             setPosition(getPosition().set(getPosition().x, GAME_HEIGHT - SCREEN_PADDING_BOTTOM));
         }
+
+        /** lock player x to a section on left side
+         if (getPosition().x > GAME_WIDTH/3) {
+         setPosition(getPosition().set(GAME_WIDTH/3, getPosition().y));
+         }
+         */
     }
 
     public void shoot() {
-        //int x = PLAYER_WIDTH;
-        //int y = PLAYER_HEIGHT -4;
-
         int x = PLAYER_WIDTH;
         int y = PLAYER_HEIGHT -7;
-
 
         bullets.add(new Bullet(new Vector2(getPosition().x + x, getPosition().y + y)));
         playerShootingTime = Constants.PLAYER_SHOOT_ANIMATION_DURATION;
