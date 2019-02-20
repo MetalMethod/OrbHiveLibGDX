@@ -119,7 +119,7 @@ public class BaseLevel implements Screen {
         progress += Constants.GAME_PROGRESS_SPEED/10;
 
         ui.setScore(score);
-        System.out.println(progress);
+        //System.out.println(progress);
         ui.setProgress(progress);
     }
 
@@ -174,9 +174,9 @@ public class BaseLevel implements Screen {
         }
     }
 
-    protected void drawBullets() {
+    protected void drawBullets(float delta) {
         for (Bullet bullet : bullets) {
-            renderer.drawBulletOne(bullet);
+            renderer.drawBulletAnimation(bullet, delta, runTime);
             //renderer.drawPlayerBulletRect(bullet);
         }
     }

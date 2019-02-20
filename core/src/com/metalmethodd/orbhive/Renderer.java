@@ -27,6 +27,7 @@ public class Renderer {
     protected OrthographicCamera camera;
 
     private Texture sprites;
+    private Texture sprites2;
 
     /**
      * Responsible for rendering shapes
@@ -65,6 +66,8 @@ public class Renderer {
     private TextureRegion playerExplosionOne, playerExplosionTwo, playerExplosionThree;
     private TextureRegion playerExplosionFour, playerExplosionFive, playerExplosionSix;
 
+    private  TextureRegion bulletSpriteOne, bulletSpriteTwo, bulletSpriteThree;
+
     private TextureRegion enemyFirstOne, enemyFirstTwo, enemyFirstThree;
     private TextureRegion enemyFirstFour, enemyFirstFive, enemyFirstSix, enemyFirstSeven;
     private TextureRegion enemySecondOne, enemySecondTwo, enemySecondThree;
@@ -83,6 +86,7 @@ public class Renderer {
     private Animation playerExplosionAnimation;
     private float explosionTime;
     private Animation playerShootAnimation;
+    private Animation bulletAnimation;
 
     private Animation enemyFirstAnimation;
     private Animation enemySecondAnimation;
@@ -102,7 +106,8 @@ public class Renderer {
 
     public Renderer() {
         AssetLoader.load();
-        this.sprites = AssetLoader.getSprites();
+        sprites = AssetLoader.getSprites();
+        sprites2 = AssetLoader.getSprites2();
 
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
@@ -241,7 +246,7 @@ public class Renderer {
         playerShootAnimation = new Animation(0.15f, (Object[]) playerShootFrames);
         playerShootAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
-        // BULLETS
+        /** BULLETS
         bulletOne = new TextureRegion(
                 sprites,
                 1,
@@ -257,12 +262,24 @@ public class Renderer {
                 7,
                 4
         );
+         */
+
+        bulletSpriteOne = new TextureRegion(sprites2, 9, 10, 18, 10);
+        bulletSpriteTwo = new TextureRegion(sprites2, 37, 10, 18, 10);
+        bulletSpriteThree = new TextureRegion(sprites2, 62, 10, 18, 10);
+        bulletSpriteOne.flip(false, true);
+        bulletSpriteTwo.flip(false, true);
+        bulletSpriteThree.flip(false, true);
+
+        TextureRegion[] bulletAnimationFrames = new TextureRegion[]{bulletSpriteOne, bulletSpriteTwo, bulletSpriteThree};
+        bulletAnimation = new Animation(0.08f, (Object[]) bulletAnimationFrames);
+        bulletAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
         enemyExplosionOne = new TextureRegion(sprites, 129, 227, 30, 30);
         enemyExplosionTwo = new TextureRegion(sprites, 159, 227, 30, 30);
         enemyExplosionThree = new TextureRegion(sprites, 189, 227, 30, 30);
         TextureRegion[] enemyExplosions = new TextureRegion[]{enemyExplosionOne, enemyExplosionTwo, enemyExplosionThree};
-        enemyExplosionAnimation = new Animation(0.08f, (Object[]) enemyExplosions);
+        enemyExplosionAnimation = new Animation(0.20f, (Object[]) enemyExplosions);
         enemyExplosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 
 
@@ -487,7 +504,7 @@ public class Renderer {
         if (player.isPlayerHit()) {
             drawPlayerExplosion(explosionTime, player);
             explosionTime += delta;
-            cameraShake(20, 2);
+            //cameraShake(20, 2);
         }
 
         if (playerExplosionAnimation.isAnimationFinished(explosionTime)) {
@@ -600,7 +617,7 @@ public class Renderer {
         batch.end();
 
         //camera shake on enemy kill
-        cameraShake(3, 0.8f);
+        //cameraShake(3, 0.8f);
     }
 
 
@@ -619,11 +636,11 @@ public class Renderer {
 
     public void drawPlayerBulletRect(Bullet bullet) {
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(0, 0, 0, 1f);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(1, 0, 0, 1f);
         shapeRenderer.rect(
-                bullet.getBoundingRectangle().x += PLAYER_WIDTH + 1,
-                bullet.getBoundingRectangle().y += PLAYER_HEIGHT - 4,
+                bullet.getBoundingRectangle().x,
+                bullet.getBoundingRectangle().y,
                 BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
 
@@ -635,7 +652,8 @@ public class Renderer {
 
     public void drawBulletOne(Bullet bullet) {
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
+       shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(200, 200, 100, 0.8f);
         shapeRenderer.circle(
                 bullet.getPosition().x,
@@ -644,15 +662,20 @@ public class Renderer {
                 bullet.getPosition().x - BULLET_HEIGHT,
                 bullet.getPosition().y - BULLET_CIRCLE_RADIUS, BULLET_WIDTH, BULLET_HEIGHT);
         shapeRenderer.end();
+
     }
 
-    public void drawBulletTwo(Bullet bullet) {
+    public void drawBulletAnimation(Bullet bullet, float delta, float runTime) {
         batch.begin();
         batch.enableBlending();
-        batch.draw(bulletOne, bullet.getPosition().x, bullet.getPosition().y, BULLET_WIDTH, BULLET_HEIGHT);
+        batch.draw((TextureRegion) bulletAnimation.getKeyFrame(runTime),
+                bullet.getPosition().x-8,
+                bullet.getPosition().y,
+                BULLET_WIDTH+8,
+                BULLET_HEIGHT);
+        
         batch.disableBlending();
         batch.end();
-
     }
 
     public void drawEnemyBoundingRect(Wasp enemy) {
