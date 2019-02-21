@@ -61,6 +61,9 @@ public class EnemyFactory {
         float simpleWaveOneStop = waspWaveOneStop;
         float brainWaveOneStop = waspWaveOneStop;
 
+
+        float waveTwoStart = 2.5f;
+        float waveTwoStop = 10f;
         //wait a bit for intro
 
 
@@ -93,5 +96,23 @@ public class EnemyFactory {
         }
 
         // pause, wait for next wave
+
+        //WAVE 2
+        if(progress > waveTwoStart && progress < waveTwoStop
+        ) {
+            //regular Simple creation
+            enemySimpleCount++;
+            if (enemySimpleCount > simpleInterval) {
+                enemies.add(EnemyFactory.createSimpleEnemy());
+                enemySimpleCount = 0;
+            }
+
+            waspCount++;
+            if (waspCount > waspInterval+50) {
+                enemies.add(EnemyFactory.createWasp());
+                waspCount = 0;
+            }
+        }
+
     }
 }
