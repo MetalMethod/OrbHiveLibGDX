@@ -1,4 +1,9 @@
 d:assets:0:application/unknown
+d:fonts:0:application/unknown
+t:fonts/font.fnt:11235:application/unknown
+i:fonts/font.png:14120:image/png
+b:fonts/PICO-8.ttf:14012:application/unknown
+b:fonts/settings.hiero:563:application/unknown
 i:orbhive_title.png:3032:image/png
 i:orbhive_title_256x256.png:2150:image/png
 i:orbhive_title_light.png:2951:image/png
