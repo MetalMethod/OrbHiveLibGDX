@@ -34,6 +34,8 @@ public class BaseLevel implements Screen {
     private UserInterface ui;
     private int score = 0;
 
+    protected EnemyFactory enemyFactory;
+
     //progress MUST BE A FLOAT FROM 0 TO 100
     private float progress = 0;
 
@@ -50,6 +52,8 @@ public class BaseLevel implements Screen {
         camera = renderer.getCamera();
 
         ui = new UserInterface();
+
+        enemyFactory = new EnemyFactory();
     }
 
     @Override
@@ -121,6 +125,10 @@ public class BaseLevel implements Screen {
         ui.setScore(score);
         //System.out.println(progress);
         ui.setProgress(progress);
+    }
+
+    public float getProgress() {
+        return progress;
     }
 
     public void checkExitGame() {

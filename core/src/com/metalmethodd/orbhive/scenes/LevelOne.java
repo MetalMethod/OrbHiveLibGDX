@@ -22,14 +22,19 @@ public class LevelOne extends BaseLevel {
     private Array<Cloud> clouds;
     private Array<Star> starsFarLayer;
 
+    // spawn counters
+    private int waspCount = 0;
+    private int enemySimpleCount = 0;
+    private int brainCount = 0;
+
     public LevelOne(OrbHiveGame game) {
         super(game);
         previousSpawn = runTime;
         previousBrainSpawn = runTime;
 
         background = new Background(new Vector2(GAME_WIDTH, 0), 256, 256);
-        moon = new Moon(new Vector2(0,0), MOON_BIG_SIZE, MOON_BIG_SIZE);
-        cloudOne = new Cloud(new Vector2(GAME_WIDTH , background.getPosition().y + 50), 95, 14);
+        moon = new Moon(new Vector2(0, 0), MOON_BIG_SIZE, MOON_BIG_SIZE);
+        cloudOne = new Cloud(new Vector2(GAME_WIDTH, background.getPosition().y + 50), 95, 14);
         cloudTwo = new Cloud(new Vector2(20, 120), 95, 19);
         cloudThree = new Cloud(new Vector2(GAME_WIDTH / 2, 140), 97, 27);
         cloudOne.draw = true;
@@ -51,7 +56,7 @@ public class LevelOne extends BaseLevel {
 
     private Array<Star> createStarLayer(int starCount, float alpha) {
         Array<Star> stars = new Array<Star>();
-        for(int i = 0; i < starCount; i++) {
+        for (int i = 0; i < starCount; i++) {
             stars.add(new Star(
                     EnemyFactory.getRandomInt(0, GAME_WIDTH),
                     EnemyFactory.getRandomInt(0, GAME_HEIGHT),
@@ -102,27 +107,27 @@ public class LevelOne extends BaseLevel {
         );
 
         //resets background to the right
-        if(background.getPosition().x < 0){
+        if (background.getPosition().x < 0) {
             background.setPosition(GAME_WIDTH, background.getPosition().y);
         }
 
         // update moon
-        if(background.getPosition().y < 300){
-            moon.setPosition(100, (int) (background.getPosition().y -200));
+        if (background.getPosition().y < 300) {
+            moon.setPosition(100, (int) (background.getPosition().y - 200));
         }
 
-        if(background.getPosition().y > 350 && background.getPosition().y <600 ){
+        if (background.getPosition().y > 350 && background.getPosition().y < 600) {
             moon.setPosition(100, (int) moon.getPosition().y);
             moon.increaseSize(0.2);
             background.draw = false;
         }
 
-        if(background.getPosition().y > 600 && background.getPosition().y <730 ){
+        if (background.getPosition().y > 600 && background.getPosition().y < 730) {
             moon.setPosition((int) (moon.getPosition().x + 1), (int) moon.getPosition().y + 1);
             moon.increaseSize(0.8);
         }
 
-        if(background.getPosition().y > 730){
+        if (background.getPosition().y > 730) {
 //            backgroundReset();
         }
 
@@ -130,19 +135,19 @@ public class LevelOne extends BaseLevel {
     }
 
     private void updateClouds() {
-        cloudOne.setPosition(cloudOne.getPosition().x - Constants.CLOUD_ONE_SPEED, background.getPosition().y+ 50);
-        cloudTwo.setPosition(cloudTwo.getPosition().x - Constants.CLOUD_TWO_SPEED, background.getPosition().y+ 60);
-        cloudThree.setPosition(cloudThree.getPosition().x - Constants.CLOUD_THREE_SPEED, background.getPosition().y+ 40);
+        cloudOne.setPosition(cloudOne.getPosition().x - Constants.CLOUD_ONE_SPEED, background.getPosition().y + 50);
+        cloudTwo.setPosition(cloudTwo.getPosition().x - Constants.CLOUD_TWO_SPEED, background.getPosition().y + 60);
+        cloudThree.setPosition(cloudThree.getPosition().x - Constants.CLOUD_THREE_SPEED, background.getPosition().y + 40);
 
-        cloudOneCopy.setPosition(cloudOneCopy.getPosition().x - Constants.CLOUD_THREE_SPEED, background.getPosition().y+ 60);
-        cloudTwoCopy.setPosition(cloudTwoCopy.getPosition().x - Constants.CLOUD_ONE_SPEED, background.getPosition().y+ 70);
-        cloudThreeCopy.setPosition(cloudThreeCopy.getPosition().x - Constants.CLOUD_TWO_SPEED, background.getPosition().y+ 80);
+        cloudOneCopy.setPosition(cloudOneCopy.getPosition().x - Constants.CLOUD_THREE_SPEED, background.getPosition().y + 60);
+        cloudTwoCopy.setPosition(cloudTwoCopy.getPosition().x - Constants.CLOUD_ONE_SPEED, background.getPosition().y + 70);
+        cloudThreeCopy.setPosition(cloudThreeCopy.getPosition().x - Constants.CLOUD_TWO_SPEED, background.getPosition().y + 80);
 
-        for(Cloud cloud : clouds){
-            if(cloud.getPosition().x < - GAME_WIDTH/ 2){
+        for (Cloud cloud : clouds) {
+            if (cloud.getPosition().x < -GAME_WIDTH / 2) {
                 cloud.setPosition(GAME_WIDTH, cloud.getPosition().y);
             }
-            if(cloud.getPosition().y > 400){
+            if (cloud.getPosition().y > 400) {
                 cloud.draw = false;
             }
         }
@@ -151,7 +156,7 @@ public class LevelOne extends BaseLevel {
     private void backgroundReset() {
         background.draw = true;
         moon.draw = false;
-        background.setPosition(GAME_WIDTH,-GAME_HEIGHT);
+        background.setPosition(GAME_WIDTH, -GAME_HEIGHT);
     }
 
     /**
@@ -166,7 +171,7 @@ public class LevelOne extends BaseLevel {
     }
 
     private void drawStars(Array<Star> stars) {
-        for(Star star : stars){
+        for (Star star : stars) {
             renderer.drawSingleStar(star.getPosition().x, star.getPosition().y, star.getAlpha());
         }
     }
@@ -181,34 +186,8 @@ public class LevelOne extends BaseLevel {
     }
 
     private void spawnEnemies() {
-        // time to start first spawns
-        final float initial = 2.0f;
+        enemyFactory.spawnEnemies(getProgress(), enemies);
 
-        // interval of time since last spawning
-        //final float interval = 0.3f;
-        final float interval = 1f;
-
-        // amount of time that spawning happens
-        final float variation = 0.05f;
-
-        //first spawn. waits for initial time pass
-        if (runTime > initial && runTime < initial + variation) {
-            enemies.add(EnemyFactory.createWasp());
-            previousSpawn = runTime;
-        }
-
-        // spawn by interval
-        if (runTime > previousSpawn + interval && runTime < previousSpawn + interval + variation * 4) {
-            enemies.add(EnemyFactory.createWasp());
-            enemies.add(EnemyFactory.createSimpleEnemy());
-            previousSpawn = runTime;
-        }
-
-        // Brain spawn by interval
-        if (runTime > previousBrainSpawn + 2 && runTime < previousBrainSpawn + 2 + variation * 4) {
-            enemies.add(EnemyFactory.createBrainSmall());
-            previousBrainSpawn = runTime;
-        }
     }
 
     @Override

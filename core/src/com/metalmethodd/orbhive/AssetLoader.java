@@ -1,13 +1,19 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class AssetLoader {
     private static Texture sprites;
     private static Texture sprites2;
     private static Texture splashScreen;
     private static Texture gameoverScreen;
+
+    private static FileHandle fontFile, fontImage;
+    private static BitmapFont textFont;
+
 
     public static void load() {
         sprites = new Texture(Gdx.files.internal("sprites.png"));
@@ -30,6 +36,7 @@ public class AssetLoader {
         sprites2.dispose();
         splashScreen.dispose();
         gameoverScreen.dispose();
+
     }
 
     public static Texture getSprites(){
@@ -46,5 +53,11 @@ public class AssetLoader {
 
     public static Texture getSplashScreen() {
         return splashScreen;
+    }
+
+    public static BitmapFont createFont() {
+        fontFile = Gdx.files.internal("fonts/font.fnt");
+        fontImage = Gdx.files.internal("fonts/font.png");
+        return textFont = new BitmapFont(fontFile, fontImage, true);
     }
 }

@@ -1,11 +1,13 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -134,7 +136,16 @@ public class Renderer {
         return camera;
     }
 
+    public BitmapFont textFont;
+
+    private void createFonts() {
+        textFont = AssetLoader.createFont();
+        textFont.getData().scale(-0.8f);
+    }
+
     private void initAssets() {
+        createFonts();
+
         splashScreen = new TextureRegion(AssetLoader.getSplashScreen(), GAME_WIDTH, GAME_HEIGHT);
         splashScreen.flip(false, true);
         gameOverScreen = new TextureRegion(AssetLoader.getGameoverScreen(), GAME_WIDTH, GAME_HEIGHT);
@@ -855,10 +866,8 @@ public class Renderer {
 
     public void drawUi(UserInterface ui) {
 
-
         float barFull = GAME_WIDTH-67;
         float progress = ui.getProgress();
-        //float progress = 5;
         float barWidth = barFull * progress / 100;
 
         //BAR BG
@@ -866,7 +875,7 @@ public class Renderer {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(1f,1f,1f, 0.5f);
         shapeRenderer.rect(
-                60,
+                35,
                 GAME_HEIGHT -15,
                 GAME_WIDTH-65, 10);
         shapeRenderer.end();
@@ -876,26 +885,37 @@ public class Renderer {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0f,0f,0,0.5f);
         shapeRenderer.rect(
-                61,
+                36,
                 GAME_HEIGHT -14,
                 barWidth, 8);
 
         shapeRenderer.end();
 
+        //score border
 
-        // score
-        //border
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-//        shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.setColor(1f,1f,1f, 0.5f);
+        // shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        // shapeRenderer.setColor(Color.WHITE);
+        // shapeRenderer.setColor(1f,1f,1f, 0.5f);
 
-        shapeRenderer.rect(5,GAME_HEIGHT -15,10, 10);
-        shapeRenderer.rect(5 + 10,GAME_HEIGHT -15,10, 10);
-        shapeRenderer.rect(5+ 20,GAME_HEIGHT -15,10, 10);
-        shapeRenderer.rect(5+ 30,GAME_HEIGHT -15,10, 10);
-        shapeRenderer.rect(5+ 40,GAME_HEIGHT -15,10, 10);
+        // shapeRenderer.rect(5,GAME_HEIGHT -15,10, 10);
+        // shapeRenderer.rect(5 + 10,GAME_HEIGHT -15,10, 10);
+        // shapeRenderer.rect(5+ 20,GAME_HEIGHT -15,10, 10);
+        // shapeRenderer.rect(5+ 30,GAME_HEIGHT -15,10, 10);
+        // shapeRenderer.rect(5+ 40,GAME_HEIGHT -15,10, 10);
 
-        shapeRenderer.end();
+        // shapeRenderer.end();
+
+        // SCORE
+        renderScore(ui.getScore());
+    }
+
+    public void renderScore(int score){
+        CharSequence scoreAsCharSequence  = String.valueOf(score);
+
+        batch.begin();
+        batch.enableBlending();
+        textFont.draw(batch, scoreAsCharSequence, 7, GAME_HEIGHT-14);
+        batch.end();
     }
 }
 
