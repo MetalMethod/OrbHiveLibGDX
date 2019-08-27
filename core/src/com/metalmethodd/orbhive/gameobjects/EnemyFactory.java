@@ -48,7 +48,7 @@ public class EnemyFactory {
 
 
     public void spawnEnemies(float progress, Array<AbstractEnemy> enemies) {
-        System.out.println(progress);
+        //System.out.println(progress);
 
         int waspInterval = 35;
         int simpleInterval = 40;
