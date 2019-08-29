@@ -5,8 +5,11 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.OrbHiveGame;
 import com.metalmethodd.orbhive.Renderer;
+import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
+import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
 
 import static com.metalmethodd.orbhive.Constants.GAME_HEIGHT;
 import static com.metalmethodd.orbhive.Constants.GAME_WIDTH;
@@ -18,6 +21,12 @@ public class SplashScreen implements Screen {
     private OrbHiveGame game;
     private OrthographicCamera camera;
 
+    private Array<AbstractEnemy> enemies;
+    private float runTime = 0;
+    private final EnemyFactory enemyFactory;
+    private int timer = 0;
+    private boolean keyPressed = false;
+
     public SplashScreen(OrbHiveGame game) {
         renderer = new Renderer();
 
@@ -26,6 +35,12 @@ public class SplashScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
+
+        enemies = new Array<AbstractEnemy>();
+
+        enemyFactory = new EnemyFactory();
+
+
 
     }
 
@@ -36,21 +51,56 @@ public class SplashScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        update(delta);
+
         Gdx.gl.glClearColor(1, 0, 0, 1);
 
         renderer.drawSplashScreen();
 
+        drawWasps(delta);
+
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
                 Gdx.input.isTouched()
         ) {
-            game.setScreen(new LevelOne(game));
+            keyPressed = true;
+            enemyFactory.resetSpawnGroup();
+            enemyFactory.spawnWaspGroup(100, enemies);
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
+
     }
 
+    public void drawWasps(float delta){
+            for (AbstractEnemy enemy : enemies) {
+                enemy.update();
+                renderer.drawWasp(runTime, delta, enemies, enemy);
+                if (enemy.getPosition().x < 0){
+                    enemies.removeValue(enemy, true);
+                }
+            }
+    }
+
+    /**
+     * It is required for all levels, to call updateLevelBasicLogic()
+     * so all basic mechanics of each level is handled by the BaseLevel class
+     *
+     * @param delta
+     */
+    private void update(float delta) {
+        runTime += delta;
+        enemyFactory.spawnWaspGroup(50, enemies);
+        checkEnterGame();
+    }
+
+    public void checkEnterGame(){
+        if (keyPressed &&enemies.size == 0) {
+                game.setScreen(new LevelOne(game));
+        }
+
+    }
     @Override
     public void resize(int width, int height) {
 

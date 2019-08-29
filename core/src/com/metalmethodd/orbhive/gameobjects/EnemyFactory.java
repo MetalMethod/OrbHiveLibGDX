@@ -55,6 +55,10 @@ public class EnemyFactory {
         }
     }
 
+    public void resetSpawnGroup(){
+        waspGroupCount = 0;
+    }
+
     public void spawnEnemies(float progress, Array<AbstractEnemy> enemies) {
         int waspInterval = 35;
         int simpleInterval = 40;

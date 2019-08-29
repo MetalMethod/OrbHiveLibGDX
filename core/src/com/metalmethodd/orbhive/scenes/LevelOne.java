@@ -103,7 +103,6 @@ public class LevelOne extends BaseLevel {
 
     private void updateProgress(){
         progress = background.getPosition().y / 10;
-        System.out.println(progress);
 
     }
 
