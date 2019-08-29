@@ -31,13 +31,13 @@ public class BaseLevel implements Screen {
     protected Array<AbstractEnemy> enemies;
     protected Array<Bullet> bullets;
 
-    private UserInterface ui;
+    protected UserInterface ui;
     private int score = 0;
 
     protected EnemyFactory enemyFactory;
 
     //progress MUST BE A FLOAT FROM 0 TO 100
-    private float progress = 0;
+    protected float progress = 0;
 
     public BaseLevel(OrbHiveGame game) {
         this.game = game;
@@ -120,7 +120,7 @@ public class BaseLevel implements Screen {
     private void updateUi() {
         if(progress > 100) progress = 100;
 
-        progress += Constants.GAME_PROGRESS_SPEED/10;
+        // progress += Constants.GAME_PROGRESS_SPEED/10;
 
         ui.setScore(score);
         //System.out.println(progress);

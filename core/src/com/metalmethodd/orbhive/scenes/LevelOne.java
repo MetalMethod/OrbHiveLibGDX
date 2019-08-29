@@ -1,5 +1,6 @@
 package com.metalmethodd.orbhive.scenes;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
@@ -97,6 +98,13 @@ public class LevelOne extends BaseLevel {
         updateLevelBasicLogic(delta);
         spawnEnemies();
 
+        updateProgress();
+    }
+
+    private void updateProgress(){
+        progress = background.getPosition().y / 10;
+        System.out.println(progress);
+
     }
 
     private void updateBackground() {
@@ -116,19 +124,23 @@ public class LevelOne extends BaseLevel {
             moon.setPosition(100, (int) (background.getPosition().y - 200));
         }
 
-        if (background.getPosition().y > 350 && background.getPosition().y < 600) {
-            moon.setPosition(100, (int) moon.getPosition().y);
-            moon.increaseSize(0.2);
+        if (background.getPosition().y > 300) {
+            moon.increaseSize(0.5f);
             background.draw = false;
         }
 
-        if (background.getPosition().y > 600 && background.getPosition().y < 730) {
-            moon.setPosition((int) (moon.getPosition().x + 1), (int) moon.getPosition().y + 1);
-            moon.increaseSize(0.8);
+        // if (background.getPosition().y > 600 && background.getPosition().y < 730) {
+        //    moon.setPosition((int) (moon.getPosition().x + 1), (int) moon.getPosition().y + 1);
+        //    moon.increaseSize(0.8);
+        // }
+
+        if (progress > 90) {
+            enemyFactory.spawnWaspGroup(15, enemies);
         }
 
-        if (background.getPosition().y > 730) {
-//            backgroundReset();
+        //GO TO BOSS
+        if (background.getPosition().y > BOSS_BG_Y-1) {
+            goToBoss();
         }
 
         updateClouds();
@@ -157,6 +169,10 @@ public class LevelOne extends BaseLevel {
         background.draw = true;
         moon.draw = false;
         background.setPosition(GAME_WIDTH, -GAME_HEIGHT);
+    }
+
+    private  void fadeToWhite(){
+        //renderer.fadeToWhite();
     }
 
     /**
@@ -188,6 +204,10 @@ public class LevelOne extends BaseLevel {
     private void spawnEnemies() {
         enemyFactory.spawnEnemies(getProgress(), enemies);
 
+    }
+
+    private void goToBoss(){
+        game.setScreen(new BossScreen(game, ui.getScore()));
     }
 
     @Override

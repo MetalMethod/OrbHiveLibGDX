@@ -14,15 +14,22 @@ public class Constants {
 
     //bg scroll speed right to left
     public static final float BG_LVL_ONE_X_SPEED = 1.5f;
+
+    // #############################
+    // TESTING SPEED of animation for debug and dev
+//    public static final float BG_LVL_ONE_Y_SPEED = 3f;
+
+    // NORMAL SPEED
     public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
-
-    //    public static final float GAME_PROGRESS_SPEED = 0.0002f;
-    public static final float GAME_PROGRESS_SPEED = 0.03f;
+    // #############################
 
 
+    //    FIRST GAME_PROGRESS_SPEED WAS = 0.0002f;
+    //    SECOND GAME_PROGRESS_SPEED  WAS = 0.03f;
+    public static final float GAME_PROGRESS_SPEED = 0.1f;
 
-    // SPEED of animation for debug and dev
-    // public static final float BG_LVL_ONE_Y_SPEED = 3f;
+    public static final int BOSS_BG_Y = 1000;
+
 
     public static final int MOON_BIG_SIZE = 80;
 

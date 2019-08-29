@@ -106,6 +106,10 @@ public class Renderer {
     private float shakeBaseX;
     private float shakeBaseY;
 
+    //Fade to White state
+    private float fadeToBlackAlpha = 0;
+
+
     public Renderer() {
         AssetLoader.load();
         sprites = AssetLoader.getSprites();
@@ -891,20 +895,6 @@ public class Renderer {
 
         shapeRenderer.end();
 
-        //score border
-
-        // shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        // shapeRenderer.setColor(Color.WHITE);
-        // shapeRenderer.setColor(1f,1f,1f, 0.5f);
-
-        // shapeRenderer.rect(5,GAME_HEIGHT -15,10, 10);
-        // shapeRenderer.rect(5 + 10,GAME_HEIGHT -15,10, 10);
-        // shapeRenderer.rect(5+ 20,GAME_HEIGHT -15,10, 10);
-        // shapeRenderer.rect(5+ 30,GAME_HEIGHT -15,10, 10);
-        // shapeRenderer.rect(5+ 40,GAME_HEIGHT -15,10, 10);
-
-        // shapeRenderer.end();
-
         // SCORE
         renderScore(ui.getScore());
     }
@@ -916,6 +906,18 @@ public class Renderer {
         batch.enableBlending();
         textFont.draw(batch, scoreAsCharSequence, 7, GAME_HEIGHT-14);
         batch.end();
+    }
+
+    public void fadeToWhite(){
+        while(fadeToBlackAlpha < 100){
+            fadeToBlackAlpha += 0.1f;
+        }
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.rect(100 ,0, GAME_WIDTH, GAME_HEIGHT);
+
+        shapeRenderer.end();
     }
 }
 

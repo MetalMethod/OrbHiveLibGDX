@@ -17,6 +17,8 @@ public class EnemyFactory {
     private int brainCount = 0;
     private int enemySimpleCount = 0;
 
+    private int waspGroupCount = 0;
+
     public static int getRandomInt(int min, int max) {
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
@@ -46,8 +48,48 @@ public class EnemyFactory {
         return new BrainSmall(position);
     }
 
+    public void spawnWaspGroup(int size, Array<AbstractEnemy> enemies) {
+        if (waspGroupCount < size) {
+            enemies.add(EnemyFactory.createWasp());
+            waspGroupCount++;
+        }
+    }
 
     public void spawnEnemies(float progress, Array<AbstractEnemy> enemies) {
+        int waspInterval = 35;
+        int simpleInterval = 40;
+        int brainInterval = 85;
+
+        float waspIntroProgress = 0.3f;
+        float brainIntroProgress = 0.8f;
+
+        // Wasp creation
+        waspCount++;
+        if (progress > waspIntroProgress &&
+                waspCount > waspInterval) {
+            enemies.add(EnemyFactory.createWasp());
+            waspCount = 0;
+        }
+
+        //regular Simple enemy creation
+        enemySimpleCount++;
+        if (enemySimpleCount > simpleInterval) {
+            enemies.add(EnemyFactory.createSimpleEnemy());
+            enemySimpleCount = 0;
+        }
+
+        //regular brain creation
+        brainCount++;
+        if (progress > brainIntroProgress &&
+                brainCount > brainInterval) {
+            enemies.add(EnemyFactory.createBrain());
+            brainCount = 0;
+        }
+
+    }
+
+/**
+    public void spawnEnemiesByWaves(float progress, Array<AbstractEnemy> enemies) {
         //System.out.println(progress);
 
         int waspInterval = 35;
@@ -115,4 +157,6 @@ public class EnemyFactory {
         }
 
     }
+ */
+
 }
