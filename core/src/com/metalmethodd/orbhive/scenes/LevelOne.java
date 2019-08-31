@@ -33,6 +33,7 @@ public class LevelOne extends BaseLevel {
     private Music gameMp3;
     private Music.OnCompletionListener songFinishedListener;
     private int timesSongFinished = 0;
+    private float totalMusicTime = 0;
 
     public LevelOne(OrbHiveGame game) {
         super(game);
@@ -101,8 +102,7 @@ public class LevelOne extends BaseLevel {
         drawEnemies(enemies, delta);
         drawBullets(delta);
 
-        drawUi();
-
+        drawUi(ui);
     }
 
     /**
@@ -120,15 +120,19 @@ public class LevelOne extends BaseLevel {
         updateMusic();
     }
 
-    private void updateMusic(){
-        if(gameOverCondition()){
+    private void updateMusic() {
+        if (gameOverCondition()) {
             gameMp3.stop();
         }
     }
 
-    private void updateProgress(){
-        progress = background.getPosition().y / 10;
-        System.out.println(progress);
+    private void updateProgress() {
+        //progress = background.getPosition().y / 10;
+        progress = runTime / 2;
+
+        if (progress > 100f) {
+            goToBoss();
+        }
     }
 
     private void updateBackground() {
@@ -153,21 +157,15 @@ public class LevelOne extends BaseLevel {
             background.draw = false;
         }
 
+        updateClouds();
+
         // if (background.getPosition().y > 600 && background.getPosition().y < 730) {
         //    moon.setPosition((int) (moon.getPosition().x + 1), (int) moon.getPosition().y + 1);
         //    moon.increaseSize(0.8);
         // }
 
-        if (progress > 90) {
-            enemyFactory.spawnWaspGroup(15, enemies);
-        }
-
         //GO TO BOSS
-        if (background.getPosition().y > BOSS_BG_Y-1) {
-            goToBoss();
-        }
-
-        updateClouds();
+//        if (background.getPosition().y > BOSS_BG_Y - 1) {
     }
 
     private void updateClouds() {
@@ -193,10 +191,6 @@ public class LevelOne extends BaseLevel {
         background.draw = true;
         moon.draw = false;
         background.setPosition(GAME_WIDTH, -GAME_HEIGHT);
-    }
-
-    private  void fadeToWhite(){
-        //renderer.fadeToWhite();
     }
 
     /**
@@ -230,7 +224,7 @@ public class LevelOne extends BaseLevel {
 
     }
 
-    private void goToBoss(){
+    private void goToBoss() {
         game.setScreen(new BossScreen(game, ui.getScore()));
     }
 

@@ -68,7 +68,7 @@ public class Renderer {
     private TextureRegion playerExplosionOne, playerExplosionTwo, playerExplosionThree;
     private TextureRegion playerExplosionFour, playerExplosionFive, playerExplosionSix;
 
-    private  TextureRegion bulletSpriteOne, bulletSpriteTwo, bulletSpriteThree;
+    private TextureRegion bulletSpriteOne, bulletSpriteTwo, bulletSpriteThree;
 
     private TextureRegion enemyFirstOne, enemyFirstTwo, enemyFirstThree;
     private TextureRegion enemyFirstFour, enemyFirstFive, enemyFirstSix, enemyFirstSeven;
@@ -262,21 +262,21 @@ public class Renderer {
         playerShootAnimation.setPlayMode(Animation.PlayMode.LOOP);
 
         /** BULLETS
-        bulletOne = new TextureRegion(
-                sprites,
-                1,
-                183,
-                6,
-                4
-        );
+         bulletOne = new TextureRegion(
+         sprites,
+         1,
+         183,
+         6,
+         4
+         );
 
-        bulletTwo = new TextureRegion(
-                sprites,
-                13,
-                183,
-                7,
-                4
-        );
+         bulletTwo = new TextureRegion(
+         sprites,
+         13,
+         183,
+         7,
+         4
+         );
          */
 
         bulletSpriteOne = new TextureRegion(sprites2, 9, 10, 18, 10);
@@ -668,7 +668,7 @@ public class Renderer {
     public void drawBulletOne(Bullet bullet) {
 
 
-       shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(200, 200, 100, 0.8f);
         shapeRenderer.circle(
                 bullet.getPosition().x,
@@ -684,11 +684,11 @@ public class Renderer {
         batch.begin();
         batch.enableBlending();
         batch.draw((TextureRegion) bulletAnimation.getKeyFrame(runTime),
-                bullet.getPosition().x-8,
+                bullet.getPosition().x - 8,
                 bullet.getPosition().y,
-                BULLET_WIDTH+8,
+                BULLET_WIDTH + 8,
                 BULLET_HEIGHT);
-        
+
         batch.disableBlending();
         batch.end();
     }
@@ -870,27 +870,27 @@ public class Renderer {
 
     public void drawUi(UserInterface ui) {
 
-        float barFull = GAME_WIDTH-67;
+        float barFull = GAME_WIDTH - 67;
         float progress = ui.getProgress();
         float barWidth = barFull * progress / 100;
 
         //BAR BG
         // border rectangle
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(1f,1f,1f, 0.5f);
+        shapeRenderer.setColor(1f, 1f, 1f, 0.5f);
         shapeRenderer.rect(
                 35,
-                GAME_HEIGHT -15,
-                GAME_WIDTH-65, 10);
+                GAME_HEIGHT - 15,
+                GAME_WIDTH - 65, 10);
         shapeRenderer.end();
 
 
         //progress bar
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(0f,0f,0,0.5f);
+        shapeRenderer.setColor(0f, 0f, 0, 0.5f);
         shapeRenderer.rect(
                 36,
-                GAME_HEIGHT -14,
+                GAME_HEIGHT - 14,
                 barWidth, 8);
 
         shapeRenderer.end();
@@ -899,23 +899,23 @@ public class Renderer {
         renderScore(ui.getScore());
     }
 
-    public void renderScore(int score){
-        CharSequence scoreAsCharSequence  = String.valueOf(score);
+    public void renderScore(int score) {
+        CharSequence scoreAsCharSequence = String.valueOf(score);
 
         batch.begin();
         batch.enableBlending();
-        textFont.draw(batch, scoreAsCharSequence, 7, GAME_HEIGHT-14);
+        textFont.draw(batch, scoreAsCharSequence, 7, GAME_HEIGHT - 14);
         batch.end();
     }
 
-    public void fadeToWhite(){
-        while(fadeToBlackAlpha < 100){
+    public void fadeToWhite() {
+        while (fadeToBlackAlpha < 100) {
             fadeToBlackAlpha += 0.1f;
         }
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.rect(100 ,0, GAME_WIDTH, GAME_HEIGHT);
+        shapeRenderer.rect(100, 0, GAME_WIDTH, GAME_HEIGHT);
 
         shapeRenderer.end();
     }

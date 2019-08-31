@@ -13,6 +13,7 @@ import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
 import com.metalmethodd.orbhive.gameobjects.Player;
+
 import static com.metalmethodd.orbhive.Constants.*;
 
 
@@ -32,8 +33,6 @@ public class BaseLevel implements Screen {
     protected Array<Bullet> bullets;
 
     protected UserInterface ui;
-    private int score = 0;
-
     protected EnemyFactory enemyFactory;
 
     //progress MUST BE A FLOAT FROM 0 TO 100
@@ -104,7 +103,7 @@ public class BaseLevel implements Screen {
         player.update(delta);
 
         //disable input if player is not ready (on animation)
-        if(player.getGameStarted()){
+        if (player.getGameStarted()) {
             gameInputHandler.init();
         }
 
@@ -118,11 +117,8 @@ public class BaseLevel implements Screen {
     }
 
     private void updateUi() {
-        if(progress > 100) progress = 100;
+        if (progress > 100) progress = 100;
 
-        // progress += Constants.GAME_PROGRESS_SPEED/10;
-
-        ui.setScore(score);
         //System.out.println(progress);
         ui.setProgress(progress);
     }
@@ -139,7 +135,7 @@ public class BaseLevel implements Screen {
 
     protected boolean gameOverCondition() {
         if (player.getState() == Player.EntityState.DEAD) {
-            game.setScreen(new GameOverScreen(game, score));
+            game.setScreen(new GameOverScreen(game, ui.getScore()));
         }
 
         return player.getState() == Player.EntityState.DEAD;
@@ -242,10 +238,10 @@ public class BaseLevel implements Screen {
 
     protected void killEnemy(AbstractEnemy enemy) {
         enemy.setHit(true);
-        score++;
+        ui.setScore(ui.getScore() + 1);
     }
 
-    protected void drawUi(){
+    protected void drawUi(UserInterface ui) {
         renderer.drawUi(ui);
     }
 }

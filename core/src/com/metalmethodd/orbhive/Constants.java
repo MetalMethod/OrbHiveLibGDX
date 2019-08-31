@@ -17,20 +17,14 @@ public class Constants {
 
     // #############################
     // TESTING SPEED of animation for debug and dev
-//    public static final float BG_LVL_ONE_Y_SPEED = 3f;
+    //public static final float BG_LVL_ONE_Y_SPEED = 3f;
 
     // NORMAL SPEED
+//    public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
     public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
     // #############################
 
-
-    //    FIRST GAME_PROGRESS_SPEED WAS = 0.0002f;
-    //    SECOND GAME_PROGRESS_SPEED  WAS = 0.03f;
-    public static final float GAME_PROGRESS_SPEED = 0.1f;
-
-    public static final int BOSS_BG_Y = 1000;
-
-
+    
     public static final int MOON_BIG_SIZE = 80;
 
     public static final float CLOUD_ONE_SPEED = BG_LVL_ONE_Y_SPEED * 4f;
@@ -44,7 +38,7 @@ public class Constants {
     public static final int PLAYER_WIDTH = 20;
     public static final int PLAYER_HEIGHT = 13;
 
-//    public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
+    //    public static final int DRAW_PLAYER_HEIGHT_FIX = 8;
     public static final int DRAW_PLAYER_HEIGHT_FIX = 3;
 
     public static final int PLAYER_HIT_ACCELERATION = 70;
@@ -57,7 +51,7 @@ public class Constants {
 
     public static final int BULLET_HEIGHT = 10;
     public static final int BULLET_WIDTH = 10;
-    public static final int BULLET_SPEED = 10 ;
+    public static final int BULLET_SPEED = 10;
     public static final int BULLET_CIRCLE_RADIUS = 5;
     public static final int BULLET_CIRCLE_SEGMENTS = 10;
 
@@ -89,7 +83,7 @@ public class Constants {
 
     //inital value
     //    public static final float INITIAL_PLAYER_X = 50f;
-    public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH-20 ;
+    public static final float INITIAL_PLAYER_X = -PLAYER_WIDTH - 20;
     public static final float INITIAL_PLAYER_Y = 100f;
 
     // TOUCH

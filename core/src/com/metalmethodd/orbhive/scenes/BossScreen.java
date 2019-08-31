@@ -16,7 +16,7 @@ public class BossScreen extends BaseLevel {
 
     public BossScreen(OrbHiveGame game, int score) {
         super(game);
-
+        ui.setScore(score);
     }
 
     /**
@@ -35,8 +35,7 @@ public class BossScreen extends BaseLevel {
         drawEnemies(enemies, delta);
         drawBullets(delta);
 
-        drawUi();
-
+        drawUi(ui);
     }
 
     /**
