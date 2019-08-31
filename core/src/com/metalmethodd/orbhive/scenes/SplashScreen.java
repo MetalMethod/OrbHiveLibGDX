@@ -98,17 +98,12 @@ public class SplashScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
-
     }
 
     public void checkEnterGame() {
-        game.setScreen(new GameOverScreen(game, 12));
-
         if (keyPressed && enemies.size == 0) {
             game.setScreen(new LevelOne(game));
-
         }
-
     }
 
     @Override
