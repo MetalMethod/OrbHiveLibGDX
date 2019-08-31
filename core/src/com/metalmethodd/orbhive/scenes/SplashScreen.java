@@ -63,14 +63,14 @@ public class SplashScreen implements Screen {
         drawWasps(delta);
     }
 
-    public void drawWasps(float delta){
-            for (AbstractEnemy enemy : enemies) {
-                enemy.update();
-                renderer.drawWasp(runTime, delta, enemies, enemy);
-                if (enemy.getPosition().x < 0){
-                    enemies.removeValue(enemy, true);
-                }
+    public void drawWasps(float delta) {
+        for (AbstractEnemy enemy : enemies) {
+            enemy.update();
+            renderer.drawWasp(runTime, delta, enemies, enemy);
+            if (enemy.getPosition().x < 0) {
+                enemies.removeValue(enemy, true);
             }
+        }
     }
 
     /**
@@ -101,12 +101,16 @@ public class SplashScreen implements Screen {
 
     }
 
-    public void checkEnterGame(){
-        if (keyPressed &&enemies.size == 0) {
-                game.setScreen(new LevelOne(game));
+    public void checkEnterGame() {
+        game.setScreen(new GameOverScreen(game, 12));
+
+        if (keyPressed && enemies.size == 0) {
+            game.setScreen(new LevelOne(game));
+
         }
 
     }
+
     @Override
     public void resize(int width, int height) {
 

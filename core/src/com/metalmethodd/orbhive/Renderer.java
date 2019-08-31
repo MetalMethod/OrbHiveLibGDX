@@ -904,20 +904,20 @@ public class Renderer {
 
         batch.begin();
         batch.enableBlending();
+        textFont.setColor(Color.WHITE);
         textFont.draw(batch, scoreAsCharSequence, 7, GAME_HEIGHT - 14);
         batch.end();
     }
 
-    public void fadeToWhite() {
-        while (fadeToBlackAlpha < 100) {
-            fadeToBlackAlpha += 0.1f;
-        }
+    public void drawGameOverFinalScore(int finalScore) {
+        CharSequence scoreAsCharSequence = "SCORE: " + String.valueOf(finalScore);
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.rect(100, 0, GAME_WIDTH, GAME_HEIGHT);
-
-        shapeRenderer.end();
+        batch.begin();
+        batch.enableBlending();
+        textFont.setColor(Color.BLACK);
+        textFont.draw(batch, "GAME OVER", 95, 40);
+        textFont.draw(batch, scoreAsCharSequence, 95, GAME_HEIGHT - 40);
+        batch.end();
     }
 }
 

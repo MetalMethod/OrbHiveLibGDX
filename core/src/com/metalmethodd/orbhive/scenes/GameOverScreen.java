@@ -20,7 +20,9 @@ public class GameOverScreen implements Screen {
     private OrthographicCamera camera;
     private Renderer renderer;
 
-    public GameOverScreen(OrbHiveGame game, int score){
+    private int finalScore;
+
+    public GameOverScreen(OrbHiveGame game, int score) {
         this.game = game;
         this.batch = game.batch;
 
@@ -28,6 +30,8 @@ public class GameOverScreen implements Screen {
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
 
         renderer = new Renderer();
+
+        finalScore = score;
     }
 
 
@@ -42,13 +46,17 @@ public class GameOverScreen implements Screen {
 
         renderer.drawGameOverScreen();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isTouched()){
+        renderer.drawGameOverFinalScore(finalScore);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
             game.setScreen(new SplashScreen(game));
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
+
+
     }
 
     @Override
