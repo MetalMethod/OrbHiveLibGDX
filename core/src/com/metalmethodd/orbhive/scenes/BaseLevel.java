@@ -137,10 +137,12 @@ public class BaseLevel implements Screen {
         }
     }
 
-    protected void gameOverCondition() {
+    protected boolean gameOverCondition() {
         if (player.getState() == Player.EntityState.DEAD) {
             game.setScreen(new GameOverScreen(game, score));
         }
+
+        return player.getState() == Player.EntityState.DEAD;
     }
 
     protected void clearDrawBackgroundColor() {

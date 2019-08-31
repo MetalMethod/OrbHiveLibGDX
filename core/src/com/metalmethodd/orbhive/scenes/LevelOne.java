@@ -1,6 +1,8 @@
 package com.metalmethodd.orbhive.scenes;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.metalmethodd.orbhive.*;
@@ -28,8 +30,24 @@ public class LevelOne extends BaseLevel {
     private int enemySimpleCount = 0;
     private int brainCount = 0;
 
+    private Music gameMp3;
+    private Music.OnCompletionListener songFinishedListener;
+    private int timesSongFinished = 0;
+
     public LevelOne(OrbHiveGame game) {
         super(game);
+
+        gameMp3 = AssetLoader.getGaneMp3();
+        gameMp3.setLooping(true);
+        songFinishedListener = new Music.OnCompletionListener() {
+            @Override
+            public void onCompletion(Music music) {
+                timesSongFinished++;
+            }
+        };
+        gameMp3.setOnCompletionListener(songFinishedListener);
+        gameMp3.play();
+
         previousSpawn = runTime;
         previousBrainSpawn = runTime;
 
@@ -99,11 +117,18 @@ public class LevelOne extends BaseLevel {
         spawnEnemies();
 
         updateProgress();
+        updateMusic();
+    }
+
+    private void updateMusic(){
+        if(gameOverCondition()){
+            gameMp3.stop();
+        }
     }
 
     private void updateProgress(){
         progress = background.getPosition().y / 10;
-
+        System.out.println(progress);
     }
 
     private void updateBackground() {
@@ -216,5 +241,6 @@ public class LevelOne extends BaseLevel {
     public void dispose() {
         batch.dispose();
         renderer.dispose();
+        gameMp3.dispose();
     }
 }

@@ -1,6 +1,7 @@
 package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,6 +14,9 @@ public class AssetLoader {
 
     private static FileHandle fontFile, fontImage;
     private static BitmapFont textFont;
+
+    private static Music introMp3;
+    private static Music gameMp3;
 
 
     public static void load() {
@@ -28,6 +32,9 @@ public class AssetLoader {
 
         splashScreen.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         gameoverScreen.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+
+        introMp3 = Gdx.audio.newMusic(Gdx.files.internal("audio/ObrHive_INTRO_SOUNDTRACK.mp3"));
+        gameMp3 = Gdx.audio.newMusic(Gdx.files.internal("audio/ObrHive_GAME_SOUNDTRACK.mp3"));
     }
 
     // We must dispose of the sprites whens we are finished.
@@ -36,7 +43,8 @@ public class AssetLoader {
         sprites2.dispose();
         splashScreen.dispose();
         gameoverScreen.dispose();
-
+        introMp3.dispose();
+        gameMp3.dispose();
     }
 
     public static Texture getSprites(){
@@ -59,5 +67,13 @@ public class AssetLoader {
         fontFile = Gdx.files.internal("fonts/font.fnt");
         fontImage = Gdx.files.internal("fonts/font.png");
         return textFont = new BitmapFont(fontFile, fontImage, true);
+    }
+
+    public static Music getIntroMp3(){
+        return introMp3;
+    }
+
+    public static Music getGaneMp3(){
+        return gameMp3;
     }
 }

@@ -3,9 +3,11 @@ package com.metalmethodd.orbhive.scenes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import com.metalmethodd.orbhive.AssetLoader;
 import com.metalmethodd.orbhive.OrbHiveGame;
 import com.metalmethodd.orbhive.Renderer;
 import com.metalmethodd.orbhive.gameobjects.EnemyFactory;
@@ -27,6 +29,8 @@ public class SplashScreen implements Screen {
     private int timer = 0;
     private boolean keyPressed = false;
 
+    private Music introMp3;
+
     public SplashScreen(OrbHiveGame game) {
         renderer = new Renderer();
 
@@ -40,13 +44,12 @@ public class SplashScreen implements Screen {
 
         enemyFactory = new EnemyFactory();
 
-
-
+        introMp3 = AssetLoader.getIntroMp3();
+        introMp3.play();
     }
 
     @Override
     public void show() {
-
     }
 
     @Override
@@ -58,19 +61,6 @@ public class SplashScreen implements Screen {
         renderer.drawSplashScreen();
 
         drawWasps(delta);
-
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
-                Gdx.input.isTouched()
-        ) {
-            keyPressed = true;
-            enemyFactory.resetSpawnGroup();
-            enemyFactory.spawnWaspGroup(100, enemies);
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-            Gdx.app.exit();
-        }
-
     }
 
     public void drawWasps(float delta){
@@ -93,6 +83,22 @@ public class SplashScreen implements Screen {
         runTime += delta;
         enemyFactory.spawnWaspGroup(50, enemies);
         checkEnterGame();
+
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
+                Gdx.input.isTouched()
+        ) {
+            keyPressed = true;
+
+            enemyFactory.resetSpawnGroup();
+            enemyFactory.spawnWaspGroup(100, enemies);
+
+            introMp3.stop();
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            Gdx.app.exit();
+        }
+
     }
 
     public void checkEnterGame(){
@@ -108,16 +114,17 @@ public class SplashScreen implements Screen {
 
     @Override
     public void pause() {
-
+        introMp3.pause();
     }
 
     @Override
     public void resume() {
-
+        introMp3.play();
     }
 
     @Override
     public void hide() {
+        introMp3.pause();
 
     }
 
@@ -125,5 +132,6 @@ public class SplashScreen implements Screen {
     public void dispose() {
         renderer.dispose();
         batch.dispose();
+        introMp3.dispose();
     }
 }
