@@ -16,6 +16,7 @@ import com.metalmethodd.orbhive.gameobjects.background.Background;
 import com.metalmethodd.orbhive.gameobjects.background.Cloud;
 import com.metalmethodd.orbhive.gameobjects.background.Moon;
 import com.metalmethodd.orbhive.gameobjects.enemies.AbstractEnemy;
+import com.metalmethodd.orbhive.gameobjects.enemies.Enemy;
 import com.metalmethodd.orbhive.gameobjects.enemies.Wasp;
 import com.metalmethodd.orbhive.gameobjects.Bullet;
 import com.metalmethodd.orbhive.gameobjects.Player;
@@ -84,6 +85,8 @@ public class Renderer {
 
     private TextureRegion enemyExplosionOne, enemyExplosionTwo, enemyExplosionThree;
 
+    private TextureRegion bossEyeOne, bossEyeTwo, bossEyeThree, bossEyeFour, bossEyeFive, bossEyeSix;
+
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
     private float explosionTime;
@@ -98,6 +101,8 @@ public class Renderer {
     private Animation waspAnimation;
     private Animation waspDeathAnimation;
 
+    private Animation bossEyeAnimation;
+
     //camera shake
     private int shakeElapsed;
     private float shakeDuration;
@@ -105,9 +110,6 @@ public class Renderer {
     private float shakeRandomAngle;
     private float shakeBaseX;
     private float shakeBaseY;
-
-    //Fade to White state
-    private float fadeToBlackAlpha = 0;
 
 
     public Renderer() {
@@ -371,6 +373,18 @@ public class Renderer {
         TextureRegion[] enemyFirstWaspDeaths = {waspDeathOne, waspDeathTwo, waspDeathThree, waspDeathFour, waspDeathFive, waspDeathSix, waspDeathSeven};
         waspDeathAnimation = new Animation(0.12f, (Object[]) enemyFirstWaspDeaths);
         waspDeathAnimation.setPlayMode(Animation.PlayMode.NORMAL);
+
+        // BOSS
+        bossEyeOne = new TextureRegion(sprites2, 1, 64, 32, 32);
+        bossEyeTwo = new TextureRegion(sprites2, 33, 64, 32, 32);
+        bossEyeThree = new TextureRegion(sprites2, 65, 64, 32, 32);
+        bossEyeFour = new TextureRegion(sprites2, 97, 64, 32, 32);
+        bossEyeFive = new TextureRegion(sprites2, 129, 64, 32, 32);
+        bossEyeSix = new TextureRegion(sprites2, 161, 64, 32, 32);
+
+        TextureRegion[] bossEyes = {bossEyeOne, bossEyeTwo, bossEyeThree, bossEyeFour, bossEyeFive, bossEyeSix};
+        bossEyeAnimation = new Animation(0.12f, (Object[]) bossEyes);
+        bossEyeAnimation.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
     }
 
     public void dispose() {
@@ -918,6 +932,20 @@ public class Renderer {
         textFont.draw(batch, "GAME OVER", 95, 40);
         textFont.draw(batch, scoreAsCharSequence, 95, GAME_HEIGHT - 40);
         batch.end();
+    }
+
+    public void drawBossEye(float runTime) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) bossEyeAnimation.getKeyFrame(runTime),
+                50,
+                50,
+                32,
+                32
+        );
+        batch.end();
+
     }
 }
 

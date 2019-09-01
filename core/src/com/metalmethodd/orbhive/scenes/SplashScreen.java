@@ -101,6 +101,10 @@ public class SplashScreen implements Screen {
     }
 
     public void checkEnterGame() {
+        // ############################
+        game.setScreen(new BossScreen(game, 23));
+        // ################################
+
         if (keyPressed && enemies.size == 0) {
             game.setScreen(new LevelOne(game));
         }

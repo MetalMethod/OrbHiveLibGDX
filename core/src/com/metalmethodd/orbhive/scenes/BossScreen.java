@@ -36,6 +36,8 @@ public class BossScreen extends BaseLevel {
         drawBullets(delta);
 
         drawUi(ui);
+
+        renderer.drawBossEye(runTime);
     }
 
     /**
