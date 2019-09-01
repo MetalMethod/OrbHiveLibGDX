@@ -87,6 +87,8 @@ public class Renderer {
     private TextureRegion bossEye7, bossEye8, bossEye9, bossEye10, bossEye11, bossEye12;
     private TextureRegion bossEye13, bossEye14, bossEye15, bossEye16, bossEye17, bossEye18;
     private TextureRegion bossEye19, bossEye20, bossEye21, bossEye22, bossEye23, bossEye24;
+    private TextureRegion bossEye25, bossEye26, bossEye27, bossEye28, bossEye29, bossEye30;
+    private TextureRegion bossEye31, bossEye32, bossEye33, bossEye34, bossEye35, bossEye36;
 
     private Animation engineAnimation;
     private Animation playerExplosionAnimation;
@@ -103,6 +105,7 @@ public class Renderer {
     private Animation waspDeathAnimation;
 
     private Animation bossEyeAnimationOne, bossEyeAnimationTwo, bossEyeAnimationThree;
+    private Animation bossEyeAnimationFour, bossEyeAnimationFive, bossEyeAnimationSix;
 
     //camera shake
     private int shakeElapsed;
@@ -300,7 +303,6 @@ public class Renderer {
         enemyExplosionAnimation = new Animation(0.20f, (Object[]) enemyExplosions);
         enemyExplosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
 
-
         // ENEMIES
         enemyFirstOne = new TextureRegion(sprites, 0, 133, 16, 14);
         enemyFirstTwo = new TextureRegion(sprites, 16, 133, 16, 14);
@@ -397,6 +399,27 @@ public class Renderer {
         bossEye17 = new TextureRegion(sprites2, 129, 128, 32, 32);
         bossEye18 = new TextureRegion(sprites2, 161, 128, 32, 32);
 
+        bossEye19 = new TextureRegion(sprites2, 1, 160, 32, 32);
+        bossEye20 = new TextureRegion(sprites2, 33, 160, 32, 32);
+        bossEye21 = new TextureRegion(sprites2, 65, 160, 32, 32);
+        bossEye22 = new TextureRegion(sprites2, 97, 160, 32, 32);
+        bossEye23 = new TextureRegion(sprites2, 129, 160, 32, 32);
+        bossEye24 = new TextureRegion(sprites2, 161, 160, 32, 32);
+
+        bossEye25 = new TextureRegion(sprites2, 1, 192, 32, 32);
+        bossEye26 = new TextureRegion(sprites2, 33, 192, 32, 32);
+        bossEye27 = new TextureRegion(sprites2, 65, 192, 32, 32);
+        bossEye28 = new TextureRegion(sprites2, 97, 192, 32, 32);
+        bossEye29 = new TextureRegion(sprites2, 129, 192, 32, 32);
+        bossEye30 = new TextureRegion(sprites2, 161, 192, 32, 32);
+
+        bossEye31 = new TextureRegion(sprites2, 1, 224, 32, 32);
+        bossEye32 = new TextureRegion(sprites2, 33, 224, 32, 32);
+        bossEye33 = new TextureRegion(sprites2, 65, 224, 32, 32);
+        bossEye34 = new TextureRegion(sprites2, 97, 224, 32, 32);
+        bossEye35 = new TextureRegion(sprites2, 129, 224, 32, 32);
+        bossEye36 = new TextureRegion(sprites2, 161, 224, 32, 32);
+
         TextureRegion[] bossEyes1 = {bossEye1, bossEye2, bossEye3, bossEye4, bossEye5, bossEye6};
         bossEyeAnimationOne = new Animation(0.12f, (Object[]) bossEyes1);
         bossEyeAnimationOne.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
@@ -405,9 +428,22 @@ public class Renderer {
         bossEyeAnimationTwo = new Animation(0.12f, (Object[]) bossEyes2);
         bossEyeAnimationTwo.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
 
-        TextureRegion[] bossEyes3 = {bossEye13, bossEye14, bossEye15, bossEye16, bossEye17, bossEye11};
+        TextureRegion[] bossEyes3 = {bossEye13, bossEye14, bossEye15, bossEye16, bossEye17, bossEye18};
         bossEyeAnimationThree = new Animation(0.12f, (Object[]) bossEyes3);
         bossEyeAnimationThree.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+
+        TextureRegion[] bossEyes4 = {bossEye19, bossEye20, bossEye21, bossEye22, bossEye23, bossEye24};
+        bossEyeAnimationFour = new Animation(0.12f, (Object[]) bossEyes4);
+        bossEyeAnimationFour.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+
+        TextureRegion[] bossEyes5 = {bossEye25, bossEye26, bossEye27, bossEye28, bossEye29, bossEye30};
+        bossEyeAnimationFive = new Animation(0.12f, (Object[]) bossEyes5);
+        bossEyeAnimationFive.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+
+        TextureRegion[] bossEyes6 = {bossEye31, bossEye32, bossEye33, bossEye34, bossEye35, bossEye36};
+        bossEyeAnimationSix = new Animation(0.12f, (Object[]) bossEyes6);
+        bossEyeAnimationSix.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+
     }
 
     public void dispose() {
@@ -990,6 +1026,45 @@ public class Renderer {
                 (TextureRegion) bossEyeAnimationThree.getKeyFrame(runTime),
                 50,
                 140,
+                32,
+                32
+        );
+        batch.end();
+    }
+
+    public void drawBossEye4(float runTime) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) bossEyeAnimationFour.getKeyFrame(runTime),
+                50,
+                180,
+                32,
+                32
+        );
+        batch.end();
+    }
+
+    public void drawBossEye5(float runTime) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) bossEyeAnimationFive.getKeyFrame(runTime),
+                90,
+                40,
+                32,
+                32
+        );
+        batch.end();
+    }
+
+    public void drawBossEye6(float runTime) {
+        batch.begin();
+        batch.enableBlending();
+        batch.draw(
+                (TextureRegion) bossEyeAnimationSix.getKeyFrame(runTime),
+                120,
+                80,
                 32,
                 32
         );

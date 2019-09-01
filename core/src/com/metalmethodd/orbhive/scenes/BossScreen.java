@@ -40,6 +40,9 @@ public class BossScreen extends BaseLevel {
         renderer.drawBossEye(runTime);
         renderer.drawBossEye2(runTime);
         renderer.drawBossEye3(runTime);
+        renderer.drawBossEye4(runTime);
+        renderer.drawBossEye5(runTime);
+        //renderer.drawBossEye6(runTime);
 
     }
 
