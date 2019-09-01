@@ -38,6 +38,9 @@ public class BossScreen extends BaseLevel {
         drawUi(ui);
 
         renderer.drawBossEye(runTime);
+        renderer.drawBossEye2(runTime);
+        renderer.drawBossEye3(runTime);
+
     }
 
     /**
