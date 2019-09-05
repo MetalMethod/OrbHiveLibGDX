@@ -2,18 +2,16 @@ package com.metalmethodd.orbhive;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.metalmethodd.orbhive.scenes.CreditsScreen;
 import com.metalmethodd.orbhive.scenes.SplashScreen;
 
 public class OrbHiveGame extends Game {
     public SpriteBatch batch;
 
-    SplashScreen splash;
-
     @Override
     public void create() {
         batch = new SpriteBatch();
-        splash = new SplashScreen(this);
-        this.setScreen(splash);
+        this.setScreen(new CreditsScreen(this));
     }
 
     @Override
@@ -24,9 +22,5 @@ public class OrbHiveGame extends Game {
     @Override
     public void dispose() {
         batch.dispose();
-    }
-
-    public SplashScreen getSplash() {
-        return splash;
     }
 }

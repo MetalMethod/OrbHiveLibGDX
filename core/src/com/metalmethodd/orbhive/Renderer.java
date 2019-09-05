@@ -919,5 +919,18 @@ public class Renderer {
         textFont.draw(batch, scoreAsCharSequence, 95, GAME_HEIGHT - 40);
         batch.end();
     }
+
+    public void drawCredits() {
+        CharSequence gameText = "A GAME BY IGOR BUSQUETS";
+        CharSequence musicText = "MUSIC BY VICTOR BUSQUETS";
+
+        batch.begin();
+        batch.enableBlending();
+        textFont.setColor(Color.LIGHT_GRAY);
+        textFont.draw(batch, gameText, 54, 118);
+        textFont.draw(batch, musicText, 50, 158);
+        batch.end();
+
+    }
 }
 
