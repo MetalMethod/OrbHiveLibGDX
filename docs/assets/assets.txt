@@ -2,6 +2,7 @@ d:assets:0:application/unknown
 d:audio:0:application/unknown
 a:audio/ObrHive_GAME_SOUNDTRACK.mp3:910001:application/unknown
 a:audio/ObrHive_INTRO_SOUNDTRACK.mp3:952633:application/unknown
+a:audio/START_GAME.mp3:74919:application/unknown
 d:fonts:0:application/unknown
 t:fonts/font.fnt:11235:application/unknown
 i:fonts/font.png:14120:image/png
