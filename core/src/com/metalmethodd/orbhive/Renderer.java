@@ -798,7 +798,6 @@ public class Renderer {
     public void drawSplashScreen() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-
         batch.draw(splashScreen, 0, 0, GAME_WIDTH, GAME_HEIGHT);
         batch.end();
 
@@ -923,14 +922,17 @@ public class Renderer {
     public void drawCredits() {
         CharSequence gameText = "A GAME BY IGOR BUSQUETS";
         CharSequence musicText = "MUSIC BY VICTOR BUSQUETS";
+        CharSequence continueText = "PRESS SPACE OR TOUCH SCREEN";
 
         batch.begin();
         batch.enableBlending();
         textFont.setColor(Color.LIGHT_GRAY);
-        textFont.draw(batch, gameText, 54, 118);
-        textFont.draw(batch, musicText, 50, 158);
-        batch.end();
+        textFont.draw(batch, gameText, 54, 110);
+        textFont.draw(batch, musicText, 50, 150);
 
+        textFont.setColor(Color.DARK_GRAY);
+        textFont.draw(batch, continueText, 40, 210);
+        batch.end();
     }
 }
 

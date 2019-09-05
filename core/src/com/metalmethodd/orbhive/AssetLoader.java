@@ -17,6 +17,7 @@ public class AssetLoader {
 
     private static Music introMp3;
     private static Music gameMp3;
+    private static Music startMp3;
 
 
     public static void load() {
@@ -35,6 +36,7 @@ public class AssetLoader {
 
         introMp3 = Gdx.audio.newMusic(Gdx.files.internal("audio/ObrHive_INTRO_SOUNDTRACK.mp3"));
         gameMp3 = Gdx.audio.newMusic(Gdx.files.internal("audio/ObrHive_GAME_SOUNDTRACK.mp3"));
+        startMp3 = Gdx.audio.newMusic(Gdx.files.internal("audio/START_GAME.mp3"));
     }
 
     // We must dispose of the sprites whens we are finished.
@@ -45,13 +47,14 @@ public class AssetLoader {
         gameoverScreen.dispose();
         introMp3.dispose();
         gameMp3.dispose();
+        startMp3.dispose();
     }
 
-    public static Texture getSprites(){
+    public static Texture getSprites() {
         return sprites;
     }
 
-    public static Texture getSprites2(){
+    public static Texture getSprites2() {
         return sprites2;
     }
 
@@ -69,11 +72,15 @@ public class AssetLoader {
         return textFont = new BitmapFont(fontFile, fontImage, true);
     }
 
-    public static Music getIntroMp3(){
+    public static Music getIntroMp3() {
         return introMp3;
     }
 
-    public static Music getGaneMp3(){
+    public static Music getGaneMp3() {
         return gameMp3;
+    }
+
+    public static Music getStartMp3() {
+        return startMp3;
     }
 }

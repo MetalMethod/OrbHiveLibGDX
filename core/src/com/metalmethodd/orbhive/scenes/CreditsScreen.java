@@ -31,7 +31,6 @@ public class CreditsScreen implements Screen {
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, GAME_WIDTH, GAME_HEIGHT);
-
     }
 
     @Override

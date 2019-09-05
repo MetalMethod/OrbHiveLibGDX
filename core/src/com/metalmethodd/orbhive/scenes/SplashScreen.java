@@ -30,6 +30,7 @@ public class SplashScreen implements Screen {
     private boolean keyPressed = false;
 
     private Music introMp3;
+    private Music startMp3;
 
     public SplashScreen(OrbHiveGame game) {
         renderer = new Renderer();
@@ -46,6 +47,8 @@ public class SplashScreen implements Screen {
 
         introMp3 = AssetLoader.getIntroMp3();
         introMp3.play();
+
+        startMp3 = AssetLoader.getStartMp3();
     }
 
     @Override
@@ -92,7 +95,8 @@ public class SplashScreen implements Screen {
             enemyFactory.resetSpawnGroup();
             enemyFactory.spawnWaspGroup(100, enemies);
 
-            introMp3.stop();
+            // introMp3.stop();
+            // startMp3.play();
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
@@ -102,6 +106,7 @@ public class SplashScreen implements Screen {
 
     public void checkEnterGame() {
         if (keyPressed && enemies.size == 0) {
+            introMp3.stop();
             game.setScreen(new LevelOne(game));
         }
     }
@@ -124,7 +129,6 @@ public class SplashScreen implements Screen {
     @Override
     public void hide() {
         introMp3.pause();
-
     }
 
     @Override
@@ -132,5 +136,6 @@ public class SplashScreen implements Screen {
         renderer.dispose();
         batch.dispose();
         introMp3.dispose();
+        startMp3.dispose();
     }
 }
