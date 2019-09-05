@@ -39,7 +39,7 @@ public class LevelOne extends BaseLevel {
         super(game);
 
         gameMp3 = AssetLoader.getGaneMp3();
-        gameMp3.setLooping(true);
+        gameMp3.setLooping(false);
         songFinishedListener = new Music.OnCompletionListener() {
             @Override
             public void onCompletion(Music music) {
@@ -128,7 +128,9 @@ public class LevelOne extends BaseLevel {
 
     private void updateProgress() {
         //progress = background.getPosition().y / 10;
-        progress = runTime / 2;
+        //progress = runTime / 2;
+
+        progress = (gameMp3.getPosition() * 0.75f) * 2;
 
         if (progress > 100f) {
             goToBoss();

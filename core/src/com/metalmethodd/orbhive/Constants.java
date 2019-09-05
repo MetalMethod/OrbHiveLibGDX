@@ -21,10 +21,10 @@ public class Constants {
 
     // NORMAL SPEED
 //    public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
-    public static final float BG_LVL_ONE_Y_SPEED = 0.03f;
+    public static final float BG_LVL_ONE_Y_SPEED = 0.06f;
     // #############################
 
-    
+
     public static final int MOON_BIG_SIZE = 80;
 
     public static final float CLOUD_ONE_SPEED = BG_LVL_ONE_Y_SPEED * 4f;
